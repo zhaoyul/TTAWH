@@ -77,13 +77,42 @@
     NSURL *musicURL = [NSURL URLWithString:[[NSBundle mainBundle] pathForResource:@"main" ofType:@"mp3"]];
     SKNode *backgroundSoundNode = [[SKAudioNode alloc] initWithURL:musicURL];
     [self addChild:backgroundSoundNode];
+    
+
+    ////////////////////progress bar//////////////////
+    //253	97	110
+    //250	215	144
+    CGSize sceneSize =  self.size;
+    CGFloat height = sceneSize.height;
+    CGFloat width = sceneSize.width;
+    
+    
+
+    SKShapeNode *backShape = [SKShapeNode shapeNodeWithRect:CGRectMake(-width/8.0, height/2 - 20 - height/20, width/4.0, height/20.0) cornerRadius:10];
+    UIColor *progressBarBg = [UIColor colorWithRed:252.0/255.0 green:97.0/255.0 blue:110.0/255.0 alpha:1.0];
+    backShape.fillColor = progressBarBg;
+    backShape.lineWidth = 5;
+    backShape.strokeColor = UIColor.whiteColor;
+    [self addChild:backShape];
+    
+    SKShapeNode *frontShape = [SKShapeNode shapeNodeWithRect:CGRectMake(-width/8.0 - width/4.0 + 5, height/2 - 20 - height/20, width/4.0, height/20.0) cornerRadius:15];
+    UIColor *progressBarfg = [UIColor colorWithRed:250.0/255.0 green:215.0/255.0 blue:144.0/255.0 alpha:1.0];
+    backShape.fillColor = progressBarfg;
+    backShape.lineWidth = 5;
+    backShape.strokeColor = UIColor.clearColor;
+    [self addChild:frontShape];
+
+    
+    
+    
+    
 
     
     self.physicsWorld.contactDelegate = self;
 
     _boomNode = (SKSpriteNode *)[self childNodeWithName:@"//boom"];
     boomOriginPosition = _boomNode.position;
-    _boomNode.physicsBody.fieldBitMask = BOOM_SPEED_FIELD;
+    _boomNode.physicsBody.fieldBitMask = 0;
     _boomNode.physicsBody.contactTestBitMask = CONTACT_MASK;
 
     
@@ -122,18 +151,6 @@
     velocityNode.categoryBitMask = BOOM_SPEED_FIELD;
     [self addChild:velocityNode];
     
-    SKAction *boomWaitAction = [SKAction waitForDuration:0.5];
-    SKAction *boomAction = [SKAction runBlock:^{
-        SKSpriteNode *anotherBoom = [_boomNode copy];
-        anotherBoom.position = boomOriginPosition;
-        anotherBoom.physicsBody.fieldBitMask = BOOM_SPEED_FIELD;
-        [self addChild:anotherBoom];
-        [_boomNode removeFromParent];
-        _boomNode = anotherBoom;
-    }];
-    SKAction *boomSeqAction = [SKAction sequence:@[boomWaitAction, boomAction]];
-    SKAction *boomRepeatAction = [SKAction repeatActionForever:boomSeqAction];
-    [self runAction:boomRepeatAction];
 
     ////////////////////////FISH1////////////////////////////////
 
@@ -285,8 +302,32 @@
 
     
 }
-- (void)didEndContact:(SKPhysicsContact *)contact{
-    
+
+/////////////////////////////touch hander/////////////////////////
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+    _boomNode.position = boomOriginPosition;
+}
+- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event{
+    _boomNode.position = boomOriginPosition;
+
+}
+- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
+    SKAction *boomAction = [SKAction runBlock:^{
+        SKSpriteNode *anotherBoom = [_boomNode copy];
+        anotherBoom.position = boomOriginPosition;
+        anotherBoom.physicsBody.fieldBitMask = BOOM_SPEED_FIELD;
+        [self addChild:anotherBoom];
+        [_boomNode removeFromParent];
+        _boomNode = anotherBoom;
+    }];
+    [self runAction:boomAction];
+    _boomNode.position = boomOriginPosition;
+
+
+}
+- (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event {
+    _boomNode.position = boomOriginPosition;
+
 }
 
 
