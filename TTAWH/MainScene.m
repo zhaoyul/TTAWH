@@ -10,6 +10,8 @@
 
 #define BOOM_SPEED_FIELD 0x1 << 0
 #define FISH1_SPEED_FIELD 0x1 << 1
+#define CONTACT_MASK 0x1 << 8
+
 
 
 @implementation MainScene{
@@ -25,21 +27,24 @@
 }
 
 -(void)didMoveToView:(SKView *)view{
+    
+    self.physicsWorld.contactDelegate = self;
 
     _boomNode = (SKSpriteNode *)[self childNodeWithName:@"//boom"];
     boomOriginPosition = _boomNode.position;
     _boomNode.physicsBody.fieldBitMask = BOOM_SPEED_FIELD;
+    _boomNode.physicsBody.contactTestBitMask = CONTACT_MASK;
 
     
     _fish1 = (SKSpriteNode *)[self childNodeWithName:@"//fish1"];
     fish1OriginPosition = _fish1.position;
     _fish1.physicsBody.fieldBitMask = FISH1_SPEED_FIELD;
+    _fish1.physicsBody.contactTestBitMask = CONTACT_MASK;
 
 
     
     vector_float3 targetPos = {0, 2, 0};
     SKFieldNode *velocityNode = [SKFieldNode velocityFieldWithVector:targetPos];
-//    velocityNode.falloff = 0;
     velocityNode.categoryBitMask = BOOM_SPEED_FIELD;
     [self addChild:velocityNode];
     
@@ -83,6 +88,30 @@
 
 -(void)update:(NSTimeInterval)currentTime{
  }
+
+
+- (void)didBeginContact:(SKPhysicsContact *)contact{
+    NSLog(@"-----------------------------");
+    SKPhysicsBody *a = contact.bodyA;
+    SKPhysicsBody *b = contact.bodyB;
+    [a.node removeFromParent];
+    [b.node removeFromParent];
+    SKTexture *cloudTexture = [SKTexture textureWithImageNamed:@"cloud"];
+    SKSpriteNode *cloud = [SKSpriteNode spriteNodeWithTexture:cloudTexture size:CGSizeMake(50, 50)];
+    cloud.position = contact.contactPoint;
+    [self addChild:cloud];
+    SKAction *cloudScale = [SKAction scaleBy:2.0 duration:0.1];
+    SKAction *cloudFaceout = [SKAction fadeOutWithDuration:0.1];
+    SKAction *seqAction = [SKAction sequence:@[cloudScale, cloudFaceout]];
+    [cloud runAction:seqAction];
+    
+    
+
+    
+}
+- (void)didEndContact:(SKPhysicsContact *)contact{
+    
+}
 
 
 @end
