@@ -69,7 +69,7 @@
     if ([_boyNode containsPoint:touchLocation]) {
         // Load the SKScene from 'GameScene.sks'
         
-        [self removeActionForKey:@"WelcomeBackgroundMusicAction"];
+//        [self removeActionForKey:@"WelcomeBackgroundMusicAction"];
 
         GameScene *scene = (GameScene *)[SKScene nodeWithFileNamed:@"Main"];
         

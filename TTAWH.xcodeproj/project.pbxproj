@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1EE085471EDFF9EE00B1545E /* First.sks in Resources */ = {isa = PBXBuildFile; fileRef = 1EE085461EDFF9EE00B1545E /* First.sks */; };
+		1EE085491EE0FFCC00B1545E /* AppIcon.appiconset in Resources */ = {isa = PBXBuildFile; fileRef = 1EE085481EE0FFCC00B1545E /* AppIcon.appiconset */; };
 		571D36D31EB720D800C58152 /* bomb.wav in Resources */ = {isa = PBXBuildFile; fileRef = 571D36CE1EB720D800C58152 /* bomb.wav */; };
 		571D36D41EB720D800C58152 /* game.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 571D36CF1EB720D800C58152 /* game.mp3 */; };
 		571D36D51EB720D800C58152 /* main.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 571D36D01EB720D800C58152 /* main.mp3 */; };
@@ -212,6 +213,7 @@
 
 /* Begin PBXFileReference section */
 		1EE085461EDFF9EE00B1545E /* First.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = First.sks; sourceTree = "<group>"; };
+		1EE085481EE0FFCC00B1545E /* AppIcon.appiconset */ = {isa = PBXFileReference; lastKnownFileType = folder; path = AppIcon.appiconset; sourceTree = "<group>"; };
 		571D36CE1EB720D800C58152 /* bomb.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = bomb.wav; sourceTree = "<group>"; };
 		571D36CF1EB720D800C58152 /* game.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = game.mp3; sourceTree = "<group>"; };
 		571D36D01EB720D800C58152 /* main.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = main.mp3; sourceTree = "<group>"; };
@@ -464,6 +466,7 @@
 		5741DB6C1EB5BA57006B351D /* TTAWH */ = {
 			isa = PBXGroup;
 			children = (
+				1EE085481EE0FFCC00B1545E /* AppIcon.appiconset */,
 				571D36CD1EB71F4F00C58152 /* sounds */,
 				5741DB8B1EB5BD3B006B351D /* pics */,
 				5741DB701EB5BA57006B351D /* AppDelegate.h */,
@@ -834,6 +837,7 @@
 				5741DCD11EB5BD5D006B351D /* ic_result_paiming_0.png in Resources */,
 				5741DC831EB5BD5D006B351D /* grade6.png in Resources */,
 				5741DC4C1EB5BD5D006B351D /* btn_ok_normal.png in Resources */,
+				1EE085491EE0FFCC00B1545E /* AppIcon.appiconset in Resources */,
 				5741DCF61EB5BD5D006B351D /* welcome_girl.png in Resources */,
 				5741DCE41EB5BD5D006B351D /* ic_seldec_top_words_en.png in Resources */,
 				5741DC8D1EB5BD5D006B351D /* ic_game_msg.png in Resources */,

@@ -16,10 +16,10 @@
 #define CONTACT_MASK 0x1 << 8
 
 
-#define BOMBSPEED 1
-#define FISH1SPEED 2
-#define FISH2SPEED 1
-#define FISH3SPEED 1
+#define BOMBSPEED 4
+#define FISH1SPEED 2.0
+#define FISH2SPEED 1.5
+#define FISH3SPEED 1.0
 
 
 
@@ -45,6 +45,11 @@
 }
 
 -(void)didMoveToView:(SKView *)view{
+    /////////////back ground music/////////////
+    NSURL *musicURL = [NSURL URLWithString:[[NSBundle mainBundle] pathForResource:@"main" ofType:@"mp3"]];
+    SKNode *backgroundSoundNode = [[SKAudioNode alloc] initWithURL:musicURL];
+    [self addChild:backgroundSoundNode];
+
     
     self.physicsWorld.contactDelegate = self;
 
