@@ -9,6 +9,28 @@
 /* Begin PBXBuildFile section */
 		1EE085471EDFF9EE00B1545E /* First.sks in Resources */ = {isa = PBXBuildFile; fileRef = 1EE085461EDFF9EE00B1545E /* First.sks */; };
 		1EE085491EE0FFCC00B1545E /* AppIcon.appiconset in Resources */ = {isa = PBXBuildFile; fileRef = 1EE085481EE0FFCC00B1545E /* AppIcon.appiconset */; };
+		1EE085601EE1004700B1545E /* Icon-App-20x20@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1EE0854A1EE1004700B1545E /* Icon-App-20x20@1x.png */; };
+		1EE085611EE1004700B1545E /* Icon-App-20x20@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1EE0854B1EE1004700B1545E /* Icon-App-20x20@2x.png */; };
+		1EE085621EE1004700B1545E /* Icon-App-20x20@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1EE0854C1EE1004700B1545E /* Icon-App-20x20@3x.png */; };
+		1EE085631EE1004700B1545E /* Icon-App-29x29@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1EE0854D1EE1004700B1545E /* Icon-App-29x29@1x.png */; };
+		1EE085641EE1004700B1545E /* Icon-App-29x29@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1EE0854E1EE1004700B1545E /* Icon-App-29x29@2x.png */; };
+		1EE085651EE1004700B1545E /* Icon-App-29x29@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1EE0854F1EE1004700B1545E /* Icon-App-29x29@3x.png */; };
+		1EE085661EE1004700B1545E /* Icon-App-40x40@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1EE085501EE1004700B1545E /* Icon-App-40x40@1x.png */; };
+		1EE085671EE1004700B1545E /* Icon-App-40x40@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1EE085511EE1004700B1545E /* Icon-App-40x40@2x.png */; };
+		1EE085681EE1004700B1545E /* Icon-App-40x40@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1EE085521EE1004700B1545E /* Icon-App-40x40@3x.png */; };
+		1EE085691EE1004700B1545E /* Icon-App-57x57@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1EE085531EE1004700B1545E /* Icon-App-57x57@1x.png */; };
+		1EE0856A1EE1004700B1545E /* Icon-App-57x57@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1EE085541EE1004700B1545E /* Icon-App-57x57@2x.png */; };
+		1EE0856B1EE1004700B1545E /* Icon-App-60x60@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1EE085551EE1004700B1545E /* Icon-App-60x60@1x.png */; };
+		1EE0856C1EE1004700B1545E /* Icon-App-60x60@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1EE085561EE1004700B1545E /* Icon-App-60x60@2x.png */; };
+		1EE0856D1EE1004700B1545E /* Icon-App-60x60@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1EE085571EE1004700B1545E /* Icon-App-60x60@3x.png */; };
+		1EE0856E1EE1004700B1545E /* Icon-App-72x72@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1EE085581EE1004700B1545E /* Icon-App-72x72@1x.png */; };
+		1EE0856F1EE1004700B1545E /* Icon-App-72x72@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1EE085591EE1004700B1545E /* Icon-App-72x72@2x.png */; };
+		1EE085701EE1004700B1545E /* Icon-App-76x76@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1EE0855A1EE1004700B1545E /* Icon-App-76x76@1x.png */; };
+		1EE085711EE1004700B1545E /* Icon-App-76x76@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1EE0855B1EE1004700B1545E /* Icon-App-76x76@2x.png */; };
+		1EE085721EE1004700B1545E /* Icon-App-76x76@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1EE0855C1EE1004700B1545E /* Icon-App-76x76@3x.png */; };
+		1EE085731EE1004700B1545E /* Icon-App-83.5x83.5@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1EE0855D1EE1004700B1545E /* Icon-App-83.5x83.5@2x.png */; };
+		1EE085741EE1004700B1545E /* Icon-Small-50x50@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1EE0855E1EE1004700B1545E /* Icon-Small-50x50@1x.png */; };
+		1EE085751EE1004700B1545E /* Icon-Small-50x50@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1EE0855F1EE1004700B1545E /* Icon-Small-50x50@2x.png */; };
 		571D36D31EB720D800C58152 /* bomb.wav in Resources */ = {isa = PBXBuildFile; fileRef = 571D36CE1EB720D800C58152 /* bomb.wav */; };
 		571D36D41EB720D800C58152 /* game.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 571D36CF1EB720D800C58152 /* game.mp3 */; };
 		571D36D51EB720D800C58152 /* main.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 571D36D01EB720D800C58152 /* main.mp3 */; };
@@ -214,6 +236,28 @@
 /* Begin PBXFileReference section */
 		1EE085461EDFF9EE00B1545E /* First.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = First.sks; sourceTree = "<group>"; };
 		1EE085481EE0FFCC00B1545E /* AppIcon.appiconset */ = {isa = PBXFileReference; lastKnownFileType = folder; path = AppIcon.appiconset; sourceTree = "<group>"; };
+		1EE0854A1EE1004700B1545E /* Icon-App-20x20@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-App-20x20@1x.png"; path = "AppIcon.appiconset/Icon-App-20x20@1x.png"; sourceTree = "<group>"; };
+		1EE0854B1EE1004700B1545E /* Icon-App-20x20@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-App-20x20@2x.png"; path = "AppIcon.appiconset/Icon-App-20x20@2x.png"; sourceTree = "<group>"; };
+		1EE0854C1EE1004700B1545E /* Icon-App-20x20@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-App-20x20@3x.png"; path = "AppIcon.appiconset/Icon-App-20x20@3x.png"; sourceTree = "<group>"; };
+		1EE0854D1EE1004700B1545E /* Icon-App-29x29@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-App-29x29@1x.png"; path = "AppIcon.appiconset/Icon-App-29x29@1x.png"; sourceTree = "<group>"; };
+		1EE0854E1EE1004700B1545E /* Icon-App-29x29@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-App-29x29@2x.png"; path = "AppIcon.appiconset/Icon-App-29x29@2x.png"; sourceTree = "<group>"; };
+		1EE0854F1EE1004700B1545E /* Icon-App-29x29@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-App-29x29@3x.png"; path = "AppIcon.appiconset/Icon-App-29x29@3x.png"; sourceTree = "<group>"; };
+		1EE085501EE1004700B1545E /* Icon-App-40x40@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-App-40x40@1x.png"; path = "AppIcon.appiconset/Icon-App-40x40@1x.png"; sourceTree = "<group>"; };
+		1EE085511EE1004700B1545E /* Icon-App-40x40@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-App-40x40@2x.png"; path = "AppIcon.appiconset/Icon-App-40x40@2x.png"; sourceTree = "<group>"; };
+		1EE085521EE1004700B1545E /* Icon-App-40x40@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-App-40x40@3x.png"; path = "AppIcon.appiconset/Icon-App-40x40@3x.png"; sourceTree = "<group>"; };
+		1EE085531EE1004700B1545E /* Icon-App-57x57@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-App-57x57@1x.png"; path = "AppIcon.appiconset/Icon-App-57x57@1x.png"; sourceTree = "<group>"; };
+		1EE085541EE1004700B1545E /* Icon-App-57x57@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-App-57x57@2x.png"; path = "AppIcon.appiconset/Icon-App-57x57@2x.png"; sourceTree = "<group>"; };
+		1EE085551EE1004700B1545E /* Icon-App-60x60@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-App-60x60@1x.png"; path = "AppIcon.appiconset/Icon-App-60x60@1x.png"; sourceTree = "<group>"; };
+		1EE085561EE1004700B1545E /* Icon-App-60x60@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-App-60x60@2x.png"; path = "AppIcon.appiconset/Icon-App-60x60@2x.png"; sourceTree = "<group>"; };
+		1EE085571EE1004700B1545E /* Icon-App-60x60@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-App-60x60@3x.png"; path = "AppIcon.appiconset/Icon-App-60x60@3x.png"; sourceTree = "<group>"; };
+		1EE085581EE1004700B1545E /* Icon-App-72x72@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-App-72x72@1x.png"; path = "AppIcon.appiconset/Icon-App-72x72@1x.png"; sourceTree = "<group>"; };
+		1EE085591EE1004700B1545E /* Icon-App-72x72@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-App-72x72@2x.png"; path = "AppIcon.appiconset/Icon-App-72x72@2x.png"; sourceTree = "<group>"; };
+		1EE0855A1EE1004700B1545E /* Icon-App-76x76@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-App-76x76@1x.png"; path = "AppIcon.appiconset/Icon-App-76x76@1x.png"; sourceTree = "<group>"; };
+		1EE0855B1EE1004700B1545E /* Icon-App-76x76@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-App-76x76@2x.png"; path = "AppIcon.appiconset/Icon-App-76x76@2x.png"; sourceTree = "<group>"; };
+		1EE0855C1EE1004700B1545E /* Icon-App-76x76@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-App-76x76@3x.png"; path = "AppIcon.appiconset/Icon-App-76x76@3x.png"; sourceTree = "<group>"; };
+		1EE0855D1EE1004700B1545E /* Icon-App-83.5x83.5@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-App-83.5x83.5@2x.png"; path = "AppIcon.appiconset/Icon-App-83.5x83.5@2x.png"; sourceTree = "<group>"; };
+		1EE0855E1EE1004700B1545E /* Icon-Small-50x50@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-Small-50x50@1x.png"; path = "AppIcon.appiconset/Icon-Small-50x50@1x.png"; sourceTree = "<group>"; };
+		1EE0855F1EE1004700B1545E /* Icon-Small-50x50@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-Small-50x50@2x.png"; path = "AppIcon.appiconset/Icon-Small-50x50@2x.png"; sourceTree = "<group>"; };
 		571D36CE1EB720D800C58152 /* bomb.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = bomb.wav; sourceTree = "<group>"; };
 		571D36CF1EB720D800C58152 /* game.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = game.mp3; sourceTree = "<group>"; };
 		571D36D01EB720D800C58152 /* main.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = main.mp3; sourceTree = "<group>"; };
@@ -479,6 +523,28 @@
 				5741DB7B1EB5BA57006B351D /* GameViewController.m */,
 				5741DB7D1EB5BA57006B351D /* Main.storyboard */,
 				5741DB801EB5BA57006B351D /* Assets.xcassets */,
+				1EE0854A1EE1004700B1545E /* Icon-App-20x20@1x.png */,
+				1EE0854B1EE1004700B1545E /* Icon-App-20x20@2x.png */,
+				1EE0854C1EE1004700B1545E /* Icon-App-20x20@3x.png */,
+				1EE0854D1EE1004700B1545E /* Icon-App-29x29@1x.png */,
+				1EE0854E1EE1004700B1545E /* Icon-App-29x29@2x.png */,
+				1EE0854F1EE1004700B1545E /* Icon-App-29x29@3x.png */,
+				1EE085501EE1004700B1545E /* Icon-App-40x40@1x.png */,
+				1EE085511EE1004700B1545E /* Icon-App-40x40@2x.png */,
+				1EE085521EE1004700B1545E /* Icon-App-40x40@3x.png */,
+				1EE085531EE1004700B1545E /* Icon-App-57x57@1x.png */,
+				1EE085541EE1004700B1545E /* Icon-App-57x57@2x.png */,
+				1EE085551EE1004700B1545E /* Icon-App-60x60@1x.png */,
+				1EE085561EE1004700B1545E /* Icon-App-60x60@2x.png */,
+				1EE085571EE1004700B1545E /* Icon-App-60x60@3x.png */,
+				1EE085581EE1004700B1545E /* Icon-App-72x72@1x.png */,
+				1EE085591EE1004700B1545E /* Icon-App-72x72@2x.png */,
+				1EE0855A1EE1004700B1545E /* Icon-App-76x76@1x.png */,
+				1EE0855B1EE1004700B1545E /* Icon-App-76x76@2x.png */,
+				1EE0855C1EE1004700B1545E /* Icon-App-76x76@3x.png */,
+				1EE0855D1EE1004700B1545E /* Icon-App-83.5x83.5@2x.png */,
+				1EE0855E1EE1004700B1545E /* Icon-Small-50x50@1x.png */,
+				1EE0855F1EE1004700B1545E /* Icon-Small-50x50@2x.png */,
 				5741DB821EB5BA57006B351D /* LaunchScreen.storyboard */,
 				5741DB851EB5BA57006B351D /* Info.plist */,
 				5741DB6D1EB5BA57006B351D /* Supporting Files */,
@@ -751,6 +817,7 @@
 			files = (
 				5741DC461EB5BD5D006B351D /* battery2.png in Resources */,
 				5741DC631EB5BD5D006B351D /* dialog_bonus_value3.png in Resources */,
+				1EE085711EE1004700B1545E /* Icon-App-76x76@2x.png in Resources */,
 				5741DC4F1EB5BD5D006B351D /* bubble2.png in Resources */,
 				5741DC5B1EB5BD5D006B351D /* dialog_bg.png in Resources */,
 				5741DCDE1EB5BD5D006B351D /* ic_seldec_bottom.png in Resources */,
@@ -759,6 +826,7 @@
 				5741DCD21EB5BD5D006B351D /* ic_result_paiming_1.png in Resources */,
 				5741DCF11EB5BD5D006B351D /* ic_welcome_progress_desc.png in Resources */,
 				5741DCA31EB5BD5D006B351D /* ic_game_timeline_top_lock.png in Resources */,
+				1EE085631EE1004700B1545E /* Icon-App-29x29@1x.png in Resources */,
 				571D36D31EB720D800C58152 /* bomb.wav in Resources */,
 				5741DC611EB5BD5D006B351D /* dialog_bonus_value1.png in Resources */,
 				5741DC5C1EB5BD5D006B351D /* dialog_bonus_bg.png in Resources */,
@@ -775,8 +843,10 @@
 				5741DCCE1EB5BD5D006B351D /* ic_result_logo_3.png in Resources */,
 				5741DCC51EB5BD5D006B351D /* ic_result_jifen_1.png in Resources */,
 				5741DC731EB5BD5D006B351D /* fish3.png in Resources */,
+				1EE0856D1EE1004700B1545E /* Icon-App-60x60@3x.png in Resources */,
 				5741DC7D1EB5BD5D006B351D /* grade0.png in Resources */,
 				5741DCB31EB5BD5D006B351D /* ic_result_award_1_3.png in Resources */,
+				1EE085661EE1004700B1545E /* Icon-App-40x40@1x.png in Resources */,
 				5741DCBD1EB5BD5D006B351D /* ic_result_back_btn_en.png in Resources */,
 				5741DCB71EB5BD5D006B351D /* ic_result_award_2_1.png in Resources */,
 				5741DCAA1EB5BD5D006B351D /* ic_qie_1.png in Resources */,
@@ -784,6 +854,7 @@
 				5741DC7C1EB5BD5D006B351D /* fish12.png in Resources */,
 				5741DB7F1EB5BA57006B351D /* Main.storyboard in Resources */,
 				5741DCA81EB5BD5D006B351D /* ic_launcher.png in Resources */,
+				1EE085691EE1004700B1545E /* Icon-App-57x57@1x.png in Resources */,
 				5741DCBE1EB5BD5D006B351D /* ic_result_back_btn.png in Resources */,
 				5741DCDB1EB5BD5D006B351D /* ic_result_sun.png in Resources */,
 				5741DB741EB5BA57006B351D /* GameScene.sks in Resources */,
@@ -806,7 +877,9 @@
 				5741DC441EB5BD5D006B351D /* app_title.png in Resources */,
 				5741DC921EB5BD5D006B351D /* ic_game_timeline_btm.png in Resources */,
 				5741DC6C1EB5BD5D006B351D /* dialog_level_02.png in Resources */,
+				1EE085671EE1004700B1545E /* Icon-App-40x40@2x.png in Resources */,
 				5741DCB11EB5BD5D006B351D /* ic_result_award_1_1.png in Resources */,
+				1EE085731EE1004700B1545E /* Icon-App-83.5x83.5@2x.png in Resources */,
 				5741DC7E1EB5BD5D006B351D /* grade1.png in Resources */,
 				5741DCF71EB5BD5D006B351D /* welcome.png in Resources */,
 				5741DB811EB5BA57006B351D /* Assets.xcassets in Resources */,
@@ -844,18 +917,22 @@
 				5741DC761EB5BD5D006B351D /* fish6.png in Resources */,
 				5741DC551EB5BD5D006B351D /* bubble8.png in Resources */,
 				5741DC591EB5BD5D006B351D /* bubble12.png in Resources */,
+				1EE085621EE1004700B1545E /* Icon-App-20x20@3x.png in Resources */,
 				5741DC701EB5BD5D006B351D /* eye.png in Resources */,
 				5741DC851EB5BD5D006B351D /* grade8.png in Resources */,
 				5741DCB21EB5BD5D006B351D /* ic_result_award_1_2.png in Resources */,
 				5741DC9A1EB5BD5D006B351D /* ic_game_timeline_icon_pass_1.png in Resources */,
 				5741DC991EB5BD5D006B351D /* ic_game_timeline_icon_6.png in Resources */,
 				5741DCE11EB5BD5D006B351D /* ic_seldec_rss.png in Resources */,
+				1EE0856C1EE1004700B1545E /* Icon-App-60x60@2x.png in Resources */,
 				5741DCAB1EB5BD5D006B351D /* ic_qie_2.png in Resources */,
 				5741DC8B1EB5BD5D006B351D /* ic_game_bg.png in Resources */,
 				5741DC891EB5BD5D006B351D /* ic_dfu_btn_deactive.png in Resources */,
 				5741DC5A1EB5BD5D006B351D /* cloud.png in Resources */,
+				1EE085601EE1004700B1545E /* Icon-App-20x20@1x.png in Resources */,
 				5741DC7A1EB5BD5D006B351D /* fish10.png in Resources */,
 				5741DCB91EB5BD5D006B351D /* ic_result_award_2_3.png in Resources */,
+				1EE085651EE1004700B1545E /* Icon-App-29x29@3x.png in Resources */,
 				5741DC9F1EB5BD5D006B351D /* ic_game_timeline_icon_pass_6.png in Resources */,
 				5741DCD71EB5BD5D006B351D /* ic_result_paiming_en.png in Resources */,
 				571D36D51EB720D800C58152 /* main.mp3 in Resources */,
@@ -883,9 +960,11 @@
 				5741DCC01EB5BD5D006B351D /* ic_result_box_bottom.png in Resources */,
 				5741DC671EB5BD5D006B351D /* dialog_bonus_value7.png in Resources */,
 				5741DC931EB5BD5D006B351D /* ic_game_timeline_conn.png in Resources */,
+				1EE085701EE1004700B1545E /* Icon-App-76x76@1x.png in Resources */,
 				5741DCB61EB5BD5D006B351D /* ic_result_award_1_6.png in Resources */,
 				5741DC431EB5BD5D006B351D /* app_title_en.png in Resources */,
 				5741DCD01EB5BD5D006B351D /* ic_result_name.png in Resources */,
+				1EE085641EE1004700B1545E /* Icon-App-29x29@2x.png in Resources */,
 				5741DCC71EB5BD5D006B351D /* ic_result_jifen_3.png in Resources */,
 				5741DC4A1EB5BD5D006B351D /* btn_cancel_normal.png in Resources */,
 				571D36D61EB720D800C58152 /* result.mp3 in Resources */,
@@ -919,12 +998,16 @@
 				5741DCE61EB5BD5D006B351D /* ic_seldec_top.png in Resources */,
 				5741DCA41EB5BD5D006B351D /* ic_game_timeline_top_now.png in Resources */,
 				5741DB761EB5BA57006B351D /* Actions.sks in Resources */,
+				1EE085751EE1004700B1545E /* Icon-Small-50x50@2x.png in Resources */,
 				5741DCC31EB5BD5D006B351D /* ic_result_hudong.png in Resources */,
 				5741DCA91EB5BD5D006B351D /* ic_qie_0.png in Resources */,
 				5741DC9E1EB5BD5D006B351D /* ic_game_timeline_icon_pass_5.png in Resources */,
 				5741DC791EB5BD5D006B351D /* fish9.png in Resources */,
 				5741DC721EB5BD5D006B351D /* fish2.png in Resources */,
 				5741DC811EB5BD5D006B351D /* grade4.png in Resources */,
+				1EE085681EE1004700B1545E /* Icon-App-40x40@3x.png in Resources */,
+				1EE0856E1EE1004700B1545E /* Icon-App-72x72@1x.png in Resources */,
+				1EE085611EE1004700B1545E /* Icon-App-20x20@2x.png in Resources */,
 				5741DC781EB5BD5D006B351D /* fish8.png in Resources */,
 				5741DCE01EB5BD5D006B351D /* ic_seldec_cancel.png in Resources */,
 				5741DC491EB5BD5D006B351D /* bomb.png in Resources */,
@@ -932,11 +1015,16 @@
 				5741DC6D1EB5BD5D006B351D /* dialog_level_bg.png in Resources */,
 				5741DCAD1EB5BD5D006B351D /* ic_qie_4.png in Resources */,
 				5741DCA01EB5BD5D006B351D /* ic_game_timeline_lock_icon.png in Resources */,
+				1EE0856F1EE1004700B1545E /* Icon-App-72x72@2x.png in Resources */,
 				5741DC9D1EB5BD5D006B351D /* ic_game_timeline_icon_pass_4.png in Resources */,
+				1EE085741EE1004700B1545E /* Icon-Small-50x50@1x.png in Resources */,
 				5741DC531EB5BD5D006B351D /* bubble6.png in Resources */,
 				5741DC5D1EB5BD5D006B351D /* dialog_bonus_txt_en.png in Resources */,
 				5741DCBA1EB5BD5D006B351D /* ic_result_award_2_4.png in Resources */,
+				1EE085721EE1004700B1545E /* Icon-App-76x76@3x.png in Resources */,
 				5741DC9C1EB5BD5D006B351D /* ic_game_timeline_icon_pass_3.png in Resources */,
+				1EE0856B1EE1004700B1545E /* Icon-App-60x60@1x.png in Resources */,
+				1EE0856A1EE1004700B1545E /* Icon-App-57x57@2x.png in Resources */,
 				5741DCD41EB5BD5D006B351D /* ic_result_paiming_3.png in Resources */,
 				1EE085471EDFF9EE00B1545E /* First.sks in Resources */,
 				5741DCB81EB5BD5D006B351D /* ic_result_award_2_2.png in Resources */,
