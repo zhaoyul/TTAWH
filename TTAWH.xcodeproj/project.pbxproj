@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1EE085761EE103CF00B1545E /* First.sks in Resources */ = {isa = PBXBuildFile; fileRef = 1EE085781EE103CF00B1545E /* First.sks */; };
+		1EE0857D1EE15B3600B1545E /* summary.sks in Resources */ = {isa = PBXBuildFile; fileRef = 1EE0857C1EE15B3600B1545E /* summary.sks */; };
 		571D36D31EB720D800C58152 /* bomb.wav in Resources */ = {isa = PBXBuildFile; fileRef = 571D36CE1EB720D800C58152 /* bomb.wav */; };
 		571D36D41EB720D800C58152 /* game.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 571D36CF1EB720D800C58152 /* game.mp3 */; };
 		571D36D51EB720D800C58152 /* main.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 571D36D01EB720D800C58152 /* main.mp3 */; };
@@ -213,6 +214,7 @@
 /* Begin PBXFileReference section */
 		1EE085771EE103CF00B1545E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = Base; path = Base.lproj/First.sks; sourceTree = "<group>"; };
 		1EE085791EE103E500B1545E /* en */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = en; path = en.lproj/First.sks; sourceTree = "<group>"; };
+		1EE0857C1EE15B3600B1545E /* summary.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = summary.sks; path = ../summary.sks; sourceTree = "<group>"; };
 		571D36CE1EB720D800C58152 /* bomb.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = bomb.wav; sourceTree = "<group>"; };
 		571D36CF1EB720D800C58152 /* game.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = game.mp3; sourceTree = "<group>"; };
 		571D36D01EB720D800C58152 /* main.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = main.mp3; sourceTree = "<group>"; };
@@ -488,6 +490,7 @@
 				577242DF1EB6CA44003CA2E8 /* Main.sks */,
 				57AEA88D1EC7DC70001A7970 /* MainScene.h */,
 				57AEA88E1EC7DC70001A7970 /* MainScene.m */,
+				1EE0857C1EE15B3600B1545E /* summary.sks */,
 			);
 			path = TTAWH;
 			sourceTree = "<group>";
@@ -720,6 +723,7 @@
 				TargetAttributes = {
 					5741DB691EB5BA57006B351D = {
 						CreatedOnToolsVersion = 8.3.2;
+						DevelopmentTeam = NK2UJ6L86F;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -840,6 +844,7 @@
 				5741DC8D1EB5BD5D006B351D /* ic_game_msg.png in Resources */,
 				5741DC761EB5BD5D006B351D /* fish6.png in Resources */,
 				5741DC551EB5BD5D006B351D /* bubble8.png in Resources */,
+				1EE0857D1EE15B3600B1545E /* summary.sks in Resources */,
 				5741DC591EB5BD5D006B351D /* bubble12.png in Resources */,
 				5741DC701EB5BD5D006B351D /* eye.png in Resources */,
 				5741DC851EB5BD5D006B351D /* grade8.png in Resources */,
@@ -1086,7 +1091,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = NK2UJ6L86F;
 				INFOPLIST_FILE = TTAWH/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = lizy.rocks.TTAWH;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1097,7 +1104,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = NK2UJ6L86F;
 				INFOPLIST_FILE = TTAWH/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = lizy.rocks.TTAWH;
 				PRODUCT_NAME = "$(TARGET_NAME)";

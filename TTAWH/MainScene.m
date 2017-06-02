@@ -306,6 +306,8 @@
 /////////////////////////////touch hander/////////////////////////
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     _boomNode.position = boomOriginPosition;
+    _boomNode.physicsBody.fieldBitMask = 0;
+
 }
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event{
     _boomNode.position = boomOriginPosition;
@@ -319,9 +321,15 @@
         [self addChild:anotherBoom];
         [_boomNode removeFromParent];
         _boomNode = anotherBoom;
+        _boomNode.position = boomOriginPosition;
+
     }];
-    [self runAction:boomAction];
-    _boomNode.position = boomOriginPosition;
+    SKAction *moveBack = [SKAction moveTo:boomOriginPosition duration:0.1];
+    SKAction *boomRest = [SKAction runBlock:^{
+        _boomNode.physicsBody.fieldBitMask = 0;
+    }];
+    SKAction *seqAction = [SKAction sequence:@[boomAction, moveBack, boomRest]];
+    [self runAction: seqAction];
 
 
 }
