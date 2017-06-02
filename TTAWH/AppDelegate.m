@@ -17,6 +17,9 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    _globalDic = [NSMutableDictionary dictionaryWithDictionary: @{@"score1": @0,
+                                                                  @"score2": @0,
+                                                                  @"score3": @0}];
     return YES;
 }
 

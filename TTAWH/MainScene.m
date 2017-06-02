@@ -7,16 +7,17 @@
 //
 
 #import "MainScene.h"
+#import "AppDelegate.h"
 
-#define BOOM_SPEED_FIELD 0x1 << 0
-#define FISH1_SPEED_FIELD 0x1 << 1
-#define FISH2_SPEED_FIELD 0x1 << 2
-#define FISH3_SPEED_FIELD 0x1 << 3
+#define BOOM_SPEED_FIELD  0x1 << 1      //2
+#define FISH1_SPEED_FIELD 0x1 << 2      //4
+#define FISH2_SPEED_FIELD 0x1 << 3      //8
+#define FISH3_SPEED_FIELD 0x1 << 4      //16
 
 #define CONTACT_MASK 0x1 << 8
 
 
-#define BOMBSPEED 4
+#define BOMBSPEED 10
 #define FISH1SPEED 2.0
 #define FISH2SPEED 1.5
 #define FISH3SPEED 1.0
@@ -39,12 +40,39 @@
     SKSpriteNode *_fish3;
     CGPoint fish3OriginPosition;
     
+    SKSpriteNode *_fish1_score;
+    SKSpriteNode *_fish2_score;
+    SKSpriteNode *_fish3_score;
+    
+    SKSpriteNode *_fish1_icon;
+    SKSpriteNode *_fish2_icon;
+    SKSpriteNode *_fish3_icon;
+
+    
+    NSArray *textureArray;
+    
+    NSMutableDictionary *globalDict;
+    
 
 
 
 }
 
 -(void)didMoveToView:(SKView *)view{
+    AppDelegate* delegate =  (AppDelegate*)[[UIApplication sharedApplication] delegate];
+    globalDict = delegate.globalDic;
+
+    //////////////////TEXTURE ARRAY////////////
+    textureArray = @[[SKTexture textureWithImageNamed:@"grade0" ],
+                     [SKTexture textureWithImageNamed:@"grade1" ],
+                     [SKTexture textureWithImageNamed:@"grade2" ],
+                     [SKTexture textureWithImageNamed:@"grade3" ],
+                     [SKTexture textureWithImageNamed:@"grade4" ],
+                     [SKTexture textureWithImageNamed:@"grade5" ],
+                     [SKTexture textureWithImageNamed:@"grade6" ],
+                     [SKTexture textureWithImageNamed:@"grade7" ],
+                     [SKTexture textureWithImageNamed:@"grade8" ],
+                     [SKTexture textureWithImageNamed:@"grade9" ],];
     /////////////back ground music/////////////
     NSURL *musicURL = [NSURL URLWithString:[[NSBundle mainBundle] pathForResource:@"main" ofType:@"mp3"]];
     SKNode *backgroundSoundNode = [[SKAudioNode alloc] initWithURL:musicURL];
@@ -73,7 +101,19 @@
     fish3OriginPosition = _fish3.position;
     _fish3.physicsBody.fieldBitMask = FISH3_SPEED_FIELD;
     _fish3.physicsBody.contactTestBitMask = CONTACT_MASK;
+    
+    //score
+    _fish1_score = (SKSpriteNode *)[self childNodeWithName:@"//fish1_score"];
+    _fish2_score = (SKSpriteNode *)[self childNodeWithName:@"//fish2_score"];
+    _fish3_score = (SKSpriteNode *)[self childNodeWithName:@"//fish3_score"];
+    
+    //icon
+    _fish1_icon = (SKSpriteNode *)[self childNodeWithName:@"//fish1_icon"];
+    _fish2_icon = (SKSpriteNode *)[self childNodeWithName:@"//fish2_icon"];
+    _fish3_icon = (SKSpriteNode *)[self childNodeWithName:@"//fish3_icon"];
 
+
+    
 
     ////////////////////////BOMB////////////////////////////////
     
@@ -82,7 +122,7 @@
     velocityNode.categoryBitMask = BOOM_SPEED_FIELD;
     [self addChild:velocityNode];
     
-    SKAction *boomWaitAction = [SKAction waitForDuration:3];
+    SKAction *boomWaitAction = [SKAction waitForDuration:0.5];
     SKAction *boomAction = [SKAction runBlock:^{
         SKSpriteNode *anotherBoom = [_boomNode copy];
         anotherBoom.position = boomOriginPosition;
@@ -108,8 +148,8 @@
     SKAction *fish1WaitAction = [SKAction waitForDuration:3];
     SKAction *fish1Action = [SKAction runBlock:^{
         SKSpriteNode *anotherFish1 = [_fish1 copy];
+        anotherFish1.name = @"fish1";
         anotherFish1.position = fish1OriginPosition;
-        anotherFish1.physicsBody.fieldBitMask = FISH1_SPEED_FIELD;
         [self addChild:anotherFish1];
 
     }];
@@ -130,8 +170,9 @@
     SKAction *fish2WaitAction = [SKAction waitForDuration:3];
     SKAction *fish2Action = [SKAction runBlock:^{
         SKSpriteNode *anotherFish2 = [_fish2 copy];
+        anotherFish2.name = @"fish2";
+
         anotherFish2.position = fish2OriginPosition;
-        anotherFish2.physicsBody.fieldBitMask = FISH2_SPEED_FIELD;
         [self addChild:anotherFish2];
         
     }];
@@ -153,8 +194,9 @@
     SKAction *fish3WaitAction = [SKAction waitForDuration:3];
     SKAction *fish3Action = [SKAction runBlock:^{
         SKSpriteNode *anotherFish3 = [_fish3 copy];
+        anotherFish3.name = @"fish3";
+
         anotherFish3.position = fish3OriginPosition;
-        anotherFish3.physicsBody.fieldBitMask = FISH3_SPEED_FIELD;
         [self addChild:anotherFish3];
         
     }];
@@ -173,12 +215,61 @@
  }
 
 
+- (SKAction *)iconAction {
+    SKAction *leftMoveAction = [SKAction moveByX:-5 y:0 duration:0.05];
+    SKAction *rightMoveAction = [SKAction moveByX:10 y:0 duration:0.1];
+    SKAction *moveSeq = [SKAction sequence:@[leftMoveAction, rightMoveAction, leftMoveAction]];
+        
+    SKAction *zoomInAction = [SKAction scaleBy:0.8 duration:0.1];
+    SKAction *zoomOutAction = [SKAction scaleBy:1.25 duration:0.1];
+    SKAction *zoomSeq = [SKAction sequence:@[zoomInAction, zoomOutAction]];
+        
+        SKAction *group = [SKAction group:@[moveSeq, zoomSeq]];
+  return group;
+}
+
 - (void)didBeginContact:(SKPhysicsContact *)contact{
-    NSLog(@"-----------------------------");
     SKPhysicsBody *a = contact.bodyA;
     SKPhysicsBody *b = contact.bodyB;
+   
+    
+    NSLog(@"a.node.physicsBody.fieldBitMask:%xd, b.node.physicsBody.fieldBitMask:%xd", a.node.physicsBody.fieldBitMask, b.node.physicsBody.fieldBitMask );
+    
+    if ([a.node.name isEqualToString:@"fish1"]  || [b.node.name isEqualToString:@"fish1"]) {
+        NSInteger score1 = ((NSNumber*)globalDict[@"score1"]).integerValue + 1 ;
+        globalDict[@"score1"] = @(score1);
+        SKAction *group;
+        group = [self iconAction];
+        
+        [_fish1_icon runAction:group];
+        
+
+
+        
+        _fish1_score.texture = textureArray[score1 % 10];
+    } else if([a.node.name isEqualToString:@"fish2"]  || [b.node.name isEqualToString:@"fish2"]){
+        NSInteger score2 = ((NSNumber*)globalDict[@"score2"]).integerValue + 1 ;
+        globalDict[@"score2"] = @(score2);
+        _fish2_score.texture = textureArray[score2 % 10];
+        
+        SKAction *group;
+        group = [self iconAction];
+        [_fish2_icon runAction:group];
+
+    } else if([a.node.name isEqualToString:@"fish3"]  || [b.node.name isEqualToString:@"fish3"]){
+        NSInteger score3 = ((NSNumber*)globalDict[@"score3"]).integerValue + 1 ;
+        globalDict[@"score3"] = @(score3);
+        _fish3_score.texture = textureArray[score3 % 10];
+        
+        SKAction *group;
+        group = [self iconAction];
+        [_fish3_icon runAction:group];
+
+    }
+    
     [a.node removeFromParent];
     [b.node removeFromParent];
+    
     SKTexture *cloudTexture = [SKTexture textureWithImageNamed:@"cloud"];
     SKSpriteNode *cloud = [SKSpriteNode spriteNodeWithTexture:cloudTexture size:CGSizeMake(50, 50)];
     cloud.position = contact.contactPoint;
