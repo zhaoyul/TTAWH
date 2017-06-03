@@ -7,8 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1EADE7781EE37B42007BDF6A /* SummaryScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EADE7771EE37B42007BDF6A /* SummaryScene.m */; };
 		1EE085761EE103CF00B1545E /* First.sks in Resources */ = {isa = PBXBuildFile; fileRef = 1EE085781EE103CF00B1545E /* First.sks */; };
-		1EE0857D1EE15B3600B1545E /* summary.sks in Resources */ = {isa = PBXBuildFile; fileRef = 1EE0857C1EE15B3600B1545E /* summary.sks */; };
+		1EE0857D1EE15B3600B1545E /* Summary.sks in Resources */ = {isa = PBXBuildFile; fileRef = 1EE0857C1EE15B3600B1545E /* Summary.sks */; };
 		571D36D31EB720D800C58152 /* bomb.wav in Resources */ = {isa = PBXBuildFile; fileRef = 571D36CE1EB720D800C58152 /* bomb.wav */; };
 		571D36D41EB720D800C58152 /* game.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 571D36CF1EB720D800C58152 /* game.mp3 */; };
 		571D36D51EB720D800C58152 /* main.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 571D36D01EB720D800C58152 /* main.mp3 */; };
@@ -213,9 +214,11 @@
 
 /* Begin PBXFileReference section */
 		1E3E2E111EE22A9700B64967 /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
+		1EADE7761EE37B42007BDF6A /* SummaryScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SummaryScene.h; sourceTree = "<group>"; };
+		1EADE7771EE37B42007BDF6A /* SummaryScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SummaryScene.m; sourceTree = "<group>"; };
 		1EE085771EE103CF00B1545E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = Base; path = Base.lproj/First.sks; sourceTree = "<group>"; };
 		1EE085791EE103E500B1545E /* en */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = en; path = en.lproj/First.sks; sourceTree = "<group>"; };
-		1EE0857C1EE15B3600B1545E /* summary.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = summary.sks; path = ../summary.sks; sourceTree = "<group>"; };
+		1EE0857C1EE15B3600B1545E /* Summary.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = Summary.sks; path = ../Summary.sks; sourceTree = "<group>"; };
 		571D36CE1EB720D800C58152 /* bomb.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = bomb.wav; sourceTree = "<group>"; };
 		571D36CF1EB720D800C58152 /* game.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = game.mp3; sourceTree = "<group>"; };
 		571D36D01EB720D800C58152 /* main.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = main.mp3; sourceTree = "<group>"; };
@@ -500,7 +503,9 @@
 				577242DF1EB6CA44003CA2E8 /* Main.sks */,
 				57AEA88D1EC7DC70001A7970 /* MainScene.h */,
 				57AEA88E1EC7DC70001A7970 /* MainScene.m */,
-				1EE0857C1EE15B3600B1545E /* summary.sks */,
+				1EE0857C1EE15B3600B1545E /* Summary.sks */,
+				1EADE7761EE37B42007BDF6A /* SummaryScene.h */,
+				1EADE7771EE37B42007BDF6A /* SummaryScene.m */,
 			);
 			path = TTAWH;
 			sourceTree = "<group>";
@@ -854,7 +859,7 @@
 				5741DC8D1EB5BD5D006B351D /* ic_game_msg.png in Resources */,
 				5741DC761EB5BD5D006B351D /* fish6.png in Resources */,
 				5741DC551EB5BD5D006B351D /* bubble8.png in Resources */,
-				1EE0857D1EE15B3600B1545E /* summary.sks in Resources */,
+				1EE0857D1EE15B3600B1545E /* Summary.sks in Resources */,
 				5741DC591EB5BD5D006B351D /* bubble12.png in Resources */,
 				5741DC701EB5BD5D006B351D /* eye.png in Resources */,
 				5741DC851EB5BD5D006B351D /* grade8.png in Resources */,
@@ -971,6 +976,7 @@
 				5741DB791EB5BA57006B351D /* GameScene.m in Sources */,
 				5720BB871EC6F603005255CD /* CircularProgressNode.m in Sources */,
 				5741DB6F1EB5BA57006B351D /* main.m in Sources */,
+				1EADE7781EE37B42007BDF6A /* SummaryScene.m in Sources */,
 				577242DE1EB6BBBB003CA2E8 /* FirstScene.m in Sources */,
 				57AEA88F1EC7DC70001A7970 /* MainScene.m in Sources */,
 			);

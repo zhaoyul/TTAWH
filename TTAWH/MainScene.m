@@ -8,6 +8,8 @@
 
 #import "MainScene.h"
 #import "AppDelegate.h"
+#import "SummaryScene.h"
+
 
 #define BOOM_SPEED_FIELD  0x1 << 1      //2
 #define FISH1_SPEED_FIELD 0x1 << 2      //4
@@ -57,6 +59,8 @@
     NSArray *textureArray;
     
     NSMutableDictionary *globalDict;
+    
+    NSInteger _times;
     
 
 
@@ -175,15 +179,26 @@ static UIImage *circularImageWithImage(CGSize size, CGFloat percent)
     _timerBar.position = CGPointMake(0 , height/2 - 20 - height/20);
     
 
-    static NSInteger times = 0;
+    _times = 0;
     SKAction *barAction = [SKAction runBlock:^{
-        times = times + 1;
-        CGFloat percent = times/60.0;
+        _times = _times + 1;
+        CGFloat percent = _times/60.0;
         
         UIImage *image = [self getImageWithPercent:percent andSize:barSize];
         
         _timerBar.texture = [SKTexture textureWithImage:image];
-        _timerLabel.text = [NSString stringWithFormat:@"%ld", times];
+        _timerLabel.text = [NSString stringWithFormat:@"%ld", _times];
+        if (_times == 60) {
+            SummaryScene *scene = (SummaryScene *)[SKScene nodeWithFileNamed:@"Summary"];
+            
+            // Set the scale mode to scale to fit the window
+            scene.scaleMode = SKSceneScaleModeAspectFill;
+            
+            SKView *skView = (SKView *)self.view;
+            
+            // Present the scene
+            [skView presentScene:scene];
+        }
     }];
     SKAction *waitAction = [SKAction waitForDuration:1.0];
     SKAction *seqAction = [SKAction sequence:@[barAction, waitAction]];
