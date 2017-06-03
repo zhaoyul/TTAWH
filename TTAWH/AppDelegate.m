@@ -8,7 +8,7 @@
 
 #import "AppDelegate.h"
 
-@interface AppDelegate ()
+@interface AppDelegate () <CBPeripheralDelegate, CBCentralManagerDelegate>
 @property (nonatomic, strong) CBCentralManager *manager;
 @property (nonatomic, strong) CBPeripheral *peripheral;
 @property (nonatomic, strong) CBCharacteristic *temperatureCharacteristic;
@@ -27,6 +27,13 @@
     _globalDic = [NSMutableDictionary dictionaryWithDictionary: @{@"score1": @0,
                                                                   @"score2": @0,
                                                                   @"score3": @0}];
+    
+    ///////////////////////////////BLE//////////////////////////////
+    self.thermometers = [NSMutableArray array];
+    self.manager = [[CBCentralManager alloc] initWithDelegate:self queue:nil];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(4 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [self startScan];
+        });
     return YES;
 }
 
@@ -88,8 +95,8 @@
 {
     NSLog(@"startScan");
     self.automaticallyReconnect = YES;
-    //NSArray *services = [NSArray arrayWithObject:[CBUUID UUIDWithString:@"1809"]];
-    [self.manager scanForPeripheralsWithServices:nil options:nil];
+    NSArray *services = [NSArray arrayWithObject:[CBUUID UUIDWithString:@"1830"]];
+    [self.manager scanForPeripheralsWithServices:services options:nil];
 }
 
 // Request CBCentralManager to stop scanning for peripherals
@@ -102,7 +109,7 @@
 {
     self.automaticallyReconnect = NO;
     if (self.peripheral) {
-        //        [self.manager retrieveConnectedPeripherals];
+//        [self.manager retrieveConnectedPeripherals];
         [self.manager retrieveConnectedPeripheralsWithServices:nil];
     }
 }
@@ -208,7 +215,7 @@ didFailToConnectPeripheral:(CBPeripheral *)peripheral
         NSLog(@"Service found with UUID: %@", aService.UUID);
         
         /* Thermometer Service */
-        if ([aService.UUID isEqual:[CBUUID UUIDWithString:@"1809"]]) {
+        if ([aService.UUID isEqual:[CBUUID UUIDWithString:@"1830"]]) {
             [peripheral discoverCharacteristics:nil forService:aService];
         }
         
@@ -238,13 +245,18 @@ didFailToConnectPeripheral:(CBPeripheral *)peripheral
         return;
     }
     
-    if([service.UUID isEqual:[CBUUID UUIDWithString:@"1809"]])
+    if([service.UUID isEqual:[CBUUID UUIDWithString:@"1830"]])
+        //0002~0005
+        //02: 呼吸监测
+        //03: disconnect
+        //04: 控制（设置雾化率）
+        //05: 读运行状态
     {
         for (CBCharacteristic * characteristic in service.characteristics)
         {
             NSLog(@"discovered characteristic %@", characteristic.UUID);
             /* Set indication on temperature measurement */
-            if([characteristic.UUID isEqual:[CBUUID UUIDWithString:@"2A1C"]])
+            if([characteristic.UUID isEqual:[CBUUID UUIDWithString:@"0002"]])
             {
                 self.temperatureCharacteristic = characteristic;
                 [self.peripheral setNotifyValue:YES forCharacteristic:self.temperatureCharacteristic];
@@ -321,9 +333,7 @@ didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic
     }
     
     /* Updated value for temperature measurement received */
-    if(([characteristic.UUID isEqual:[CBUUID UUIDWithString:@"2A1E"]] ||
-        [characteristic.UUID isEqual:[CBUUID UUIDWithString:@"2A1C"]]) &&
-       characteristic.value)
+    if([characteristic.UUID isEqual:[CBUUID UUIDWithString:@"0002"]])
     {
         NSData * updatedValue = characteristic.value;
         uint8_t* dataPointer = (uint8_t*)[updatedValue bytes];

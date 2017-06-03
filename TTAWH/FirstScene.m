@@ -7,6 +7,7 @@
 //
 
 #import "FirstScene.h"
+//#import "AppDelegate.h"
 
 @implementation FirstScene{
     SKNode *_boyNode;
@@ -24,7 +25,9 @@
     NSURL *musicURL = [NSURL URLWithString:[[NSBundle mainBundle] pathForResource:@"welcome" ofType:@"mp3"]];
     _backgroundSoundNode = [[SKAudioNode alloc] initWithURL:musicURL];
     [self addChild:_backgroundSoundNode];
-    
+//    AppDelegate *appDelegate = (AppDelegate*)[UIApplication sharedApplication].delegate;
+//    [appDelegate startScan];
+//    
     
     
 }

@@ -241,8 +241,8 @@
     SKAction *zoomOutAction = [SKAction scaleBy:1.25 duration:0.1];
     SKAction *zoomSeq = [SKAction sequence:@[zoomInAction, zoomOutAction]];
         
-        SKAction *group = [SKAction group:@[moveSeq, zoomSeq]];
-  return group;
+    SKAction *group = [SKAction group:@[moveSeq, zoomSeq]];
+    return group;
 }
 
 - (void)didBeginContact:(SKPhysicsContact *)contact{

@@ -16,6 +16,9 @@
 
 @property (strong, nonatomic) NSMutableDictionary *globalDic;
 
+- (void) startScan;
+
+
 
 @end
 

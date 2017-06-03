@@ -212,6 +212,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1E3E2E111EE22A9700B64967 /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
 		1EE085771EE103CF00B1545E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = Base; path = Base.lproj/First.sks; sourceTree = "<group>"; };
 		1EE085791EE103E500B1545E /* en */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = en; path = en.lproj/First.sks; sourceTree = "<group>"; };
 		1EE0857C1EE15B3600B1545E /* summary.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = summary.sks; path = ../summary.sks; sourceTree = "<group>"; };
@@ -436,6 +437,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1E3E2E101EE22A9600B64967 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1E3E2E111EE22A9700B64967 /* CoreBluetooth.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		571D36CD1EB71F4F00C58152 /* sounds */ = {
 			isa = PBXGroup;
 			children = (
@@ -453,6 +462,7 @@
 			children = (
 				5741DB6C1EB5BA57006B351D /* TTAWH */,
 				5741DB6B1EB5BA57006B351D /* Products */,
+				1E3E2E101EE22A9600B64967 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
