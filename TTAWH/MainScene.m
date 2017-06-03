@@ -16,6 +16,8 @@
 
 #define CONTACT_MASK 0x1 << 8
 
+#define radians(degrees)  (degrees)*M_PI/180.0f
+
 
 #define BOMBSPEED 10
 #define FISH1SPEED 2.0
@@ -48,7 +50,8 @@
     SKSpriteNode *_fish2_icon;
     SKSpriteNode *_fish3_icon;
     
-    SKSpriteNode *timeBar;
+    SKSpriteNode *_timerBar;
+    SKLabelNode *_timerLabel;
 
     
     NSArray *textureArray;
@@ -89,52 +92,72 @@
 
 -(UIImage*) getImageWithPercent:(CGFloat) percent andSize:(CGSize) size{
     UIColor *fillColor = [UIColor colorWithRed:250.0/255.0 green:215.0/255.0 blue:144.0/255.0 alpha:1.0];
-    UIColor *boarderColor = [UIColor redColor];
+    UIColor *boarderColor = [UIColor whiteColor];
     
+    CGRect boarderRect = CGRectMake(0, 0, size.width, size.height);
+    UIBezierPath* outerPath = [UIBezierPath bezierPathWithRoundedRect:boarderRect cornerRadius:5];
+
     UIGraphicsBeginImageContextWithOptions(size, NO, 1);
     CGContextRef contextRef = UIGraphicsGetCurrentContext();
-    CGRect boarderRect = CGRectMake(0, 0, size.width, size.height);
-    [fillColor setFill];
     [boarderColor setStroke];
-    CGContextStrokeRect(contextRef, boarderRect);
+    [UIColor.redColor setFill];
+
+//    CGContextClosePath(contextRef);
+    CGContextAddPath(contextRef, outerPath.CGPath);
+    CGContextDrawPath(contextRef, kCGPathFillStroke);
     
-    CGFloat barWidth = (size.width - 1) * percent;
-    CGRect barRect = CGRectMake(0.5, 0.5, barWidth, size.height -1);
-    CGContextFillRect(contextRef, barRect);
+    CGFloat boarderWidth = 4;
+    
+    CGFloat barWidth = (size.width - 2*boarderWidth) * percent;
+    CGRect barRect = CGRectMake(boarderWidth, boarderWidth, barWidth, size.height - 2*boarderWidth);
+    UIBezierPath* innerPath = [UIBezierPath bezierPathWithRoundedRect:barRect cornerRadius:10];
+    [fillColor setFill];
+
+    CGContextAddPath(contextRef, innerPath.CGPath);
+    CGContextDrawPath(contextRef, kCGPathFillStroke);
     UIImage *spiteImage = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     
     return spiteImage;
 }
 
-static UIImage *circularImageWithImage(UIImage *inputImage,
-                                       UIColor *borderColor, CGFloat borderWidth)
+static UIImage *circularImageWithImage(CGSize size, CGFloat percent)
 {
     
-    CGRect rect = (CGRect){ .origin=CGPointZero, .size=inputImage.size };
+    UIGraphicsBeginImageContextWithOptions(size, NO, 1);
     
-    UIGraphicsBeginImageContextWithOptions(rect.size, NO, inputImage.scale); {
-        
-        // Fill the entire circle with the border color.
-        [borderColor setFill];
-        [[UIBezierPath bezierPathWithOvalInRect:rect] fill];
-        
-        // Clip to the interior of the circle (inside the border).
-        CGRect interiorBox = CGRectInset(rect, borderWidth, borderWidth);
-        UIBezierPath *interior = [UIBezierPath bezierPathWithOvalInRect:interiorBox];
-        [interior addClip];
-        
-        [inputImage drawInRect:rect];
-        
-    }
+    CGContextRef context = UIGraphicsGetCurrentContext();
     
-    UIImage *outputImage = UIGraphicsGetImageFromCurrentImageContext();
+    //设置矩形填充颜色：红色
+    CGContextSetRGBFillColor(context, 1.0, 0.0, 0.0, 1.0);
+    //设置画笔颜色：黑色
+    CGContextSetRGBStrokeColor(context, 0, 0, 0, 1);
+    //设置画笔线条粗细
+    CGContextSetLineWidth(context, 0.6);
+    
+    //扇形参数
+    double radius=40;        //半径
+    int startX=50;           //圆心x坐标
+    int startY=100;          //圆心y坐标
+    double pieStart=0;       //起始的角度
+    double pieCapacity=360 * percent;   //角度增量值
+    int clockwise=0;         //0＝顺时针,1＝逆时针
+    
+    //顺时针画扇形
+    CGContextMoveToPoint(context, startX, startY);
+    CGContextAddArc(context, startX, startY, radius, radians(pieStart), radians(pieStart+pieCapacity), clockwise);
+    CGContextClosePath(context);
+    CGContextDrawPath(context, kCGPathEOFillStroke);
+    
+    //生成图片  
+    UIImage *resImage = UIGraphicsGetImageFromCurrentImageContext();  
     UIGraphicsEndImageContext();
-    
-    return outputImage;
+    return resImage;
+
 }
 
 -(void)didMoveToView:(SKView *)view{
+    /////////////////INIT//////////////////////
     self.appDelegate =  (AppDelegate*)[[UIApplication sharedApplication] delegate];
     globalDict = self.appDelegate.globalDic;
     
@@ -143,14 +166,14 @@ static UIImage *circularImageWithImage(UIImage *inputImage,
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(breathInAction) name:kINNotificationIdentifier object:nil];
     
     //////////////////TIME BAR////////////////
-    timeBar =  [SKSpriteNode new];
+    _timerBar =  [SKSpriteNode new];
     CGSize sceneSize =  self.size;
     CGFloat height = sceneSize.height;
     CGFloat width = sceneSize.width;
     CGSize barSize = CGSizeMake(width/4.0, height/20.0);
-    timeBar.size = barSize;
-    timeBar.position = CGPointMake(0 , height/2 - 20 - height/20);
-    [self addChild:timeBar];
+    _timerBar.size = barSize;
+    _timerBar.position = CGPointMake(0 , height/2 - 20 - height/20);
+    
 
     static NSInteger times = 0;
     SKAction *barAction = [SKAction runBlock:^{
@@ -159,7 +182,8 @@ static UIImage *circularImageWithImage(UIImage *inputImage,
         
         UIImage *image = [self getImageWithPercent:percent andSize:barSize];
         
-        timeBar.texture = [SKTexture textureWithImage:image];
+        _timerBar.texture = [SKTexture textureWithImage:image];
+        _timerLabel.text = [NSString stringWithFormat:@"%ld", times];
     }];
     SKAction *waitAction = [SKAction waitForDuration:1.0];
     SKAction *seqAction = [SKAction sequence:@[barAction, waitAction]];
@@ -184,29 +208,9 @@ static UIImage *circularImageWithImage(UIImage *inputImage,
     SKNode *backgroundSoundNode = [[SKAudioNode alloc] initWithURL:musicURL];
     [self addChild:backgroundSoundNode];
     
-
-    ////////////////////progress bar//////////////////
-    //253	97	110
-    //250	215	144
-   
-    
-
-    
-    
-    
-    
-    
-//    SKShapeNode *frontShape = [SKShapeNode shapeNodeWithRect:CGRectMake(-width/8.0 - width/4.0 + 5, height/2 - 20 - height/20, width/4.0, height/20.0) cornerRadius:15];
-//    UIColor *progressBarfg = [UIColor colorWithRed:250.0/255.0 green:215.0/255.0 blue:144.0/255.0 alpha:1.0];
-//    backShape.fillColor = progressBarfg;
-//    backShape.lineWidth = 5;
-//    backShape.strokeColor = UIColor.clearColor;
-//    [self addChild:frontShape];
+    self.physicsWorld.contactDelegate = self;
     
     //////////////////////////////////////////////////////////////
-    
-    self.physicsWorld.contactDelegate = self;
-
     _boomNode = (SKSpriteNode *)[self childNodeWithName:@"//boom"];
     boomOriginPosition = _boomNode.position;
     _boomNode.physicsBody.fieldBitMask = BOOM_SPEED_FIELD;
@@ -238,8 +242,9 @@ static UIImage *circularImageWithImage(UIImage *inputImage,
     _fish1_icon = (SKSpriteNode *)[self childNodeWithName:@"//fish1_icon"];
     _fish2_icon = (SKSpriteNode *)[self childNodeWithName:@"//fish2_icon"];
     _fish3_icon = (SKSpriteNode *)[self childNodeWithName:@"//fish3_icon"];
-
-
+    //timer
+    _timerBar = (SKSpriteNode*)[self childNodeWithName:@"//timerBar"];
+    _timerLabel = (SKLabelNode*)[self childNodeWithName:@"//timerLabel"];
     
 
     ////////////////////////BOMB////////////////////////////////
@@ -319,11 +324,6 @@ static UIImage *circularImageWithImage(UIImage *inputImage,
     SKAction *fish3RepeatAction = [SKAction repeatActionForever:fish3SeqAction];
     [self runAction:fish3RepeatAction];
 
-    
-    
-    
-    
-
 }
 
 -(void)update:(NSTimeInterval)currentTime{
@@ -400,9 +400,6 @@ static UIImage *circularImageWithImage(UIImage *inputImage,
     SKAction *moveToBoomOrigin = [SKAction moveTo:boomOriginPosition duration:0.01];
     [_boomNode runAction:moveToBoomOrigin];
     _boomNode.physicsBody.dynamic = NO;
-    
-   
-
     
 }
 

@@ -10,6 +10,6 @@
 #import "AppDelegate.h"
 
 @interface MainScene : SKScene <SKPhysicsContactDelegate>
-@property (nonatomic, strong) AppDelegate *appDelegate;
+@property (nonatomic, strong) AppDelegate * _Nonnull appDelegate;
 
 @end
