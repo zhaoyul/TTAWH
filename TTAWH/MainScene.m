@@ -101,19 +101,14 @@
     backShape.lineWidth = 5;
     backShape.strokeColor = UIColor.clearColor;
     [self addChild:frontShape];
-
-    
-    
-    
-    
-
     
     self.physicsWorld.contactDelegate = self;
 
     _boomNode = (SKSpriteNode *)[self childNodeWithName:@"//boom"];
     boomOriginPosition = _boomNode.position;
-    _boomNode.physicsBody.fieldBitMask = 0;
+    _boomNode.physicsBody.fieldBitMask = BOOM_SPEED_FIELD;
     _boomNode.physicsBody.contactTestBitMask = CONTACT_MASK;
+    _boomNode.physicsBody.dynamic = NO;
 
     
     _fish1 = (SKSpriteNode *)[self childNodeWithName:@"//fish1"];
@@ -229,6 +224,10 @@
 }
 
 -(void)update:(NSTimeInterval)currentTime{
+    if (_boomNode.position.y > 1000) {
+        _boomNode.position = boomOriginPosition;
+        _boomNode.physicsBody.dynamic = NO;
+    }
  }
 
 
@@ -248,9 +247,18 @@
 - (void)didBeginContact:(SKPhysicsContact *)contact{
     SKPhysicsBody *a = contact.bodyA;
     SKPhysicsBody *b = contact.bodyB;
-   
     
-    NSLog(@"a.node.physicsBody.fieldBitMask:%xd, b.node.physicsBody.fieldBitMask:%xd", a.node.physicsBody.fieldBitMask, b.node.physicsBody.fieldBitMask );
+    SKSpriteNode *bomb;
+    SKSpriteNode *fish;
+    
+    if ([a.node.name isEqualToString:@"boom"]) {
+        bomb = (SKSpriteNode*)a.node;
+        fish = (SKSpriteNode*)b.node;
+    } else {
+        bomb = (SKSpriteNode*)b.node;
+        fish = (SKSpriteNode*)a.node;
+    }
+   
     
     if ([a.node.name isEqualToString:@"fish1"]  || [b.node.name isEqualToString:@"fish1"]) {
         NSInteger score1 = ((NSNumber*)globalDict[@"score1"]).integerValue + 1 ;
@@ -259,9 +267,6 @@
         group = [self iconAction];
         
         [_fish1_icon runAction:group];
-        
-
-
         
         _fish1_score.texture = textureArray[score1 % 10];
     } else if([a.node.name isEqualToString:@"fish2"]  || [b.node.name isEqualToString:@"fish2"]){
@@ -281,11 +286,13 @@
         SKAction *group;
         group = [self iconAction];
         [_fish3_icon runAction:group];
-
     }
     
-    [a.node removeFromParent];
-    [b.node removeFromParent];
+    [fish removeFromParent];
+    
+    SKAction *moveToBoomOrigin = [SKAction moveTo:boomOriginPosition duration:0.01];
+    [bomb runAction:moveToBoomOrigin];
+    bomb.physicsBody.dynamic = NO;
     
     SKTexture *cloudTexture = [SKTexture textureWithImageNamed:@"cloud"];
     SKSpriteNode *cloud = [SKSpriteNode spriteNodeWithTexture:cloudTexture size:CGSizeMake(50, 50)];
@@ -305,38 +312,22 @@
 
 /////////////////////////////touch hander/////////////////////////
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
-    _boomNode.position = boomOriginPosition;
-    _boomNode.physicsBody.fieldBitMask = 0;
-
+    SKAction *moveToBoomOrigin = [SKAction moveTo:boomOriginPosition duration:0.01];
+    [_boomNode runAction:moveToBoomOrigin];
+    _boomNode.physicsBody.dynamic = NO;
 }
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event{
-    _boomNode.position = boomOriginPosition;
 
 }
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
-    SKAction *boomAction = [SKAction runBlock:^{
-        SKSpriteNode *anotherBoom = [_boomNode copy];
-        anotherBoom.position = boomOriginPosition;
-        anotherBoom.physicsBody.fieldBitMask = BOOM_SPEED_FIELD;
-        [self addChild:anotherBoom];
-        [_boomNode removeFromParent];
-        _boomNode = anotherBoom;
-        _boomNode.position = boomOriginPosition;
-
-    }];
-    SKAction *moveBack = [SKAction moveTo:boomOriginPosition duration:0.1];
-    SKAction *boomRest = [SKAction runBlock:^{
-        _boomNode.physicsBody.fieldBitMask = 0;
-    }];
-    SKAction *seqAction = [SKAction sequence:@[boomAction, moveBack, boomRest]];
-    [self runAction: seqAction];
-
-
+        _boomNode.physicsBody.dynamic = YES;
 }
 - (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event {
     _boomNode.position = boomOriginPosition;
 
 }
+
+
 
 
 @end
