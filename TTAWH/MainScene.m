@@ -25,8 +25,8 @@
 
 
 
-
 @implementation MainScene{
+
     
     SKSpriteNode *_boomNode;
     CGPoint boomOriginPosition;
@@ -47,6 +47,8 @@
     SKSpriteNode *_fish1_icon;
     SKSpriteNode *_fish2_icon;
     SKSpriteNode *_fish3_icon;
+    
+    SKSpriteNode *timeBar;
 
     
     NSArray *textureArray;
@@ -55,12 +57,116 @@
     
 
 
+}
+
+
+
+-(void)breathOutAction{
+    
+    if(self.appDelegate.gameState->breathIn_interval > ENOUGH_TIME) {
+        _boomNode.physicsBody.dynamic = YES;
+    } else {
+        [self explodAtPosition:boomOriginPosition];
+        SKAction *hide = [SKAction fadeOutWithDuration:0.01];
+        SKAction *wait = [SKAction waitForDuration:0.2];
+        SKAction *show = [SKAction fadeInWithDuration:0.01];
+        SKAction *seq = [SKAction sequence:@[hide,wait, show]];
+        [_boomNode runAction:seq];
+        
+
+    }
+
 
 }
 
+-(void)breathInAction{
+    SKAction *moveToBoomOrigin = [SKAction moveTo:boomOriginPosition duration:0.01];
+    [_boomNode runAction:moveToBoomOrigin];
+    _boomNode.physicsBody.dynamic = NO;
+    
+}
+
+
+-(UIImage*) getImageWithPercent:(CGFloat) percent andSize:(CGSize) size{
+    UIColor *fillColor = [UIColor colorWithRed:250.0/255.0 green:215.0/255.0 blue:144.0/255.0 alpha:1.0];
+    UIColor *boarderColor = [UIColor redColor];
+    
+    UIGraphicsBeginImageContextWithOptions(size, NO, 1);
+    CGContextRef contextRef = UIGraphicsGetCurrentContext();
+    CGRect boarderRect = CGRectMake(0, 0, size.width, size.height);
+    [fillColor setFill];
+    [boarderColor setStroke];
+    CGContextStrokeRect(contextRef, boarderRect);
+    
+    CGFloat barWidth = (size.width - 1) * percent;
+    CGRect barRect = CGRectMake(0.5, 0.5, barWidth, size.height -1);
+    CGContextFillRect(contextRef, barRect);
+    UIImage *spiteImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    return spiteImage;
+}
+
+static UIImage *circularImageWithImage(UIImage *inputImage,
+                                       UIColor *borderColor, CGFloat borderWidth)
+{
+    
+    CGRect rect = (CGRect){ .origin=CGPointZero, .size=inputImage.size };
+    
+    UIGraphicsBeginImageContextWithOptions(rect.size, NO, inputImage.scale); {
+        
+        // Fill the entire circle with the border color.
+        [borderColor setFill];
+        [[UIBezierPath bezierPathWithOvalInRect:rect] fill];
+        
+        // Clip to the interior of the circle (inside the border).
+        CGRect interiorBox = CGRectInset(rect, borderWidth, borderWidth);
+        UIBezierPath *interior = [UIBezierPath bezierPathWithOvalInRect:interiorBox];
+        [interior addClip];
+        
+        [inputImage drawInRect:rect];
+        
+    }
+    
+    UIImage *outputImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    return outputImage;
+}
+
 -(void)didMoveToView:(SKView *)view{
-    AppDelegate* delegate =  (AppDelegate*)[[UIApplication sharedApplication] delegate];
-    globalDict = delegate.globalDic;
+    self.appDelegate =  (AppDelegate*)[[UIApplication sharedApplication] delegate];
+    globalDict = self.appDelegate.globalDic;
+    
+    //////////////////NOTIFICATION/////////////
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(breathOutAction) name:kOUTNotificationIdentifier object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(breathInAction) name:kINNotificationIdentifier object:nil];
+    
+    //////////////////TIME BAR////////////////
+    timeBar =  [SKSpriteNode new];
+    CGSize sceneSize =  self.size;
+    CGFloat height = sceneSize.height;
+    CGFloat width = sceneSize.width;
+    CGSize barSize = CGSizeMake(width/4.0, height/20.0);
+    timeBar.size = barSize;
+    timeBar.position = CGPointMake(0 , height/2 - 20 - height/20);
+    [self addChild:timeBar];
+
+    static NSInteger times = 0;
+    SKAction *barAction = [SKAction runBlock:^{
+        times = times + 1;
+        CGFloat percent = times/60.0;
+        
+        UIImage *image = [self getImageWithPercent:percent andSize:barSize];
+        
+        timeBar.texture = [SKTexture textureWithImage:image];
+    }];
+    SKAction *waitAction = [SKAction waitForDuration:1.0];
+    SKAction *seqAction = [SKAction sequence:@[barAction, waitAction]];
+    SKAction *repeatAction = [SKAction repeatAction:seqAction count:60];
+
+    [self runAction:repeatAction];
+
 
     //////////////////TEXTURE ARRAY////////////
     textureArray = @[[SKTexture textureWithImageNamed:@"grade0" ],
@@ -82,25 +188,22 @@
     ////////////////////progress bar//////////////////
     //253	97	110
     //250	215	144
-    CGSize sceneSize =  self.size;
-    CGFloat height = sceneSize.height;
-    CGFloat width = sceneSize.width;
-    
+   
     
 
-    SKShapeNode *backShape = [SKShapeNode shapeNodeWithRect:CGRectMake(-width/8.0, height/2 - 20 - height/20, width/4.0, height/20.0) cornerRadius:10];
-    UIColor *progressBarBg = [UIColor colorWithRed:252.0/255.0 green:97.0/255.0 blue:110.0/255.0 alpha:1.0];
-    backShape.fillColor = progressBarBg;
-    backShape.lineWidth = 5;
-    backShape.strokeColor = UIColor.whiteColor;
-    [self addChild:backShape];
     
-    SKShapeNode *frontShape = [SKShapeNode shapeNodeWithRect:CGRectMake(-width/8.0 - width/4.0 + 5, height/2 - 20 - height/20, width/4.0, height/20.0) cornerRadius:15];
-    UIColor *progressBarfg = [UIColor colorWithRed:250.0/255.0 green:215.0/255.0 blue:144.0/255.0 alpha:1.0];
-    backShape.fillColor = progressBarfg;
-    backShape.lineWidth = 5;
-    backShape.strokeColor = UIColor.clearColor;
-    [self addChild:frontShape];
+    
+    
+    
+    
+//    SKShapeNode *frontShape = [SKShapeNode shapeNodeWithRect:CGRectMake(-width/8.0 - width/4.0 + 5, height/2 - 20 - height/20, width/4.0, height/20.0) cornerRadius:15];
+//    UIColor *progressBarfg = [UIColor colorWithRed:250.0/255.0 green:215.0/255.0 blue:144.0/255.0 alpha:1.0];
+//    backShape.fillColor = progressBarfg;
+//    backShape.lineWidth = 5;
+//    backShape.strokeColor = UIColor.clearColor;
+//    [self addChild:frontShape];
+    
+    //////////////////////////////////////////////////////////////
     
     self.physicsWorld.contactDelegate = self;
 
@@ -290,13 +393,23 @@
     
     [fish removeFromParent];
     
-    SKAction *moveToBoomOrigin = [SKAction moveTo:boomOriginPosition duration:0.01];
-    [bomb runAction:moveToBoomOrigin];
-    bomb.physicsBody.dynamic = NO;
+    CGPoint explodPosition = contact.contactPoint;
     
+    [self explodAtPosition:explodPosition];
+    
+    SKAction *moveToBoomOrigin = [SKAction moveTo:boomOriginPosition duration:0.01];
+    [_boomNode runAction:moveToBoomOrigin];
+    _boomNode.physicsBody.dynamic = NO;
+    
+   
+
+    
+}
+
+-(void) explodAtPosition:(CGPoint) position{
     SKTexture *cloudTexture = [SKTexture textureWithImageNamed:@"cloud"];
     SKSpriteNode *cloud = [SKSpriteNode spriteNodeWithTexture:cloudTexture size:CGSizeMake(50, 50)];
-    cloud.position = contact.contactPoint;
+    cloud.position = position;
     [self addChild:cloud];
     SKAction *cloudScale = [SKAction scaleBy:2.0 duration:0.1];
     SKAction *cloudFaceout = [SKAction fadeOutWithDuration:0.1];
@@ -304,11 +417,8 @@
     SKAction *bombSound = [SKAction playSoundFileNamed:@"bomb.wav" waitForCompletion:NO];
     SKAction *group = [SKAction group:@[seqAction, bombSound]];
     [cloud runAction:group];
-
-    
-
-    
 }
+                              
 
 /////////////////////////////touch hander/////////////////////////
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
