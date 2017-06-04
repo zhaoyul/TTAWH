@@ -11,5 +11,6 @@
 
 @interface MainScene : SKScene <SKPhysicsContactDelegate>
 @property (nonatomic, strong) AppDelegate * _Nonnull appDelegate;
+@property (nonatomic, weak) UIViewController* _Nullable parentVC;
 
 @end

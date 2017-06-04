@@ -10,5 +10,6 @@
 #import "GameScene.h"
 
 @interface FirstScene : SKScene
+@property (nonatomic, weak) UIViewController* _Nullable parentVC;
 
 @end

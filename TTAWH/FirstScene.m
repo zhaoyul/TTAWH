@@ -8,9 +8,12 @@
 
 #import "FirstScene.h"
 //#import "AppDelegate.h"
+#import "UserGuideViewController.h"
+#import "GameViewController.h"
 
 @implementation FirstScene{
     SKNode *_boyNode;
+    SKNode *_guide;
     SKLabelNode *_label;
     SKAudioNode *_backgroundSoundNode;
 }
@@ -20,6 +23,8 @@
     
     // Get label node from scene and store it for use later
     _boyNode = (SKNode *)[self childNodeWithName:@"//boy"];
+    _guide = (SKNode *)[self childNodeWithName:@"//guide"];
+
     
 
     NSURL *musicURL = [NSURL URLWithString:[[NSBundle mainBundle] pathForResource:@"welcome" ofType:@"mp3"]];
@@ -70,20 +75,21 @@
     UITouch *touch = [touches anyObject];
     CGPoint touchLocation = [touch locationInNode:self];
     if ([_boyNode containsPoint:touchLocation]) {
-        // Load the SKScene from 'GameScene.sks'
-        
-//        [self removeActionForKey:@"WelcomeBackgroundMusicAction"];
-
         GameScene *scene = (GameScene *)[SKScene nodeWithFileNamed:@"Main"];
-        
-        // Set the scale mode to scale to fit the window
-        scene.scaleMode = SKSceneScaleModeAspectFill;
+                scene.scaleMode = SKSceneScaleModeAspectFill;
         
         SKView *skView = (SKView *)self.view;
         
-        // Present the scene
         [skView presentScene:scene];
 
+    }
+    else if([_guide containsPoint:touchLocation]){
+        GameViewController *parentVC = (GameViewController*) self.parentVC;
+//        [parentVC shouldPerformSegueWithIdentifier:@"toGuide" sender:nil];
+//        [parentVC performSegueWithIdentifier:@"toGuide" sender:nil ];
+        
+        [parentVC createUserGuide];
+        
     }
 }
 //- (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event {
