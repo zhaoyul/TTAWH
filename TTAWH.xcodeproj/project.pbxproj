@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1EADE7781EE37B42007BDF6A /* SummaryScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EADE7771EE37B42007BDF6A /* SummaryScene.m */; };
+		1EADE77A1EE4BF4F007BDF6A /* yirdoc_title.png in Resources */ = {isa = PBXBuildFile; fileRef = 1EADE7791EE4BF4F007BDF6A /* yirdoc_title.png */; };
 		1EE085761EE103CF00B1545E /* First.sks in Resources */ = {isa = PBXBuildFile; fileRef = 1EE085781EE103CF00B1545E /* First.sks */; };
 		1EE0857D1EE15B3600B1545E /* Summary.sks in Resources */ = {isa = PBXBuildFile; fileRef = 1EE0857C1EE15B3600B1545E /* Summary.sks */; };
 		571D36D31EB720D800C58152 /* bomb.wav in Resources */ = {isa = PBXBuildFile; fileRef = 571D36CE1EB720D800C58152 /* bomb.wav */; };
@@ -216,6 +217,7 @@
 		1E3E2E111EE22A9700B64967 /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
 		1EADE7761EE37B42007BDF6A /* SummaryScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SummaryScene.h; sourceTree = "<group>"; };
 		1EADE7771EE37B42007BDF6A /* SummaryScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SummaryScene.m; sourceTree = "<group>"; };
+		1EADE7791EE4BF4F007BDF6A /* yirdoc_title.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = yirdoc_title.png; sourceTree = "<group>"; };
 		1EE085771EE103CF00B1545E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = Base; path = Base.lproj/First.sks; sourceTree = "<group>"; };
 		1EE085791EE103E500B1545E /* en */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = en; path = en.lproj/First.sks; sourceTree = "<group>"; };
 		1EE0857C1EE15B3600B1545E /* Summary.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = Summary.sks; path = ../Summary.sks; sourceTree = "<group>"; };
@@ -522,6 +524,7 @@
 			isa = PBXGroup;
 			children = (
 				5741DB8C1EB5BD5D006B351D /* app_desc.png */,
+				1EADE7791EE4BF4F007BDF6A /* yirdoc_title.png */,
 				5741DB8D1EB5BD5D006B351D /* app_title_en.png */,
 				5741DB8E1EB5BD5D006B351D /* app_title.png */,
 				5741DB8F1EB5BD5D006B351D /* battery1.png */,
@@ -952,6 +955,7 @@
 				5741DC9D1EB5BD5D006B351D /* ic_game_timeline_icon_pass_4.png in Resources */,
 				5741DC531EB5BD5D006B351D /* bubble6.png in Resources */,
 				5741DC5D1EB5BD5D006B351D /* dialog_bonus_txt_en.png in Resources */,
+				1EADE77A1EE4BF4F007BDF6A /* yirdoc_title.png in Resources */,
 				5741DCBA1EB5BD5D006B351D /* ic_result_award_2_4.png in Resources */,
 				5741DC9C1EB5BD5D006B351D /* ic_game_timeline_icon_pass_3.png in Resources */,
 				5741DCD41EB5BD5D006B351D /* ic_result_paiming_3.png in Resources */,

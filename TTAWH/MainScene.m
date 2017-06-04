@@ -54,6 +54,8 @@
     
     SKSpriteNode *_timerBar;
     SKLabelNode *_timerLabel;
+    
+    SKSpriteNode *test;
 
     
     NSArray *textureArray;
@@ -69,8 +71,10 @@
 
 
 -(void)breathOutAction{
+
+
     
-    if(self.appDelegate.gameState->breathIn_interval > ENOUGH_TIME) {
+    if(self.appDelegate.gameState->breathIn_interval > ENOUGH_TIME*0.75) {
         _boomNode.physicsBody.dynamic = YES;
     } else {
         [self explodAtPosition:boomOriginPosition];
@@ -127,31 +131,33 @@
 
 static UIImage *circularImageWithImage(CGSize size, CGFloat percent)
 {
+    if (percent > 0.75) {
+        percent = 1.0;
+    }
     
-    UIGraphicsBeginImageContextWithOptions(size, NO, 1);
-    
+    //支持retina高分截屏的关键
+    UIGraphicsBeginImageContextWithOptions(size, NO, 0.0);
     CGContextRef context = UIGraphicsGetCurrentContext();
     
-    //设置矩形填充颜色：红色
-    CGContextSetRGBFillColor(context, 1.0, 0.0, 0.0, 1.0);
-    //设置画笔颜色：黑色
+//    UIColor *fillColor = [self fromGreenToRed:percent*0.01];
+    CGContextSetRGBFillColor(context, 1 - percent, percent, 0.0, 1.0);
     CGContextSetRGBStrokeColor(context, 0, 0, 0, 1);
-    //设置画笔线条粗细
     CGContextSetLineWidth(context, 0.6);
     
     //扇形参数
-    double radius=40;        //半径
-    int startX=50;           //圆心x坐标
-    int startY=100;          //圆心y坐标
-    double pieStart=0;       //起始的角度
-    double pieCapacity=360 * percent;   //角度增量值
-    int clockwise=0;         //0＝顺时针,1＝逆时针
+    double radius=size.height/2.0;                   //半径
+    int startX=size.width/2.0;                      //圆心x坐标
+    int startY=size.height/2.0;                     //圆心y坐标
+    double pieStart=0;                  //起始的角度
+    double pieCapacity=360*percent;     //角度增量值
+    int clockwise=0;                   //0＝顺时针,1＝逆时针
     
     //顺时针画扇形
     CGContextMoveToPoint(context, startX, startY);
     CGContextAddArc(context, startX, startY, radius, radians(pieStart), radians(pieStart+pieCapacity), clockwise);
     CGContextClosePath(context);
     CGContextDrawPath(context, kCGPathEOFillStroke);
+    
     
     //生成图片  
     UIImage *resImage = UIGraphicsGetImageFromCurrentImageContext();  
@@ -160,7 +166,14 @@ static UIImage *circularImageWithImage(CGSize size, CGFloat percent)
 
 }
 
+
 -(void)didMoveToView:(SKView *)view{
+    
+    /////////////////TEST//////////////////////
+    test = (SKSpriteNode *)[self childNodeWithName:@"//test"];
+    
+
+    
     /////////////////INIT//////////////////////
     self.appDelegate =  (AppDelegate*)[[UIApplication sharedApplication] delegate];
     globalDict = self.appDelegate.globalDic;
@@ -346,6 +359,9 @@ static UIImage *circularImageWithImage(CGSize size, CGFloat percent)
         _boomNode.position = boomOriginPosition;
         _boomNode.physicsBody.dynamic = NO;
     }
+    CGFloat percent = self.appDelegate.gameState->breathIn_interval/ENOUGH_TIME;
+    UIImage *testImg = circularImageWithImage(test.size, percent);
+    test.texture = [SKTexture textureWithImage: testImg];
  }
 
 
