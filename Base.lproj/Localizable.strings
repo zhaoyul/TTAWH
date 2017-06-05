@@ -1,0 +1,15 @@
+/* 
+  Localizable.strings
+  TTAWH
+
+  Created by Kevin li on 5/6/2017.
+  Copyright © 2017 Zhaoyu Li. All rights reserved.
+*/
+
+"image1" = "guide_bg1_en.png";
+"image2" = "guide_bg2_en.png";
+"image3" = "guide_bg3_en.png";
+"image4" = "guide_bg4_en.png";
+
+"skip" = "skip";
+

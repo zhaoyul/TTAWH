@@ -166,6 +166,38 @@ static UIImage *circularImageWithImage(CGSize size, CGFloat percent)
 
 }
 
+-(UIImage*) createGradientArc:(CGSize)size :(CGFloat) percent{
+    // 1 - generate a dummy image of the required size
+    UIGraphicsBeginImageContextWithOptions(size, NO, [[UIScreen mainScreen] scale]);
+    CIImage *dummyImage = [CIImage imageWithCGImage:UIGraphicsGetImageFromCurrentImageContext().CGImage];
+    
+    // 2 - define the kernel algorithm
+    NSString *kernelString = @"kernel vec4 circularGradientKernel(__color startColor, __color endColor, vec2 center, float innerR, float outerR) { \n"
+    "    vec2 point = destCoord() - center;"
+    "    float rsq = point.x * point.x + point.y * point.y;"
+    "    float theta = mod(atan(point.y, point.x), radians(360.0));"
+    "    return (rsq > innerR*innerR && rsq < outerR*outerR) ? mix(startColor, endColor, theta/radians(360.0)*2.0) : vec4(0.0, 0.0, 0.0, 1.0);"
+    "}";
+    
+    // 3 - initialize a Core Image context and the filter kernel
+    CIContext *context = [CIContext contextWithOptions:nil];
+    CIColorKernel *kernel = [CIColorKernel kernelWithString:kernelString];
+    
+    // 4 - argument array, corresponding to the first line of the kernel string
+    NSArray *args = @[ [CIColor colorWithRed:1.0 green:0.0 blue:0.0],
+                       [CIColor colorWithRed:0.0 green:0.0 blue:1.0],
+                       [CIVector vectorWithCGPoint:CGPointMake(CGRectGetMidX(dummyImage.extent),CGRectGetMinY(dummyImage.extent))],
+                       [NSNumber numberWithFloat:size.height/2],
+                       [NSNumber numberWithFloat:size.width/2]];
+    
+    // 5 - apply the kernel to our dummy image, and convert the result to a UIImage
+    CIImage *ciOutputImage = [kernel applyWithExtent:dummyImage.extent arguments:args];
+    CGImageRef cgOutput = [context createCGImage:ciOutputImage fromRect:ciOutputImage.extent];
+    UIImage *gradientImage = [UIImage imageWithCGImage:cgOutput];
+    CGImageRelease(cgOutput);
+    return gradientImage;
+}
+
 
 -(void)didMoveToView:(SKView *)view{
     

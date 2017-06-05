@@ -43,8 +43,9 @@
         [self addSubview:guidePageView];
         
         // 设置引导页上的跳过按钮
-        UIButton *skipButton = [[UIButton alloc]initWithFrame:CGRectMake(DDScreenW*0.8, DDScreenW*0.1, 50, 25)];
-        [skipButton setTitle:@"跳过" forState:UIControlStateNormal];
+        UIButton *skipButton = [[UIButton alloc]initWithFrame:CGRectMake(DDScreenW*0.9, DDScreenW*0.03, 50, 25)];
+        NSString *skip =  NSLocalizedString(@"skip", nil);
+        [skipButton setTitle:skip forState:UIControlStateNormal];
         [skipButton.titleLabel setFont:[UIFont systemFontOfSize:14.0]];
         [skipButton setBackgroundColor:[UIColor grayColor]];
         // [skipButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];

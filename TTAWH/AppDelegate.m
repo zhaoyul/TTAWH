@@ -7,7 +7,7 @@
 //
 
 #import "AppDelegate.h"
-
+#import "DHGuidePageHUD.h"
 
 
 
@@ -32,6 +32,13 @@
     _globalDic = [NSMutableDictionary dictionaryWithDictionary: @{@"score1": @0,
                                                                   @"score2": @0,
                                                                   @"score3": @0}];
+    
+    NSArray *imageArray = @[@"guide_bg1.png",
+                            @"guide_bg2.png",
+                            @"guide_bg3.png",
+                            @"guide_bg4.png"];
+    DHGuidePageHUD *guidePage = [[DHGuidePageHUD alloc] dh_initWithFrame:self.window.frame imageNameArray:imageArray buttonIsHidden:YES];
+    [self.window addSubview:guidePage];
     
     //////////////////////////////STATE/////////////////////////////
     self.gameState = malloc(sizeof(GameState));

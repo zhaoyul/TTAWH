@@ -13,12 +13,12 @@
 
 -(void)createUserGuide{
     UIWindow *window = [[[UIApplication sharedApplication] windows] objectAtIndex:0];
-    NSArray *imageArray = @[@"guide_bg1.png",
-                            @"guide_bg2.png",
-                            @"guide_bg3.png",
-                            @"guide_bg4.png"];
+    NSArray *imageArray = @[NSLocalizedString(@"image1", nil),
+                            NSLocalizedString(@"image2", nil),
+                            NSLocalizedString(@"image3", nil),
+                            NSLocalizedString(@"image4", nil)];
 //    DHGuidePageHUD *guidePage = [[DHGuidePageHUD alloc] dh_initWithFrame:window.frame imageArray:imageArray buttonIsHidden:YES];
-    DHGuidePageHUD *guidePage = [[DHGuidePageHUD alloc] dh_initWithFrame:window.frame imageNameArray:imageArray buttonIsHidden:YES];
+    DHGuidePageHUD *guidePage = [[DHGuidePageHUD alloc] dh_initWithFrame:window.frame imageNameArray:imageArray buttonIsHidden:NO];
     [window addSubview:guidePage];
 }
 
