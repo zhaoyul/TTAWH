@@ -13,6 +13,8 @@
 #define kOUTNotificationIdentifier @"OUT"
 #define kSTOPNotificationIdentifier @"STOP"
 
+#define kDISCONNECTNotificationIdentifier @"DISCONNECT"
+
 #define ENOUGH_TIME 1.0
 
 

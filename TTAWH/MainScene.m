@@ -9,6 +9,7 @@
 #import "MainScene.h"
 #import "AppDelegate.h"
 #import "SummaryScene.h"
+#import "PopupScene.h"
 
 
 #define BOOM_SPEED_FIELD  0x1 << 1      //2
@@ -86,8 +87,38 @@
         
 
     }
+}
 
+-(void)connectDown{
+    SummaryScene *scene = (SummaryScene *)[SKScene nodeWithFileNamed:@"Summary"];
+    
+    // Set the scale mode to scale to fit the window
+    scene.scaleMode = SKSceneScaleModeAspectFill;
+    
+    SKView *skView = (SKView *)self.view;
+    
+    // Present the scene
+    [skView presentScene:scene];
+}
 
+-(UIImage *)getTextureFromCurrnetScene{
+    UIGraphicsBeginImageContextWithOptions(self.view.bounds.size, NO, UIScreen.mainScreen.scale);
+    [self.view drawViewHierarchyInRect:self.view.bounds afterScreenUpdates:YES];
+    UIImage *viewImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    
+    CIContext *context = [CIContext contextWithOptions:nil];
+    CIImage *inputImage = [[CIImage alloc] initWithImage:viewImage]; //your input image
+    
+    CIFilter *filter= [CIFilter filterWithName:@"CIColorControls"];
+    [filter setValue:inputImage forKey:@"inputImage"];
+    [filter setValue:[NSNumber numberWithFloat:0.05] forKey:@"inputBrightness"];
+    
+    // Your output image
+    UIImage *outputImage = [UIImage imageWithCGImage:[context createCGImage:filter.outputImage fromRect:filter.outputImage.extent]];
+    
+    return outputImage;
 }
 
 -(void)breathInAction{
@@ -95,6 +126,8 @@
     [_boomNode runAction:moveToBoomOrigin];
     _boomNode.physicsBody.dynamic = NO;
     
+    
+
 }
 
 
@@ -213,6 +246,9 @@ static UIImage *circularImageWithImage(CGSize size, CGFloat percent)
     //////////////////NOTIFICATION/////////////
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(breathOutAction) name:kOUTNotificationIdentifier object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(breathInAction) name:kINNotificationIdentifier object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(connectDown) name:kDISCONNECTNotificationIdentifier object:nil];
+
+    
     
     //////////////////TIME BAR////////////////
     _timerBar =  [SKSpriteNode new];
@@ -234,15 +270,25 @@ static UIImage *circularImageWithImage(CGSize size, CGFloat percent)
         _timerBar.texture = [SKTexture textureWithImage:image];
         _timerLabel.text = [NSString stringWithFormat:@"%ld", _times];
         if (_times == 60) {
-            SummaryScene *scene = (SummaryScene *)[SKScene nodeWithFileNamed:@"Summary"];
+//            SummaryScene *scene = (SummaryScene *)[SKScene nodeWithFileNamed:@"Summary"];
+//            
+//            // Set the scale mode to scale to fit the window
+//            scene.scaleMode = SKSceneScaleModeAspectFill;
+//            
+//            SKView *skView = (SKView *)self.view;
+//            
+//            // Present the scene
+//            [skView presentScene:scene];
             
-            // Set the scale mode to scale to fit the window
+            
+            PopupScene *scene = (PopupScene *)[SKScene nodeWithFileNamed:@"PopupScore"];
+            scene.bgimg = [self getTextureFromCurrnetScene];
             scene.scaleMode = SKSceneScaleModeAspectFill;
             
             SKView *skView = (SKView *)self.view;
             
-            // Present the scene
             [skView presentScene:scene];
+
         }
     }];
     SKAction *waitAction = [SKAction waitForDuration:1.0];
@@ -481,23 +527,37 @@ static UIImage *circularImageWithImage(CGSize size, CGFloat percent)
                               
 
 /////////////////////////////touch hander/////////////////////////
-- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
-    SKAction *moveToBoomOrigin = [SKAction moveTo:boomOriginPosition duration:0.01];
-    [_boomNode runAction:moveToBoomOrigin];
-    _boomNode.physicsBody.dynamic = NO;
-}
-- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event{
+//- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+//    SKAction *moveToBoomOrigin = [SKAction moveTo:boomOriginPosition duration:0.01];
+//    [_boomNode runAction:moveToBoomOrigin];
+//    _boomNode.physicsBody.dynamic = NO;
+//}
+//- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event{
+//
+//}
+//- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
+//        _boomNode.physicsBody.dynamic = YES;
+//}
+//- (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event {
+//    _boomNode.position = boomOriginPosition;
+//
+//}
 
-}
-- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
-        _boomNode.physicsBody.dynamic = YES;
-}
-- (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event {
-    _boomNode.position = boomOriginPosition;
 
-}
-
-
+//-(void)test4
+//{
+//    SKView* skViewPopUp=nil;
+//    SKView* scenePopUpReward=nil;
+//    CGFloat fltHeight = [UIScreen mainScreen].bounds.size.height;
+//    CGFloat fltWidth = [UIScreen mainScreen].bounds.size.width;
+//    CGRect rectPopUpReward = CGRectMake(0, 0, fltWidth/2, fltHeight/2);
+//    skViewPopUp = [[SKView alloc] initWithFrame:rectPopUpReward];
+//    [self.view addSubview:skViewPopUp];
+//    skViewPopUp.allowsTransparency = YES;
+//    scenePopUpReward = [[LTSceneStoreMain alloc] initWithSize:CGSizeMake(fltWidth/2, fltHeight/2)];
+//    scenePopUpReward.backgroundColor = [UIColor clearColor];
+//    [skViewPopUp presentScene:scenePopUpReward];
+//}
 
 
 @end

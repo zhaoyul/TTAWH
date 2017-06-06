@@ -126,7 +126,7 @@
 
 - (void) disconnect
 {
-    self.automaticallyReconnect = NO;
+    self.automaticallyReconnect = YES;
     if (self.peripheral) {
 //        [self.manager retrieveConnectedPeripherals];
         [self.manager retrieveConnectedPeripheralsWithServices:nil];
@@ -201,6 +201,8 @@
 didDisconnectPeripheral:(CBPeripheral *)peripheral
                   error:(NSError *)error
 {
+    [[NSNotificationCenter defaultCenter] postNotificationName:kDISCONNECTNotificationIdentifier object:nil userInfo:nil];
+
     NSLog(@"centralManager:%@ didDisconnectPeripheral:%@ error:%@", central, peripheral, error);
     if (self.peripheral) {
         [self.peripheral setDelegate:nil];
