@@ -40,11 +40,24 @@
     
     skView.showsFPS = YES;
     skView.showsNodeCount = YES;
+    
+
+}
+
+-(void)viewDidAppear:(BOOL)animated{
+    // 使用NSUserDefaults判断程序是否第一次启动(其他方法也可以)
+    if (![[NSUserDefaults standardUserDefaults] boolForKey:BOOLFORKEY]) {
+        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:BOOLFORKEY];
+        // 在这里写初始化图片数组和DHGuidePageHUD库引导页的代码
+        [self createUserGuide];
+    }
 }
 
 - (BOOL)shouldAutorotate {
     return YES;
 }
+
+
 
 - (UIInterfaceOrientationMask)supportedInterfaceOrientations {
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {

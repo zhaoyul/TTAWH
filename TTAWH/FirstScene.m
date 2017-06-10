@@ -34,6 +34,11 @@
 //    [appDelegate startScan];
 //    
     
+//    if (![[NSUserDefaults standardUserDefaults] boolForKey:BOOLFORKEY]) {
+//        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:BOOLFORKEY];
+//        GameViewController *parentVC = (GameViewController*) self.parentVC;
+//        [parentVC createUserGuide];
+//    }
     
 }
 
