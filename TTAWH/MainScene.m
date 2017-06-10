@@ -440,11 +440,11 @@ static UIImage *circularImageWithImage(CGSize size, CGFloat percent)
 
 }
 
-static CGFloat local_time = 0;
 -(void)update:(NSTimeInterval)currentTime{
     
-    
-    CGFloat local_percent = 0;
+    static CGFloat local_time = 0.0;
+
+    static CGFloat local_percent = 0.0;
     
     if (_boomNode.position.y > 1000) {
         _boomNode.position = boomOriginPosition;
@@ -461,12 +461,13 @@ static CGFloat local_time = 0;
     }
     
     if (self.appDelegate.gameState->state == breathIn) {
-        local_percent = (currentTime - local_time);
+        local_percent = (currentTime - local_time)/1.0;
 
     } else if (self.appDelegate.gameState->state == breathInStop){
         ;
     } else {
         local_time = currentTime;
+        local_percent = 0.0;
     }
     
     UIImage *testImg = circularImageWithImage(test.size, local_percent);
