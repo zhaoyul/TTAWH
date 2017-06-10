@@ -44,6 +44,7 @@
     self.gameState = malloc(sizeof(GameState));
     
     self.gameState->breathIn_interval = 0;
+    self.gameState->round = 0;
     self.gameState->state = breathOutStop;
     self.gameState->start_time = [NSDate timeIntervalSinceReferenceDate];
     

@@ -30,53 +30,12 @@
     NSURL *musicURL = [NSURL URLWithString:[[NSBundle mainBundle] pathForResource:@"welcome" ofType:@"mp3"]];
     _backgroundSoundNode = [[SKAudioNode alloc] initWithURL:musicURL];
     [self addChild:_backgroundSoundNode];
-//    AppDelegate *appDelegate = (AppDelegate*)[UIApplication sharedApplication].delegate;
-//    [appDelegate startScan];
-//    
-    
-//    if (![[NSUserDefaults standardUserDefaults] boolForKey:BOOLFORKEY]) {
-//        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:BOOLFORKEY];
-//        GameViewController *parentVC = (GameViewController*) self.parentVC;
-//        [parentVC createUserGuide];
-//    }
-    
 }
 
 
 
 
-//- (void)touchDownAtPoint:(CGPoint)pos {
-//    SKShapeNode *n = [_spinnyNode copy];
-//    n.position = pos;
-//    n.strokeColor = [SKColor greenColor];
-//    [self addChild:n];
-//}
-//
-//- (void)touchMovedToPoint:(CGPoint)pos {
-//    SKShapeNode *n = [_spinnyNode copy];
-//    n.position = pos;
-//    n.strokeColor = [SKColor blueColor];
-//    [self addChild:n];
-//}
-//
-//- (void)touchUpAtPoint:(CGPoint)pos {
-//    SKShapeNode *n = [_spinnyNode copy];
-//    n.position = pos;
-//    n.strokeColor = [SKColor redColor];
-//    [self addChild:n];
-//}
-
-//- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
-//    // Run 'Pulse' action from 'Actions.sks'
-//    [_label runAction:[SKAction actionNamed:@"Pulse"] withKey:@"fadeInOut"];
-//    
-//    for (UITouch *t in touches) {[self touchDownAtPoint:[t locationInNode:self]];}
-//}
-//- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event{
-//    for (UITouch *t in touches) {[self touchMovedToPoint:[t locationInNode:self]];}
-//}
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
-//    for (UITouch *t in touches) {[self touchUpAtPoint:[t locationInNode:self]];}
     UITouch *touch = [touches anyObject];
     CGPoint touchLocation = [touch locationInNode:self];
     if ([_boyNode containsPoint:touchLocation]) {
@@ -90,16 +49,11 @@
     }
     else if([_guide containsPoint:touchLocation]){
         GameViewController *parentVC = (GameViewController*) self.parentVC;
-//        [parentVC shouldPerformSegueWithIdentifier:@"toGuide" sender:nil];
-//        [parentVC performSegueWithIdentifier:@"toGuide" sender:nil ];
-        
         [parentVC createUserGuide];
         
     }
 }
-//- (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event {
-//    for (UITouch *t in touches) {[self touchUpAtPoint:[t locationInNode:self]];}
-//}
+
 
 
 -(void)update:(CFTimeInterval)currentTime {

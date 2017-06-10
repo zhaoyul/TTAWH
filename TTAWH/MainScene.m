@@ -56,14 +56,19 @@
     SKSpriteNode *_timerBar;
     SKLabelNode *_timerLabel;
     
-    SKSpriteNode *test;
+    SKSpriteNode *_indicator;
+    SKSpriteNode *_bgNode;
 
     
-    NSArray *textureArray;
+    NSArray *_textureArray;
     
     NSMutableDictionary *globalDict;
     
     NSInteger _times;
+    
+    NSArray *_fishIcons;
+    NSArray *_bubbleIcons;
+    NSArray *_bgs;
     
 
 
@@ -207,43 +212,21 @@ static UIImage *circularImageWithImage(CGSize size, CGFloat percent)
 
 }
 
--(UIImage*) createGradientArc:(CGSize)size :(CGFloat) percent{
-    // 1 - generate a dummy image of the required size
-    UIGraphicsBeginImageContextWithOptions(size, NO, [[UIScreen mainScreen] scale]);
-    CIImage *dummyImage = [CIImage imageWithCGImage:UIGraphicsGetImageFromCurrentImageContext().CGImage];
-    
-    // 2 - define the kernel algorithm
-    NSString *kernelString = @"kernel vec4 circularGradientKernel(__color startColor, __color endColor, vec2 center, float innerR, float outerR) { \n"
-    "    vec2 point = destCoord() - center;"
-    "    float rsq = point.x * point.x + point.y * point.y;"
-    "    float theta = mod(atan(point.y, point.x), radians(360.0));"
-    "    return (rsq > innerR*innerR && rsq < outerR*outerR) ? mix(startColor, endColor, theta/radians(360.0)*2.0) : vec4(0.0, 0.0, 0.0, 1.0);"
-    "}";
-    
-    // 3 - initialize a Core Image context and the filter kernel
-    CIContext *context = [CIContext contextWithOptions:nil];
-    CIColorKernel *kernel = [CIColorKernel kernelWithString:kernelString];
-    
-    // 4 - argument array, corresponding to the first line of the kernel string
-    NSArray *args = @[ [CIColor colorWithRed:1.0 green:0.0 blue:0.0],
-                       [CIColor colorWithRed:0.0 green:0.0 blue:1.0],
-                       [CIVector vectorWithCGPoint:CGPointMake(CGRectGetMidX(dummyImage.extent),CGRectGetMinY(dummyImage.extent))],
-                       [NSNumber numberWithFloat:size.height/2],
-                       [NSNumber numberWithFloat:size.width/2]];
-    
-    // 5 - apply the kernel to our dummy image, and convert the result to a UIImage
-    CIImage *ciOutputImage = [kernel applyWithExtent:dummyImage.extent arguments:args];
-    CGImageRef cgOutput = [context createCGImage:ciOutputImage fromRect:ciOutputImage.extent];
-    UIImage *gradientImage = [UIImage imageWithCGImage:cgOutput];
-    CGImageRelease(cgOutput);
-    return gradientImage;
-}
 
 
 -(void)didMoveToView:(SKView *)view{
     
+    
+    /////////////////TEXTURE///////////////////
+    
+    _fishIcons = @[@"fish1", @"fish2", @"fish3", @"fish4", @"fish5", @"fish6"];
+    _bubbleIcons = @[@"bubble1", @"bubble2", @"bubble3", @"bubble4", @"bubble5", @"bubble6"];
+    _bgs = @[@"bg", @"bg2", @"ic_game_bg"];
+    
+    
+    
     /////////////////TEST//////////////////////
-    test = (SKSpriteNode *)[self childNodeWithName:@"//test"];
+    _indicator = (SKSpriteNode *)[self childNodeWithName:@"//test"];
     
 
     
@@ -307,7 +290,7 @@ static UIImage *circularImageWithImage(CGSize size, CGFloat percent)
 
 
     //////////////////TEXTURE ARRAY////////////
-    textureArray = @[[SKTexture textureWithImageNamed:@"grade0" ],
+    _textureArray = @[[SKTexture textureWithImageNamed:@"grade0" ],
                      [SKTexture textureWithImageNamed:@"grade1" ],
                      [SKTexture textureWithImageNamed:@"grade2" ],
                      [SKTexture textureWithImageNamed:@"grade3" ],
@@ -336,16 +319,21 @@ static UIImage *circularImageWithImage(CGSize size, CGFloat percent)
     fish1OriginPosition = _fish1.position;
     _fish1.physicsBody.fieldBitMask = FISH1_SPEED_FIELD;
     _fish1.physicsBody.contactTestBitMask = CONTACT_MASK;
+    _fish1.texture = [SKTexture textureWithImage:[UIImage imageNamed:_fishIcons[(3*self.appDelegate.gameState->round)%[_fishIcons count]]]];
     
     _fish2 = (SKSpriteNode *)[self childNodeWithName:@"//fish2"];
     fish2OriginPosition = _fish2.position;
     _fish2.physicsBody.fieldBitMask = FISH2_SPEED_FIELD;
     _fish2.physicsBody.contactTestBitMask = CONTACT_MASK;
+    _fish2.texture = [SKTexture textureWithImage:[UIImage imageNamed:_fishIcons[(3*self.appDelegate.gameState->round + 1)%[_fishIcons count]]]];
+
     
     _fish3 = (SKSpriteNode *)[self childNodeWithName:@"//fish3"];
     fish3OriginPosition = _fish3.position;
     _fish3.physicsBody.fieldBitMask = FISH3_SPEED_FIELD;
     _fish3.physicsBody.contactTestBitMask = CONTACT_MASK;
+    _fish3.texture = [SKTexture textureWithImage:[UIImage imageNamed:_fishIcons[(3*self.appDelegate.gameState->round + 2)%[_fishIcons count]]]];
+
     
     //score
     _fish1_score = (SKSpriteNode *)[self childNodeWithName:@"//fish1_score"];
@@ -356,9 +344,21 @@ static UIImage *circularImageWithImage(CGSize size, CGFloat percent)
     _fish1_icon = (SKSpriteNode *)[self childNodeWithName:@"//fish1_icon"];
     _fish2_icon = (SKSpriteNode *)[self childNodeWithName:@"//fish2_icon"];
     _fish3_icon = (SKSpriteNode *)[self childNodeWithName:@"//fish3_icon"];
+    
+    _fish1_icon.texture = [SKTexture textureWithImage:[UIImage imageNamed:_bubbleIcons[(3*self.appDelegate.gameState->round)%[_bubbleIcons count]]]];
+    _fish2_icon.texture = [SKTexture textureWithImage:[UIImage imageNamed:_bubbleIcons[(3*self.appDelegate.gameState->round + 1)%[_bubbleIcons count]]]];
+    _fish3_icon.texture = [SKTexture textureWithImage:[UIImage imageNamed:_bubbleIcons[(3*self.appDelegate.gameState->round + 2)%[_bubbleIcons count]]]];
+    
+     //BG
+    _bgNode = (SKSpriteNode *)[self childNodeWithName:@"//bgNode"];
+    _bgNode.texture = [SKTexture textureWithImage:[UIImage imageNamed:_bgs[(2*self.appDelegate.gameState->round)%[_bgs count]]]];
+
+
     //timer
     _timerBar = (SKSpriteNode*)[self childNodeWithName:@"//timerBar"];
     _timerLabel = (SKLabelNode*)[self childNodeWithName:@"//timerLabel"];
+    
+    self.appDelegate.gameState->round += 1;
     
 
     ////////////////////////BOMB////////////////////////////////
@@ -470,8 +470,8 @@ static UIImage *circularImageWithImage(CGSize size, CGFloat percent)
         local_percent = 0.0;
     }
     
-    UIImage *testImg = circularImageWithImage(test.size, local_percent);
-    test.texture = [SKTexture textureWithImage: testImg];
+    UIImage *testImg = circularImageWithImage(_indicator.size, local_percent);
+    _indicator.texture = [SKTexture textureWithImage: testImg];
 
  }
 
@@ -513,11 +513,11 @@ static UIImage *circularImageWithImage(CGSize size, CGFloat percent)
         
         [_fish1_icon runAction:group];
         
-        _fish1_score.texture = textureArray[score1 % 10];
+        _fish1_score.texture = _textureArray[score1 % 10];
     } else if([a.node.name isEqualToString:@"fish2"]  || [b.node.name isEqualToString:@"fish2"]){
         NSInteger score2 = ((NSNumber*)globalDict[@"score2"]).integerValue + 1 ;
         globalDict[@"score2"] = @(score2);
-        _fish2_score.texture = textureArray[score2 % 10];
+        _fish2_score.texture = _textureArray[score2 % 10];
         
         SKAction *group;
         group = [self iconAction];
@@ -526,7 +526,7 @@ static UIImage *circularImageWithImage(CGSize size, CGFloat percent)
     } else if([a.node.name isEqualToString:@"fish3"]  || [b.node.name isEqualToString:@"fish3"]){
         NSInteger score3 = ((NSNumber*)globalDict[@"score3"]).integerValue + 1 ;
         globalDict[@"score3"] = @(score3);
-        _fish3_score.texture = textureArray[score3 % 10];
+        _fish3_score.texture = _textureArray[score3 % 10];
         
         SKAction *group;
         group = [self iconAction];

@@ -47,6 +47,8 @@
     UITouch *touch = [touches anyObject];
     CGPoint touchLocation = [touch locationInNode:self];
     if ([_restart containsPoint:touchLocation]) {
+        //BACK TO THE SAME ROUND
+        appDelegate.gameState->round -= 1;
         MainScene *scene = (MainScene *)[SKScene nodeWithFileNamed:@"Main"];
         scene.scaleMode = SKSceneScaleModeAspectFill;
         
