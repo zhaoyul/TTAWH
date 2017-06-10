@@ -172,27 +172,35 @@ static UIImage *circularImageWithImage(CGSize size, CGFloat percent)
     UIGraphicsBeginImageContextWithOptions(size, NO, 0.0);
     CGContextRef context = UIGraphicsGetCurrentContext();
     
-//    UIColor *fillColor = [self fromGreenToRed:percent*0.01];
-    CGContextSetRGBFillColor(context, 1 - percent, percent, 0.0, 1.0);
-    CGContextSetRGBStrokeColor(context, 0, 0, 0, 1);
-    CGContextSetLineWidth(context, 0.6);
+    CGFloat redius = size.height/2.0;
+    NSInteger degree = 360 * percent;
     
-    //扇形参数
-    double radius=size.height/2.0;                   //半径
-    int startX=size.width/2.0;                      //圆心x坐标
-    int startY=size.height/2.0;                     //圆心y坐标
-    double pieStart=0;                  //起始的角度
-    double pieCapacity=360*percent;     //角度增量值
-    int clockwise=0;                   //0＝顺时针,1＝逆时针
+    //// Oval Drawing
+    UIColor *color = [UIColor colorWithRed:(1- percent) green:percent blue:0.2 alpha:1];
+    CGRect ovalRect = CGRectMake(0, 0, size.height, size.width);
+    UIBezierPath* ovalPath = [UIBezierPath bezierPath];
+    [ovalPath addArcWithCenter: CGPointMake(CGRectGetMidX(ovalRect), CGRectGetMidY(ovalRect)) radius: ovalRect.size.width / 2 startAngle: -degree * M_PI/180 endAngle: 0 * M_PI/180 clockwise: YES];
+    [ovalPath addLineToPoint: CGPointMake(CGRectGetMidX(ovalRect), CGRectGetMidY(ovalRect))];
+    [ovalPath closePath];
     
-    //顺时针画扇形
-    CGContextMoveToPoint(context, startX, startY);
-    CGContextAddArc(context, startX, startY, radius, radians(pieStart), radians(pieStart+pieCapacity), clockwise);
-    CGContextClosePath(context);
-    CGContextDrawPath(context, kCGPathEOFillStroke);
+    [color setFill];
+    [ovalPath fill];
     
     
-    //生成图片  
+    //// Oval 2 Drawing
+    CGFloat smallRedius = size.height/6.0;
+    UIBezierPath* oval2Path = [UIBezierPath bezierPathWithOvalInRect: CGRectMake(redius - smallRedius, redius - smallRedius, smallRedius*2, smallRedius*2)];
+    [UIColor.blackColor setFill];
+    [oval2Path fill];
+
+    
+    
+    //生成图片
+    
+    CGContextAddPath(context, ovalPath.CGPath);
+    CGContextAddPath(context, oval2Path.CGPath);
+
+    
     UIImage *resImage = UIGraphicsGetImageFromCurrentImageContext();  
     UIGraphicsEndImageContext();
     return resImage;
@@ -432,14 +440,38 @@ static UIImage *circularImageWithImage(CGSize size, CGFloat percent)
 
 }
 
+static CGFloat local_time = 0;
 -(void)update:(NSTimeInterval)currentTime{
+    
+    
+    CGFloat local_percent = 0;
+    
     if (_boomNode.position.y > 1000) {
         _boomNode.position = boomOriginPosition;
         _boomNode.physicsBody.dynamic = NO;
     }
-    CGFloat percent = self.appDelegate.gameState->breathIn_interval/ENOUGH_TIME;
-    UIImage *testImg = circularImageWithImage(test.size, percent);
+//    CGFloat percent = self.appDelegate.gameState->breathIn_interval/ENOUGH_TIME;
+//    UIImage *testImg = circularImageWithImage(test.size, percent);
+//    test.texture = [SKTexture textureWithImage: testImg];
+    
+
+    
+    if (local_time < currentTime - 999999) {
+        local_time = currentTime;
+    }
+    
+    if (self.appDelegate.gameState->state == breathIn) {
+        local_percent = (currentTime - local_time);
+
+    } else if (self.appDelegate.gameState->state == breathInStop){
+        ;
+    } else {
+        local_time = currentTime;
+    }
+    
+    UIImage *testImg = circularImageWithImage(test.size, local_percent);
     test.texture = [SKTexture textureWithImage: testImg];
+
  }
 
 
@@ -544,20 +576,6 @@ static UIImage *circularImageWithImage(CGSize size, CGFloat percent)
 //}
 
 
-//-(void)test4
-//{
-//    SKView* skViewPopUp=nil;
-//    SKView* scenePopUpReward=nil;
-//    CGFloat fltHeight = [UIScreen mainScreen].bounds.size.height;
-//    CGFloat fltWidth = [UIScreen mainScreen].bounds.size.width;
-//    CGRect rectPopUpReward = CGRectMake(0, 0, fltWidth/2, fltHeight/2);
-//    skViewPopUp = [[SKView alloc] initWithFrame:rectPopUpReward];
-//    [self.view addSubview:skViewPopUp];
-//    skViewPopUp.allowsTransparency = YES;
-//    scenePopUpReward = [[LTSceneStoreMain alloc] initWithSize:CGSizeMake(fltWidth/2, fltHeight/2)];
-//    scenePopUpReward.backgroundColor = [UIColor clearColor];
-//    [skViewPopUp presentScene:scenePopUpReward];
-//}
 
 
 @end
