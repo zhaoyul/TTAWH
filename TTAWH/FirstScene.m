@@ -7,7 +7,7 @@
 //
 
 #import "FirstScene.h"
-//#import "AppDelegate.h"
+#import "AppDelegate.h"
 #import "UserGuideViewController.h"
 #import "GameViewController.h"
 
@@ -16,6 +16,7 @@
     SKNode *_guide;
     SKLabelNode *_label;
     SKAudioNode *_backgroundSoundNode;
+    AppDelegate *_appDelegate;
 }
 
 - (void)didMoveToView:(SKView *)view {
@@ -24,6 +25,28 @@
     // Get label node from scene and store it for use later
     _boyNode = (SKNode *)[self childNodeWithName:@"//boy"];
     _guide = (SKNode *)[self childNodeWithName:@"//guide"];
+    _appDelegate = (AppDelegate*)[UIApplication sharedApplication].delegate;
+    //sure there is memory leak, but I dont care
+    _appDelegate.gameState = malloc(sizeof(GameState));
+    
+    _appDelegate.gameState->breathIn_interval = 0;
+    _appDelegate.gameState->round = 0;
+    _appDelegate.gameState->state = breathOutStop;
+    _appDelegate.gameState->start_time = [NSDate timeIntervalSinceReferenceDate];
+
+    _appDelegate.globalDic = [NSMutableDictionary dictionaryWithDictionary: @{@"score1": @0,
+                                                                              @"score2": @0,
+                                                                              @"score3": @0,
+                                                                              @"score4": @0,
+                                                                              @"score5": @0,
+                                                                              @"score6": @0,
+                                                                              @"score7": @0,
+                                                                              @"score8": @0,
+                                                                              @"score9": @0,
+                                                                              @"score10": @0,
+                                                                              @"score11": @0,
+                                                                              @"score12": @0,}];
+
 
     
 

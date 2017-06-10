@@ -503,11 +503,15 @@ static UIImage *circularImageWithImage(CGSize size, CGFloat percent)
         bomb = (SKSpriteNode*)b.node;
         fish = (SKSpriteNode*)a.node;
     }
-   
+    
+    NSString *fish_key1 = [NSString stringWithFormat:@"score%ld", self.appDelegate.gameState->round + 1];
+    NSString *fish_key2 = [NSString stringWithFormat:@"score%ld", self.appDelegate.gameState->round + 2];
+    NSString *fish_key3 = [NSString stringWithFormat:@"score%ld", self.appDelegate.gameState->round + 3];
+
     
     if ([a.node.name isEqualToString:@"fish1"]  || [b.node.name isEqualToString:@"fish1"]) {
-        NSInteger score1 = ((NSNumber*)globalDict[@"score1"]).integerValue + 1 ;
-        globalDict[@"score1"] = @(score1);
+        NSInteger score1 = ((NSNumber*)globalDict[fish_key1]).integerValue + 1 ;
+        globalDict[fish_key1] = @(score1);
         SKAction *group;
         group = [self iconAction];
         
@@ -515,8 +519,8 @@ static UIImage *circularImageWithImage(CGSize size, CGFloat percent)
         
         _fish1_score.texture = _textureArray[score1 % 10];
     } else if([a.node.name isEqualToString:@"fish2"]  || [b.node.name isEqualToString:@"fish2"]){
-        NSInteger score2 = ((NSNumber*)globalDict[@"score2"]).integerValue + 1 ;
-        globalDict[@"score2"] = @(score2);
+        NSInteger score2 = ((NSNumber*)globalDict[fish_key2]).integerValue + 1 ;
+        globalDict[fish_key2] = @(score2);
         _fish2_score.texture = _textureArray[score2 % 10];
         
         SKAction *group;
@@ -524,8 +528,8 @@ static UIImage *circularImageWithImage(CGSize size, CGFloat percent)
         [_fish2_icon runAction:group];
 
     } else if([a.node.name isEqualToString:@"fish3"]  || [b.node.name isEqualToString:@"fish3"]){
-        NSInteger score3 = ((NSNumber*)globalDict[@"score3"]).integerValue + 1 ;
-        globalDict[@"score3"] = @(score3);
+        NSInteger score3 = ((NSNumber*)globalDict[fish_key3]).integerValue + 1 ;
+        globalDict[fish_key3] = @(score3);
         _fish3_score.texture = _textureArray[score3 % 10];
         
         SKAction *group;

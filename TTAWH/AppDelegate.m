@@ -31,7 +31,16 @@
     // Override point for customization after application launch.
     _globalDic = [NSMutableDictionary dictionaryWithDictionary: @{@"score1": @0,
                                                                   @"score2": @0,
-                                                                  @"score3": @0}];
+                                                                  @"score3": @0,
+                                                                  @"score4": @0,
+                                                                  @"score5": @0,
+                                                                  @"score6": @0,
+                                                                  @"score7": @0,
+                                                                  @"score8": @0,
+                                                                  @"score9": @0,
+                                                                  @"score10": @0,
+                                                                  @"score11": @0,
+                                                                  @"score12": @0,}];
     
     NSArray *imageArray = @[@"guide_bg1.png",
                             @"guide_bg2.png",
