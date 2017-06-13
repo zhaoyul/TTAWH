@@ -75,6 +75,41 @@
 }
 
 
+-(UIColor*)colorWithHexString:(NSString*)hex
+{
+    NSString *cString = [[hex stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] uppercaseString];
+    
+    // String should be 6 or 8 characters
+    if ([cString length] < 6) return [UIColor grayColor];
+    
+    // strip 0X if it appears
+    if ([cString hasPrefix:@"0X"]) cString = [cString substringFromIndex:2];
+    
+    if ([cString length] != 6) return  [UIColor grayColor];
+    
+    // Separate into r, g, b substrings
+    NSRange range;
+    range.location = 0;
+    range.length = 2;
+    NSString *rString = [cString substringWithRange:range];
+    
+    range.location = 2;
+    NSString *gString = [cString substringWithRange:range];
+    
+    range.location = 4;
+    NSString *bString = [cString substringWithRange:range];
+    
+    // Scan values
+    unsigned int r, g, b;
+    [[NSScanner scannerWithString:rString] scanHexInt:&r];
+    [[NSScanner scannerWithString:gString] scanHexInt:&g];
+    [[NSScanner scannerWithString:bString] scanHexInt:&b];
+    
+    return [UIColor colorWithRed:((float) r / 255.0f)
+                           green:((float) g / 255.0f)
+                            blue:((float) b / 255.0f)
+                           alpha:1.0f];
+}
 
 -(void)breathOutAction{
 
@@ -137,16 +172,16 @@
 
 
 -(UIImage*) getImageWithPercent:(CGFloat) percent andSize:(CGSize) size{
-    UIColor *fillColor = [UIColor colorWithRed:250.0/255.0 green:215.0/255.0 blue:144.0/255.0 alpha:1.0];
-    UIColor *boarderColor = [UIColor whiteColor];
+    UIColor *inRectColor = [self colorWithHexString:@"FFB90F"];
+    UIColor *outerRectColor = [self colorWithHexString:@"FF6EB4"];
     
     CGRect boarderRect = CGRectMake(0, 0, size.width, size.height);
-    UIBezierPath* outerPath = [UIBezierPath bezierPathWithRoundedRect:boarderRect cornerRadius:5];
+    UIBezierPath* outerPath = [UIBezierPath bezierPathWithRoundedRect:boarderRect cornerRadius:10];
 
     UIGraphicsBeginImageContextWithOptions(size, NO, 1);
     CGContextRef contextRef = UIGraphicsGetCurrentContext();
-    [boarderColor setStroke];
-    [UIColor.redColor setFill];
+    [outerRectColor setStroke];
+    [outerRectColor setFill];
 
 //    CGContextClosePath(contextRef);
     CGContextAddPath(contextRef, outerPath.CGPath);
@@ -155,9 +190,9 @@
     CGFloat boarderWidth = 4;
     
     CGFloat barWidth = (size.width - 2*boarderWidth) * percent;
-    CGRect barRect = CGRectMake(boarderWidth, boarderWidth, barWidth, size.height - 2*boarderWidth);
+    CGRect barRect = CGRectMake(boarderWidth+25, boarderWidth, barWidth - 25, size.height - 2*boarderWidth);
     UIBezierPath* innerPath = [UIBezierPath bezierPathWithRoundedRect:barRect cornerRadius:10];
-    [fillColor setFill];
+    [inRectColor setFill];
 
     CGContextAddPath(contextRef, innerPath.CGPath);
     CGContextDrawPath(contextRef, kCGPathFillStroke);
@@ -184,7 +219,7 @@ static UIImage *circularImageWithImage(CGSize size, CGFloat percent)
     UIColor *color = [UIColor colorWithRed:(1- percent) green:percent blue:0.2 alpha:1];
     CGRect ovalRect = CGRectMake(0, 0, size.height, size.width);
     UIBezierPath* ovalPath = [UIBezierPath bezierPath];
-    [ovalPath addArcWithCenter: CGPointMake(CGRectGetMidX(ovalRect), CGRectGetMidY(ovalRect)) radius: ovalRect.size.width / 2 startAngle: -degree * M_PI/180 endAngle: 0 * M_PI/180 clockwise: NO];
+    [ovalPath addArcWithCenter: CGPointMake(CGRectGetMidX(ovalRect), CGRectGetMidY(ovalRect)) radius: ovalRect.size.width / 2 startAngle: 0 endAngle: -degree * M_PI / 180 clockwise: NO];
     [ovalPath addLineToPoint: CGPointMake(CGRectGetMidX(ovalRect), CGRectGetMidY(ovalRect))];
     [ovalPath closePath];
     
@@ -563,7 +598,7 @@ static UIImage *circularImageWithImage(CGSize size, CGFloat percent)
 }
                               
 
-/////////////////////////////touch hander/////////////////////////
+///////////////////////////touch hander/////////////////////////
 //- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
 //    SKAction *moveToBoomOrigin = [SKAction moveTo:boomOriginPosition duration:0.01];
 //    [_boomNode runAction:moveToBoomOrigin];

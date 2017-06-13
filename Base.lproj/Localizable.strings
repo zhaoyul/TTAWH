@@ -12,4 +12,9 @@
 "image4" = "guide_bg4_en.png";
 
 "skip" = "skip";
+"turnOnDevice" = "Please turn on the device first";
+"deviceIsOn" = "Please turn on the device first";
+
+
+
 

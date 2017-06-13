@@ -14,7 +14,6 @@
 
 @interface AppDelegate () <CBPeripheralDelegate, CBCentralManagerDelegate>
 @property (nonatomic, strong) CBCentralManager *manager;
-@property (nonatomic, strong) CBPeripheral *peripheral;
 @property (nonatomic, strong) CBCharacteristic *temperatureCharacteristic;
 @property (nonatomic, strong) CBCharacteristic *intermediateTemperatureCharacteristic;
 @property (nonatomic, strong) NSMutableArray *thermometers;

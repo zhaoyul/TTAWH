@@ -25,6 +25,7 @@
     // Get label node from scene and store it for use later
     _boyNode = (SKNode *)[self childNodeWithName:@"//boy"];
     _guide = (SKNode *)[self childNodeWithName:@"//guide"];
+    _label = (SKLabelNode*) [self childNodeWithName:@"//statusLabel"];
     _appDelegate = (AppDelegate*)[UIApplication sharedApplication].delegate;
     //sure there is memory leak, but I dont care
     _appDelegate.gameState = malloc(sizeof(GameState));
@@ -62,13 +63,15 @@
     UITouch *touch = [touches anyObject];
     CGPoint touchLocation = [touch locationInNode:self];
     if ([_boyNode containsPoint:touchLocation]) {
-        GameScene *scene = (GameScene *)[SKScene nodeWithFileNamed:@"Main"];
-                scene.scaleMode = SKSceneScaleModeAspectFill;
-        
-        SKView *skView = (SKView *)self.view;
-        
-        [skView presentScene:scene];
-
+        if (_appDelegate.peripheral) {
+            GameScene *scene = (GameScene *)[SKScene nodeWithFileNamed:@"Main"];
+            scene.scaleMode = SKSceneScaleModeAspectFill;
+            
+            SKView *skView = (SKView *)self.view;
+            
+            [skView presentScene:scene];
+        }
+      
     }
     else if([_guide containsPoint:touchLocation]){
         GameViewController *parentVC = (GameViewController*) self.parentVC;
@@ -80,7 +83,12 @@
 
 
 -(void)update:(CFTimeInterval)currentTime {
-    // Called before each frame is rendered
+    if (_appDelegate.peripheral) {
+        _label.text = NSLocalizedString(@"deviceIsOn", nil);
+    } else {
+        _label.text = NSLocalizedString(@"turnOnDevice", nil);
+
+    }
 }
 
 @end

@@ -38,6 +38,9 @@ typedef struct GameState {
 
 @property (nonatomic, assign) GameState *gameState;
 
+@property (nonatomic, strong) CBPeripheral *peripheral;
+
+
 
 
 - (void) startScan;
