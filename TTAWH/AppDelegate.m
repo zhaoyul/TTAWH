@@ -53,6 +53,7 @@
     self.gameState = malloc(sizeof(GameState));
     
     self.gameState->breathIn_interval = 0;
+    self.gameState->totalTime = 0;
     self.gameState->round = 0;
     self.gameState->state = breathOutStop;
     self.gameState->start_time = [NSDate timeIntervalSinceReferenceDate];
@@ -380,6 +381,8 @@ didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic
                     self.gameState->breathIn_interval = 0;
                 } else {
                     self.gameState->breathIn_interval = self.gameState->breathIn_interval + ([NSDate timeIntervalSinceReferenceDate] - self.gameState->start_time);
+                    self.gameState->totalTime = self.gameState->totalTime + ([NSDate timeIntervalSinceReferenceDate] - self.gameState->start_time);
+
                 }
                 self.gameState->state = breathIn;
                 NSLog(@"吸");
@@ -397,7 +400,10 @@ didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic
                 break;
             case 255:
                 if (self.gameState->state == breathIn || self.gameState->state == breathInStop){
-                  self.gameState->breathIn_interval = self.gameState->breathIn_interval + ([NSDate timeIntervalSinceReferenceDate] - self.gameState->start_time);
+                    self.gameState->breathIn_interval = self.gameState->breathIn_interval + ([NSDate timeIntervalSinceReferenceDate] - self.gameState->start_time);
+                    self.gameState->totalTime = self.gameState->totalTime + ([NSDate timeIntervalSinceReferenceDate] - self.gameState->start_time);
+                    
+
                     self.gameState->state = breathInStop;
                 } else {
                     self.gameState->state = breathOutStop;

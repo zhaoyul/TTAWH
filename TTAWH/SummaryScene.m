@@ -23,7 +23,12 @@
     SKSpriteNode *_fish10_score;
     SKSpriteNode *_fish11_score;
     SKSpriteNode *_fish12_score;
-
+    SKSpriteNode *_first;
+    SKSpriteNode *_second;
+    SKSpriteNode *_third;
+    
+    
+    SKLabelNode *_score;
     NSMutableDictionary *globalDict;
     AppDelegate *appDelegate;
 
@@ -33,6 +38,13 @@
 -(void)didMoveToView:(SKView *)view{
     appDelegate =  (AppDelegate*)[[UIApplication sharedApplication] delegate];
     globalDict = appDelegate.globalDic;
+    
+    _first = (SKSpriteNode *)[self childNodeWithName:@"//first"];
+    _second = (SKSpriteNode *)[self childNodeWithName:@"//second"];
+    _third = (SKSpriteNode *)[self childNodeWithName:@"//third"];
+    
+    _score = (SKLabelNode*) [self childNodeWithName:@"//score"];
+
     //score
     _fish1_score = (SKSpriteNode *)[self childNodeWithName:@"//fish1_score"];
     _fish2_score = (SKSpriteNode *)[self childNodeWithName:@"//fish2_score"];
@@ -106,6 +118,27 @@
     NSInteger score12 = ((NSNumber*)globalDict[@"score12"]).integerValue;
     globalDict[@"score12"] = @(score12);
     _fish12_score.texture = textureArray[score12 % 10];
+    
+    CGFloat score = appDelegate.gameState->totalTime * 0.3 / 60;
+    
+    _score.text = [NSString stringWithFormat: @"%.04f ml ", score];
+    
+    
+    NSInteger sum = score1 + score2 + score3;
+    if (sum%10 == 0) {
+        _third.hidden = YES;
+    } else {
+        _third.hidden = NO;
+    }
+    if ((sum/10)%10 == 0) {
+        _second.hidden = YES;
+    } else {
+        _second.hidden = NO;
+    }
+    _third.texture = textureArray[sum%10];
+    _second.texture = textureArray[(sum/10)%10];
+    _first.texture = textureArray[(sum/100)%10];
+
 
 }
 

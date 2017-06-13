@@ -27,6 +27,7 @@ typedef struct GameState {
     NSTimeInterval breathIn_interval ;
     NSTimeInterval start_time;
     NSInteger round;
+    NSTimeInterval totalTime;
 } GameState;
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>

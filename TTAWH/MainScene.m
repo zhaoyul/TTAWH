@@ -184,7 +184,7 @@ static UIImage *circularImageWithImage(CGSize size, CGFloat percent)
     UIColor *color = [UIColor colorWithRed:(1- percent) green:percent blue:0.2 alpha:1];
     CGRect ovalRect = CGRectMake(0, 0, size.height, size.width);
     UIBezierPath* ovalPath = [UIBezierPath bezierPath];
-    [ovalPath addArcWithCenter: CGPointMake(CGRectGetMidX(ovalRect), CGRectGetMidY(ovalRect)) radius: ovalRect.size.width / 2 startAngle: -degree * M_PI/180 endAngle: 0 * M_PI/180 clockwise: YES];
+    [ovalPath addArcWithCenter: CGPointMake(CGRectGetMidX(ovalRect), CGRectGetMidY(ovalRect)) radius: ovalRect.size.width / 2 startAngle: -degree * M_PI/180 endAngle: 0 * M_PI/180 clockwise: NO];
     [ovalPath addLineToPoint: CGPointMake(CGRectGetMidX(ovalRect), CGRectGetMidY(ovalRect))];
     [ovalPath closePath];
     
