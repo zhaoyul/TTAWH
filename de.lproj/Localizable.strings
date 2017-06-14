@@ -6,14 +6,14 @@
   Copyright © 2017 Zhaoyu Li. All rights reserved.
 */
 
-"image1" = "guide_bg1_en.png";
-"image2" = "guide_bg2_en.png";
-"image3" = "guide_bg3_en.png";
-"image4" = "guide_bg4_en.png";
+"image1" = "guide_bg1_de.png";
+"image2" = "guide_bg2_de.png";
+"image3" = "guide_bg3_de.png";
+"image4" = "guide_bg4_de.png";
 
-"skip" = "skip";
-"turnOnDevice" = "Please turn on the device first";
-"deviceIsOn" = "Please turn on the device first";
+"skip" = "überspringen";
+"turnOnDevice" = "Bitte schalten Sie das Gerät ein";
+"deviceIsOn" = "Das Gerät ist nun angeschlossen.";
 
 
 

@@ -599,21 +599,24 @@ static UIImage *circularImageWithImage(CGSize size, CGFloat percent)
                               
 
 ///////////////////////////touch hander/////////////////////////
-//- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
 //    SKAction *moveToBoomOrigin = [SKAction moveTo:boomOriginPosition duration:0.01];
 //    [_boomNode runAction:moveToBoomOrigin];
 //    _boomNode.physicsBody.dynamic = NO;
-//}
-//- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event{
-//
-//}
-//- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
+    [[NSNotificationCenter defaultCenter] postNotificationName:kINNotificationIdentifier object:nil userInfo:nil];
+
+}
+- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event{
+    [[NSNotificationCenter defaultCenter] postNotificationName:kINNotificationIdentifier object:nil userInfo:nil];
+}
+- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
 //        _boomNode.physicsBody.dynamic = YES;
-//}
-//- (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event {
+        [[NSNotificationCenter defaultCenter] postNotificationName:kOUTNotificationIdentifier object:nil userInfo:nil];
+}
+- (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event {
 //    _boomNode.position = boomOriginPosition;
-//
-//}
+
+}
 
 
 
