@@ -27,6 +27,15 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    ///////////////RANK/////////////
+    if (![[NSUserDefaults standardUserDefaults] boolForKey:TOP5RANK]) {
+        // 在这里写初始化图片数组和DHGuidePageHUD库引导页的代码
+        self.topFive = [NSMutableArray arrayWithArray:@[@0, @0, @0, @0, @0]];
+        [[NSUserDefaults standardUserDefaults] setObject:self.topFive forKey:TOP5RANK];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+
+    }
+
     // Override point for customization after application launch.
     _globalDic = [NSMutableDictionary dictionaryWithDictionary: @{@"score1": @0,
                                                                   @"score2": @0,

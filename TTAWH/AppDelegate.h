@@ -17,6 +17,8 @@
 
 #define ENOUGH_TIME 1.0
 
+#define TOP5RANK @"TOPRANK"
+
 
 typedef enum inOutState{
     breathIn, breathOut, breathInStop, breathOutStop
@@ -39,6 +41,8 @@ typedef struct GameState {
 @property (nonatomic, assign) GameState *gameState;
 
 @property (nonatomic, strong) CBPeripheral *peripheral;
+
+@property (nonatomic, strong) NSMutableArray *topFive;
 
 
 

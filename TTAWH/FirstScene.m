@@ -63,7 +63,7 @@
     UITouch *touch = [touches anyObject];
     CGPoint touchLocation = [touch locationInNode:self];
     if ([_boyNode containsPoint:touchLocation]) {
-        if (_appDelegate.peripheral || YES) {
+        if (_appDelegate.peripheral /*|| YES*/) {
             GameScene *scene = (GameScene *)[SKScene nodeWithFileNamed:@"Main"];
             scene.scaleMode = SKSceneScaleModeAspectFill;
             

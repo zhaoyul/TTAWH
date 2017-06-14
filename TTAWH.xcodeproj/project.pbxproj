@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1E12D89B1EF1EA560050968E /* notSelected.png in Resources */ = {isa = PBXBuildFile; fileRef = 1E12D8991EF1EA560050968E /* notSelected.png */; };
+		1E12D89C1EF1EA560050968E /* selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 1E12D89A1EF1EA560050968E /* selected.png */; };
 		1E59FCB41EF022DA00440A7C /* Summary.sks in Resources */ = {isa = PBXBuildFile; fileRef = 1E59FCB61EF022DA00440A7C /* Summary.sks */; };
 		1E59FCC51EF0C13600440A7C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1E59FCC71EF0C13600440A7C /* InfoPlist.strings */; };
 		1E59FCE51EF0C36100440A7C /* ic_setting_title_de.png in Resources */ = {isa = PBXBuildFile; fileRef = 1E59FCD01EF0C36000440A7C /* ic_setting_title_de.png */; };
@@ -254,6 +256,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1E12D8991EF1EA560050968E /* notSelected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = notSelected.png; sourceTree = "<group>"; };
+		1E12D89A1EF1EA560050968E /* selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = selected.png; sourceTree = "<group>"; };
+		1E12D89D1EF1F3370050968E /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = "zh-Hans"; path = "zh-Hans.lproj/Summary.sks"; sourceTree = "<group>"; };
 		1E3E2E111EE22A9700B64967 /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
 		1E59FCB51EF022DA00440A7C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = Base; path = Base.lproj/Summary.sks; sourceTree = "<group>"; };
 		1E59FCB71EF022DD00440A7C /* en */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = en; path = en.lproj/Summary.sks; sourceTree = "<group>"; };
@@ -641,6 +646,8 @@
 			isa = PBXGroup;
 			children = (
 				1E59FCD01EF0C36000440A7C /* ic_setting_title_de.png */,
+				1E12D8991EF1EA560050968E /* notSelected.png */,
+				1E12D89A1EF1EA560050968E /* selected.png */,
 				1E59FCD11EF0C36000440A7C /* ic_welcome_progress_desc_de.png */,
 				1E59FCD21EF0C36100440A7C /* ic_result_jifen_na_de.png */,
 				1E59FCD31EF0C36100440A7C /* ic_result_paiming_na_de.png */,
@@ -926,6 +933,7 @@
 				5741DC5B1EB5BD5D006B351D /* dialog_bg.png in Resources */,
 				5741DCDE1EB5BD5D006B351D /* ic_seldec_bottom.png in Resources */,
 				5741DC451EB5BD5D006B351D /* battery1.png in Resources */,
+				1E12D89C1EF1EA560050968E /* selected.png in Resources */,
 				5741DC961EB5BD5D006B351D /* ic_game_timeline_icon_3.png in Resources */,
 				5741DCD21EB5BD5D006B351D /* ic_result_paiming_1.png in Resources */,
 				5741DCF11EB5BD5D006B351D /* ic_welcome_progress_desc.png in Resources */,
@@ -1003,6 +1011,7 @@
 				1E59FCEE1EF0C36100440A7C /* ic_seldec_cancel_de.png in Resources */,
 				1EADE78A1EE4C4B4007BDF6A /* guide_bg3_en.png in Resources */,
 				5741DCF31EB5BD5D006B351D /* stat_dfu.png in Resources */,
+				1E12D89B1EF1EA560050968E /* notSelected.png in Resources */,
 				5741DC4B1EB5BD5D006B351D /* btn_cancel_pressed.png in Resources */,
 				5741DCBF1EB5BD5D006B351D /* ic_result_bg.png in Resources */,
 				5741DCF41EB5BD5D006B351D /* timer_alarm.png in Resources */,
@@ -1186,6 +1195,7 @@
 				1E59FCB51EF022DA00440A7C /* Base */,
 				1E59FCB71EF022DD00440A7C /* en */,
 				1E59FCCE1EF0C1CA00440A7C /* de */,
+				1E12D89D1EF1F3370050968E /* zh-Hans */,
 			);
 			name = Summary.sks;
 			path = ..;

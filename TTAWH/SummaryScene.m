@@ -27,6 +27,10 @@
     SKSpriteNode *_second;
     SKSpriteNode *_third;
     
+    SKSpriteNode *_rank;
+    SKSpriteNode *_noRank;
+
+    
     
     SKLabelNode *_score;
     NSMutableDictionary *globalDict;
@@ -58,6 +62,21 @@
     _fish10_score = (SKSpriteNode *)[self childNodeWithName:@"//fish10_score"];
     _fish11_score = (SKSpriteNode *)[self childNodeWithName:@"//fish11_score"];
     _fish12_score = (SKSpriteNode *)[self childNodeWithName:@"//fish12_score"];
+    
+    _rank = (SKSpriteNode*)[self childNodeWithName:@"//rank"];
+    _rank.hidden = YES;
+    _noRank = (SKSpriteNode*)[self childNodeWithName:@"//noRank"];
+
+    
+    
+    NSArray *rankTexture = @[ [SKTexture textureWithImageNamed:@"ic_result_paiming_1"],
+                              [SKTexture textureWithImageNamed:@"ic_result_paiming_2"],
+                              [SKTexture textureWithImageNamed:@"ic_result_paiming_3"],
+                              [SKTexture textureWithImageNamed:@"ic_result_paiming_4"],
+                              [SKTexture textureWithImageNamed:@"ic_result_paiming_5"],
+                              ];
+    
+
 
     
     NSArray *textureArray = @[[SKTexture textureWithImageNamed:@"grade0" ],
@@ -121,23 +140,49 @@
     
     CGFloat score = appDelegate.gameState->totalTime * 0.3 / 60;
     
-    _score.text = [NSString stringWithFormat: @"%.04f ml ", score];
+    ////////////RANK////////////////
+    for (NSInteger i = 0; i < 5; i++) {
+        if (score > ((NSNumber*)appDelegate.topFive[i]).floatValue) {
+            [appDelegate.topFive insertObject:@(score) atIndex:i];
+            [[NSUserDefaults standardUserDefaults] setObject:appDelegate.topFive forKey:TOP5RANK];
+            [[NSUserDefaults standardUserDefaults] synchronize];
+            _rank.texture = rankTexture[i];
+            _rank.hidden = NO;
+            _noRank.hidden = YES;
+            break;
+        }
+    }
+    
+    
+    _score.text = [NSString stringWithFormat: @"%.04f", score];
     
     
     NSInteger sum = score1 + score2 + score3;
-    if (sum%10 == 0) {
-        _third.hidden = YES;
-    } else {
-        _third.hidden = NO;
-    }
-    if ((sum/10)%10 == 0) {
-        _second.hidden = YES;
-    } else {
-        _second.hidden = NO;
-    }
-    _third.texture = textureArray[sum%10];
-    _second.texture = textureArray[(sum/10)%10];
-    _first.texture = textureArray[(sum/100)%10];
+//    if (sum%10 == 0) {
+//        _third.hidden = YES;
+//    } else {
+//        _third.hidden = NO;
+//    }
+//    if ((sum/10)%10 == 0) {
+//        _second.hidden = YES;
+//    } else {
+//        _second.hidden = NO;
+//    }
+//    
+    NSArray *jifenTextureArray = @[[SKTexture textureWithImageNamed:@"ic_result_jifen_0" ],
+                              [SKTexture textureWithImageNamed:@"ic_result_jifen_1" ],
+                              [SKTexture textureWithImageNamed:@"ic_result_jifen_2" ],
+                              [SKTexture textureWithImageNamed:@"ic_result_jifen_3" ],
+                              [SKTexture textureWithImageNamed:@"ic_result_jifen_4" ],
+                              [SKTexture textureWithImageNamed:@"ic_result_jifen_5" ],
+                              [SKTexture textureWithImageNamed:@"ic_result_jifen_6" ],
+                              [SKTexture textureWithImageNamed:@"ic_result_jifen_7" ],
+                              [SKTexture textureWithImageNamed:@"ic_result_jifen_8" ],
+                              [SKTexture textureWithImageNamed:@"ic_result_jifen_9" ],];
+    
+    _third.texture = jifenTextureArray[sum%10];
+    _second.texture = jifenTextureArray[(sum/10)%10];
+    _first.texture = jifenTextureArray[(sum/100)%10];
 
 
 }
