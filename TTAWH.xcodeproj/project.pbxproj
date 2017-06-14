@@ -9,6 +9,27 @@
 /* Begin PBXBuildFile section */
 		1E59FCB41EF022DA00440A7C /* Summary.sks in Resources */ = {isa = PBXBuildFile; fileRef = 1E59FCB61EF022DA00440A7C /* Summary.sks */; };
 		1E59FCC51EF0C13600440A7C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1E59FCC71EF0C13600440A7C /* InfoPlist.strings */; };
+		1E59FCE51EF0C36100440A7C /* ic_setting_title_de.png in Resources */ = {isa = PBXBuildFile; fileRef = 1E59FCD01EF0C36000440A7C /* ic_setting_title_de.png */; };
+		1E59FCE61EF0C36100440A7C /* ic_welcome_progress_desc_de.png in Resources */ = {isa = PBXBuildFile; fileRef = 1E59FCD11EF0C36000440A7C /* ic_welcome_progress_desc_de.png */; };
+		1E59FCE71EF0C36100440A7C /* ic_result_jifen_na_de.png in Resources */ = {isa = PBXBuildFile; fileRef = 1E59FCD21EF0C36100440A7C /* ic_result_jifen_na_de.png */; };
+		1E59FCE81EF0C36100440A7C /* ic_result_paiming_na_de.png in Resources */ = {isa = PBXBuildFile; fileRef = 1E59FCD31EF0C36100440A7C /* ic_result_paiming_na_de.png */; };
+		1E59FCE91EF0C36100440A7C /* ic_seldec_top_words_de.png in Resources */ = {isa = PBXBuildFile; fileRef = 1E59FCD41EF0C36100440A7C /* ic_seldec_top_words_de.png */; };
+		1E59FCEA1EF0C36100440A7C /* dialog_bonus_txt_de.png in Resources */ = {isa = PBXBuildFile; fileRef = 1E59FCD51EF0C36100440A7C /* dialog_bonus_txt_de.png */; };
+		1E59FCEB1EF0C36100440A7C /* ic_result_wuhualiaang_de.png in Resources */ = {isa = PBXBuildFile; fileRef = 1E59FCD61EF0C36100440A7C /* ic_result_wuhualiaang_de.png */; };
+		1E59FCEC1EF0C36100440A7C /* ic_result_paiming_last_de.png in Resources */ = {isa = PBXBuildFile; fileRef = 1E59FCD71EF0C36100440A7C /* ic_result_paiming_last_de.png */; };
+		1E59FCED1EF0C36100440A7C /* ic_result_paiming_de.png in Resources */ = {isa = PBXBuildFile; fileRef = 1E59FCD81EF0C36100440A7C /* ic_result_paiming_de.png */; };
+		1E59FCEE1EF0C36100440A7C /* ic_seldec_cancel_de.png in Resources */ = {isa = PBXBuildFile; fileRef = 1E59FCD91EF0C36100440A7C /* ic_seldec_cancel_de.png */; };
+		1E59FCEF1EF0C36100440A7C /* ic_seldec_scan_de.png in Resources */ = {isa = PBXBuildFile; fileRef = 1E59FCDA1EF0C36100440A7C /* ic_seldec_scan_de.png */; };
+		1E59FCF01EF0C36100440A7C /* ic_result_back_btn_de.png in Resources */ = {isa = PBXBuildFile; fileRef = 1E59FCDB1EF0C36100440A7C /* ic_result_back_btn_de.png */; };
+		1E59FCF11EF0C36100440A7C /* ic_result_animal_txt_de.png in Resources */ = {isa = PBXBuildFile; fileRef = 1E59FCDC1EF0C36100440A7C /* ic_result_animal_txt_de.png */; };
+		1E59FCF21EF0C36100440A7C /* app_title_de.png in Resources */ = {isa = PBXBuildFile; fileRef = 1E59FCDD1EF0C36100440A7C /* app_title_de.png */; };
+		1E59FCF31EF0C36100440A7C /* guide_bg4_de.png in Resources */ = {isa = PBXBuildFile; fileRef = 1E59FCDE1EF0C36100440A7C /* guide_bg4_de.png */; };
+		1E59FCF41EF0C36100440A7C /* guide_bg1_de.png in Resources */ = {isa = PBXBuildFile; fileRef = 1E59FCDF1EF0C36100440A7C /* guide_bg1_de.png */; };
+		1E59FCF51EF0C36100440A7C /* guide_bg2_de.png in Resources */ = {isa = PBXBuildFile; fileRef = 1E59FCE01EF0C36100440A7C /* guide_bg2_de.png */; };
+		1E59FCF61EF0C36100440A7C /* ic_guide_btn_ok_de.png in Resources */ = {isa = PBXBuildFile; fileRef = 1E59FCE11EF0C36100440A7C /* ic_guide_btn_ok_de.png */; };
+		1E59FCF71EF0C36100440A7C /* guide_bg3_de.png in Resources */ = {isa = PBXBuildFile; fileRef = 1E59FCE21EF0C36100440A7C /* guide_bg3_de.png */; };
+		1E59FCF81EF0C36100440A7C /* welcome_girl_de.png in Resources */ = {isa = PBXBuildFile; fileRef = 1E59FCE31EF0C36100440A7C /* welcome_girl_de.png */; };
+		1E59FCF91EF0C36100440A7C /* welcome_boy_de.png in Resources */ = {isa = PBXBuildFile; fileRef = 1E59FCE41EF0C36100440A7C /* welcome_boy_de.png */; };
 		1E905FEB1EE6CFB20063DC0C /* PopupScore.sks in Resources */ = {isa = PBXBuildFile; fileRef = 1E905FED1EE6CFB20063DC0C /* PopupScore.sks */; };
 		1EADE7781EE37B42007BDF6A /* SummaryScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EADE7771EE37B42007BDF6A /* SummaryScene.m */; };
 		1EADE77A1EE4BF4F007BDF6A /* yirdoc_title.png in Resources */ = {isa = PBXBuildFile; fileRef = 1EADE7791EE4BF4F007BDF6A /* yirdoc_title.png */; };
@@ -245,6 +266,27 @@
 		1E59FCCD1EF0C1CA00440A7C /* de */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = de; path = de.lproj/First.sks; sourceTree = "<group>"; };
 		1E59FCCE1EF0C1CA00440A7C /* de */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = de; path = de.lproj/Summary.sks; sourceTree = "<group>"; };
 		1E59FCCF1EF0C1CA00440A7C /* de */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = de; path = de.lproj/PopupScore.sks; sourceTree = "<group>"; };
+		1E59FCD01EF0C36000440A7C /* ic_setting_title_de.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_setting_title_de.png; sourceTree = "<group>"; };
+		1E59FCD11EF0C36000440A7C /* ic_welcome_progress_desc_de.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_welcome_progress_desc_de.png; sourceTree = "<group>"; };
+		1E59FCD21EF0C36100440A7C /* ic_result_jifen_na_de.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_result_jifen_na_de.png; sourceTree = "<group>"; };
+		1E59FCD31EF0C36100440A7C /* ic_result_paiming_na_de.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_result_paiming_na_de.png; sourceTree = "<group>"; };
+		1E59FCD41EF0C36100440A7C /* ic_seldec_top_words_de.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_seldec_top_words_de.png; sourceTree = "<group>"; };
+		1E59FCD51EF0C36100440A7C /* dialog_bonus_txt_de.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dialog_bonus_txt_de.png; sourceTree = "<group>"; };
+		1E59FCD61EF0C36100440A7C /* ic_result_wuhualiaang_de.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_result_wuhualiaang_de.png; sourceTree = "<group>"; };
+		1E59FCD71EF0C36100440A7C /* ic_result_paiming_last_de.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_result_paiming_last_de.png; sourceTree = "<group>"; };
+		1E59FCD81EF0C36100440A7C /* ic_result_paiming_de.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_result_paiming_de.png; sourceTree = "<group>"; };
+		1E59FCD91EF0C36100440A7C /* ic_seldec_cancel_de.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_seldec_cancel_de.png; sourceTree = "<group>"; };
+		1E59FCDA1EF0C36100440A7C /* ic_seldec_scan_de.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_seldec_scan_de.png; sourceTree = "<group>"; };
+		1E59FCDB1EF0C36100440A7C /* ic_result_back_btn_de.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_result_back_btn_de.png; sourceTree = "<group>"; };
+		1E59FCDC1EF0C36100440A7C /* ic_result_animal_txt_de.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_result_animal_txt_de.png; sourceTree = "<group>"; };
+		1E59FCDD1EF0C36100440A7C /* app_title_de.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = app_title_de.png; sourceTree = "<group>"; };
+		1E59FCDE1EF0C36100440A7C /* guide_bg4_de.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = guide_bg4_de.png; sourceTree = "<group>"; };
+		1E59FCDF1EF0C36100440A7C /* guide_bg1_de.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = guide_bg1_de.png; sourceTree = "<group>"; };
+		1E59FCE01EF0C36100440A7C /* guide_bg2_de.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = guide_bg2_de.png; sourceTree = "<group>"; };
+		1E59FCE11EF0C36100440A7C /* ic_guide_btn_ok_de.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_guide_btn_ok_de.png; sourceTree = "<group>"; };
+		1E59FCE21EF0C36100440A7C /* guide_bg3_de.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = guide_bg3_de.png; sourceTree = "<group>"; };
+		1E59FCE31EF0C36100440A7C /* welcome_girl_de.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = welcome_girl_de.png; sourceTree = "<group>"; };
+		1E59FCE41EF0C36100440A7C /* welcome_boy_de.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = welcome_boy_de.png; sourceTree = "<group>"; };
 		1E905FEE1EE6CFBA0063DC0C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = Base; path = Base.lproj/PopupScore.sks; sourceTree = "<group>"; };
 		1EADE7761EE37B42007BDF6A /* SummaryScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SummaryScene.h; sourceTree = "<group>"; };
 		1EADE7771EE37B42007BDF6A /* SummaryScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SummaryScene.m; sourceTree = "<group>"; };
@@ -598,6 +640,27 @@
 		5741DB8B1EB5BD3B006B351D /* pics */ = {
 			isa = PBXGroup;
 			children = (
+				1E59FCD01EF0C36000440A7C /* ic_setting_title_de.png */,
+				1E59FCD11EF0C36000440A7C /* ic_welcome_progress_desc_de.png */,
+				1E59FCD21EF0C36100440A7C /* ic_result_jifen_na_de.png */,
+				1E59FCD31EF0C36100440A7C /* ic_result_paiming_na_de.png */,
+				1E59FCD41EF0C36100440A7C /* ic_seldec_top_words_de.png */,
+				1E59FCD51EF0C36100440A7C /* dialog_bonus_txt_de.png */,
+				1E59FCD61EF0C36100440A7C /* ic_result_wuhualiaang_de.png */,
+				1E59FCD71EF0C36100440A7C /* ic_result_paiming_last_de.png */,
+				1E59FCD81EF0C36100440A7C /* ic_result_paiming_de.png */,
+				1E59FCD91EF0C36100440A7C /* ic_seldec_cancel_de.png */,
+				1E59FCDA1EF0C36100440A7C /* ic_seldec_scan_de.png */,
+				1E59FCDB1EF0C36100440A7C /* ic_result_back_btn_de.png */,
+				1E59FCDC1EF0C36100440A7C /* ic_result_animal_txt_de.png */,
+				1E59FCDD1EF0C36100440A7C /* app_title_de.png */,
+				1E59FCDE1EF0C36100440A7C /* guide_bg4_de.png */,
+				1E59FCDF1EF0C36100440A7C /* guide_bg1_de.png */,
+				1E59FCE01EF0C36100440A7C /* guide_bg2_de.png */,
+				1E59FCE11EF0C36100440A7C /* ic_guide_btn_ok_de.png */,
+				1E59FCE21EF0C36100440A7C /* guide_bg3_de.png */,
+				1E59FCE31EF0C36100440A7C /* welcome_girl_de.png */,
+				1E59FCE41EF0C36100440A7C /* welcome_boy_de.png */,
 				1EADE7961EE4C6FE007BDF6A /* icon_guide.png */,
 				1EADE78E1EE4C52B007BDF6A /* welcome_boy_en.png */,
 				1EADE78F1EE4C52B007BDF6A /* welcome_boy.png */,
@@ -867,9 +930,12 @@
 				5741DCD21EB5BD5D006B351D /* ic_result_paiming_1.png in Resources */,
 				5741DCF11EB5BD5D006B351D /* ic_welcome_progress_desc.png in Resources */,
 				5741DCA31EB5BD5D006B351D /* ic_game_timeline_top_lock.png in Resources */,
+				1E59FCF91EF0C36100440A7C /* welcome_boy_de.png in Resources */,
 				571D36D31EB720D800C58152 /* bomb.wav in Resources */,
 				5741DC611EB5BD5D006B351D /* dialog_bonus_value1.png in Resources */,
 				5741DC5C1EB5BD5D006B351D /* dialog_bonus_bg.png in Resources */,
+				1E59FCF81EF0C36100440A7C /* welcome_girl_de.png in Resources */,
+				1E59FCED1EF0C36100440A7C /* ic_result_paiming_de.png in Resources */,
 				5741DCDA1EB5BD5D006B351D /* ic_result_paiming.png in Resources */,
 				5741DC841EB5BD5D006B351D /* grade7.png in Resources */,
 				5741DCE81EB5BD5D006B351D /* ic_seldev_rssi_1.png in Resources */,
@@ -878,6 +944,7 @@
 				5741DCED1EB5BD5D006B351D /* ic_welcome_progress_bar_60.png in Resources */,
 				1EADE7941EE4C52B007BDF6A /* welcome_girl_en.png in Resources */,
 				5741DCA61EB5BD5D006B351D /* ic_game_timeline_top.png in Resources */,
+				1E59FCE71EF0C36100440A7C /* ic_result_jifen_na_de.png in Resources */,
 				5741DC521EB5BD5D006B351D /* bubble5.png in Resources */,
 				5741DCEC1EB5BD5D006B351D /* ic_welcome_progress_bar_30.png in Resources */,
 				5741DC641EB5BD5D006B351D /* dialog_bonus_value4.png in Resources */,
@@ -898,10 +965,13 @@
 				5741DCA81EB5BD5D006B351D /* ic_launcher.png in Resources */,
 				5741DCBE1EB5BD5D006B351D /* ic_result_back_btn.png in Resources */,
 				5741DCDB1EB5BD5D006B351D /* ic_result_sun.png in Resources */,
+				1E59FCF51EF0C36100440A7C /* guide_bg2_de.png in Resources */,
 				5741DB741EB5BA57006B351D /* GameScene.sks in Resources */,
 				577242E01EB6CA44003CA2E8 /* Main.sks in Resources */,
 				5741DC571EB5BD5D006B351D /* bubble10.png in Resources */,
 				5741DC8E1EB5BD5D006B351D /* ic_game_restart.png in Resources */,
+				1E59FCE61EF0C36100440A7C /* ic_welcome_progress_desc_de.png in Resources */,
+				1E59FCF11EF0C36100440A7C /* ic_result_animal_txt_de.png in Resources */,
 				5741DCB51EB5BD5D006B351D /* ic_result_award_1_5.png in Resources */,
 				5741DCA71EB5BD5D006B351D /* ic_game_timeline_unlock.png in Resources */,
 				5741DCE51EB5BD5D006B351D /* ic_seldec_top_words.png in Resources */,
@@ -930,6 +1000,7 @@
 				5741DCBB1EB5BD5D006B351D /* ic_result_award_2_5.png in Resources */,
 				1EADE7861EE4C4B4007BDF6A /* guide_bg1_en.png in Resources */,
 				5741DCAF1EB5BD5D006B351D /* ic_result_animal_txt_en.png in Resources */,
+				1E59FCEE1EF0C36100440A7C /* ic_seldec_cancel_de.png in Resources */,
 				1EADE78A1EE4C4B4007BDF6A /* guide_bg3_en.png in Resources */,
 				5741DCF31EB5BD5D006B351D /* stat_dfu.png in Resources */,
 				5741DC4B1EB5BD5D006B351D /* btn_cancel_pressed.png in Resources */,
@@ -937,9 +1008,11 @@
 				5741DCF41EB5BD5D006B351D /* timer_alarm.png in Resources */,
 				5741DCD81EB5BD5D006B351D /* ic_result_paiming_last_en.png in Resources */,
 				5741DC6F1EB5BD5D006B351D /* dialog_right.png in Resources */,
+				1E59FCF31EF0C36100440A7C /* guide_bg4_de.png in Resources */,
 				5741DC901EB5BD5D006B351D /* ic_game_timeline_btm_now.png in Resources */,
 				5741DCCF1EB5BD5D006B351D /* ic_result_ml.png in Resources */,
 				5741DC621EB5BD5D006B351D /* dialog_bonus_value2.png in Resources */,
+				1E59FCF01EF0C36100440A7C /* ic_result_back_btn_de.png in Resources */,
 				5741DB841EB5BA57006B351D /* LaunchScreen.storyboard in Resources */,
 				1EADE7871EE4C4B4007BDF6A /* guide_bg1.png in Resources */,
 				5741DCA21EB5BD5D006B351D /* ic_game_timeline_now.png in Resources */,
@@ -951,13 +1024,16 @@
 				5741DCDC1EB5BD5D006B351D /* ic_result_wuhualiaang_en.png in Resources */,
 				5741DCCA1EB5BD5D006B351D /* ic_result_jifen_6.png in Resources */,
 				5741DC651EB5BD5D006B351D /* dialog_bonus_value5.png in Resources */,
+				1E59FCE81EF0C36100440A7C /* ic_result_paiming_na_de.png in Resources */,
 				5741DCD31EB5BD5D006B351D /* ic_result_paiming_2.png in Resources */,
 				5741DCD11EB5BD5D006B351D /* ic_result_paiming_0.png in Resources */,
 				5741DC831EB5BD5D006B351D /* grade6.png in Resources */,
 				5741DC4C1EB5BD5D006B351D /* btn_ok_normal.png in Resources */,
 				5741DCE41EB5BD5D006B351D /* ic_seldec_top_words_en.png in Resources */,
 				5741DC8D1EB5BD5D006B351D /* ic_game_msg.png in Resources */,
+				1E59FCF61EF0C36100440A7C /* ic_guide_btn_ok_de.png in Resources */,
 				5741DC761EB5BD5D006B351D /* fish6.png in Resources */,
+				1E59FCE91EF0C36100440A7C /* ic_seldec_top_words_de.png in Resources */,
 				1EADE78C1EE4C4B4007BDF6A /* guide_bg4_en.png in Resources */,
 				5741DC551EB5BD5D006B351D /* bubble8.png in Resources */,
 				1E59FCB41EF022DA00440A7C /* Summary.sks in Resources */,
@@ -976,9 +1052,11 @@
 				5741DCB91EB5BD5D006B351D /* ic_result_award_2_3.png in Resources */,
 				5741DC9F1EB5BD5D006B351D /* ic_game_timeline_icon_pass_6.png in Resources */,
 				1EADE78D1EE4C4B4007BDF6A /* guide_bg4.png in Resources */,
+				1E59FCEF1EF0C36100440A7C /* ic_seldec_scan_de.png in Resources */,
 				5741DCD71EB5BD5D006B351D /* ic_result_paiming_en.png in Resources */,
 				571D36D51EB720D800C58152 /* main.mp3 in Resources */,
 				5741DCA51EB5BD5D006B351D /* ic_game_timeline_top_unlock.png in Resources */,
+				1E59FCF71EF0C36100440A7C /* guide_bg3_de.png in Resources */,
 				5741DC821EB5BD5D006B351D /* grade5.png in Resources */,
 				5741DCDD1EB5BD5D006B351D /* ic_result_wuhualiang.png in Resources */,
 				571D36D41EB720D800C58152 /* game.mp3 in Resources */,
@@ -995,14 +1073,17 @@
 				5741DC4E1EB5BD5D006B351D /* bubble1.png in Resources */,
 				5741DC9B1EB5BD5D006B351D /* ic_game_timeline_icon_pass_2.png in Resources */,
 				5741DC691EB5BD5D006B351D /* dialog_bonus_value9.png in Resources */,
+				1E59FCEB1EF0C36100440A7C /* ic_result_wuhualiaang_de.png in Resources */,
 				5741DCEB1EB5BD5D006B351D /* ic_welcome_progress_bar_0.png in Resources */,
 				5741DC6A1EB5BD5D006B351D /* dialog_bonus.png in Resources */,
 				5741DC741EB5BD5D006B351D /* fish4.png in Resources */,
 				5741DC8A1EB5BD5D006B351D /* ic_game_back.png in Resources */,
 				5741DC581EB5BD5D006B351D /* bubble11.png in Resources */,
 				5741DC941EB5BD5D006B351D /* ic_game_timeline_icon_1.png in Resources */,
+				1E59FCE51EF0C36100440A7C /* ic_setting_title_de.png in Resources */,
 				5741DCC01EB5BD5D006B351D /* ic_result_box_bottom.png in Resources */,
 				5741DC671EB5BD5D006B351D /* dialog_bonus_value7.png in Resources */,
+				1E59FCEC1EF0C36100440A7C /* ic_result_paiming_last_de.png in Resources */,
 				5741DC931EB5BD5D006B351D /* ic_game_timeline_conn.png in Resources */,
 				5741DCB61EB5BD5D006B351D /* ic_result_award_1_6.png in Resources */,
 				5741DC431EB5BD5D006B351D /* app_title_en.png in Resources */,
@@ -1010,6 +1091,7 @@
 				5741DCC71EB5BD5D006B351D /* ic_result_jifen_3.png in Resources */,
 				5741DC4A1EB5BD5D006B351D /* btn_cancel_normal.png in Resources */,
 				571D36D61EB720D800C58152 /* result.mp3 in Resources */,
+				1E59FCF21EF0C36100440A7C /* app_title_de.png in Resources */,
 				5741DC751EB5BD5D006B351D /* fish5.png in Resources */,
 				5741DCC61EB5BD5D006B351D /* ic_result_jifen_2.png in Resources */,
 				5741DCC81EB5BD5D006B351D /* ic_result_jifen_4.png in Resources */,
@@ -1035,9 +1117,11 @@
 				5741DCEA1EB5BD5D006B351D /* ic_seldev_rssi_3.png in Resources */,
 				5741DC711EB5BD5D006B351D /* fish1.png in Resources */,
 				5741DCAC1EB5BD5D006B351D /* ic_qie_3.png in Resources */,
+				1E59FCF41EF0C36100440A7C /* guide_bg1_de.png in Resources */,
 				5741DCBC1EB5BD5D006B351D /* ic_result_award_2_6.png in Resources */,
 				5741DC501EB5BD5D006B351D /* bubble3.png in Resources */,
 				5741DC6B1EB5BD5D006B351D /* dialog_left.png in Resources */,
+				1E59FCEA1EF0C36100440A7C /* dialog_bonus_txt_de.png in Resources */,
 				5741DCE61EB5BD5D006B351D /* ic_seldec_top.png in Resources */,
 				5741DCA41EB5BD5D006B351D /* ic_game_timeline_top_now.png in Resources */,
 				5741DB761EB5BA57006B351D /* Actions.sks in Resources */,
