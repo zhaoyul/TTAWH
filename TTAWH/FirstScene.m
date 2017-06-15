@@ -67,7 +67,7 @@
     UITouch *touch = [touches anyObject];
     CGPoint touchLocation = [touch locationInNode:self];
     if ([_startNode containsPoint:touchLocation]) {
-        if (_appDelegate.peripheral /*|| YES*/) {
+        if (_appDelegate.peripheral/* || YES*/) {
             GameScene *scene = (GameScene *)[SKScene nodeWithFileNamed:@"Main"];
             scene.scaleMode = SKSceneScaleModeAspectFill;
             
@@ -82,11 +82,14 @@
         [parentVC createUserGuide];
         
     } else if ([_settingNode containsPoint:touchLocation]) {
-        SKScene *scene = (SKScene *)[SKScene nodeWithFileNamed:@"Setting"];
-        scene.scaleMode = SKSceneScaleModeAspectFill;
-        
-        SKView *skView = (SKView *)self.view;
-        [skView presentScene:scene];
+        if (_appDelegate.peripheral /*|| YES*/) {
+
+            SKScene *scene = (SKScene *)[SKScene nodeWithFileNamed:@"Setting"];
+            scene.scaleMode = SKSceneScaleModeAspectFill;
+            
+            SKView *skView = (SKView *)self.view;
+            [skView presentScene:scene];
+        }
     }
 }
 

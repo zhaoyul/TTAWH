@@ -49,6 +49,7 @@ typedef struct GameState {
 
 - (void) startScan;
 
+-(void)changeWuhuaRate:(uint8_t) val;
 
 
 @end

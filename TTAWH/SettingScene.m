@@ -7,14 +7,17 @@
 //
 
 #import "SettingScene.h"
+#import "AppDelegate.h"
 
 @implementation SettingScene{
     NSArray *_btnArray;
     SKSpriteNode *_returnNode;
+    AppDelegate *_appDelegate;
 }
 
 
 - (void)didMoveToView:(SKView *)view {
+    _appDelegate = (AppDelegate*)[UIApplication sharedApplication].delegate;
     _returnNode = (SKSpriteNode*)[self childNodeWithName:@"//return"];
     _returnNode.texture = [SKTexture textureWithImage:[UIImage imageNamed:@"ic_setting_back"]];
     NSArray* btnNames = @[@"btn1", @"btn2", @"btn3", @"btn4", @"btn5"];
@@ -43,6 +46,39 @@
         
         SKView *skView = (SKView *)self.view;
         [skView presentScene:scene];
+    }
+        
+    for (NSInteger i = 0; i < _btnArray.count; i++) {
+        SKSpriteNode *btn = _btnArray[i];
+        if ([btn containsPoint:touchLocation]) {
+            btn.texture = [SKTexture textureWithImage:[UIImage imageNamed:@"selected"]];
+            switch (i) {
+                case 0:
+                    [_appDelegate changeWuhuaRate:33];
+                    break;
+                case 1:
+                    [_appDelegate changeWuhuaRate:35];
+                    break;
+                case 2:
+                    [_appDelegate changeWuhuaRate:40];
+                    break;
+                case 3:
+                    [_appDelegate changeWuhuaRate:45];
+                    break;
+                case 4:
+                    [_appDelegate changeWuhuaRate:50];
+                    break;
+                    
+                default:
+                    break;
+            }
+            for (SKSpriteNode *other_btn in _btnArray) {
+                if (other_btn != btn) {
+                    other_btn.texture = [SKTexture textureWithImage:[UIImage imageNamed:@"notSelected"]];
+                }
+            }
+        }
+        
     }
 }
 

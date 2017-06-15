@@ -14,7 +14,7 @@
 
 @interface AppDelegate () <CBPeripheralDelegate, CBCentralManagerDelegate>
 @property (nonatomic, strong) CBCentralManager *manager;
-@property (nonatomic, strong) CBCharacteristic *temperatureCharacteristic;
+@property (nonatomic, strong) CBCharacteristic *wuhuaCharacteristic;
 @property (nonatomic, strong) CBCharacteristic *intermediateTemperatureCharacteristic;
 @property (nonatomic, strong) NSMutableArray *thermometers;
 
@@ -298,10 +298,19 @@ didFailToConnectPeripheral:(CBPeripheral *)peripheral
             /* Set indication on temperature measurement */
             if([characteristic.UUID isEqual:[CBUUID UUIDWithString:@"0002"]])
             {
-                self.temperatureCharacteristic = characteristic;
-                [self.peripheral setNotifyValue:YES forCharacteristic:self.temperatureCharacteristic];
-                NSLog(@"Found a Temperature Measurement Characteristic");
+                self.wuhuaCharacteristic = characteristic;
+                [self.peripheral setNotifyValue:YES forCharacteristic:self.wuhuaCharacteristic];
+                NSLog(@"Found 呼吸监测 Characteristic");
             }
+            
+            if([characteristic.UUID isEqual:[CBUUID UUIDWithString:@"0004"]])
+            {
+                self.wuhuaCharacteristic = characteristic;
+                [self.peripheral setNotifyValue:YES forCharacteristic:self.wuhuaCharacteristic];
+                NSLog(@"Found 呼吸控制 Measurement Characteristic");
+            }
+            
+            
             /* Set notification on intermediate temperature measurement */
             if([characteristic.UUID isEqual:[CBUUID UUIDWithString:@"2A1E"]])
             {
@@ -454,6 +463,12 @@ didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic
         NSString *thing = [[NSString alloc] initWithData:characteristic.value encoding:NSUTF8StringEncoding];
         NSLog(@"thing = %@", thing);
     }
+}
+
+-(void)changeWuhuaRate:(uint8_t) val{
+    NSData * valData = [NSData dataWithBytes:(void*)&val length:sizeof(val)];
+    [self.peripheral writeValue:valData forCharacteristic:self.wuhuaCharacteristic type:CBCharacteristicWriteWithoutResponse];
+    
 }
 
 
