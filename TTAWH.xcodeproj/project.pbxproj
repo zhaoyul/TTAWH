@@ -9,9 +9,14 @@
 /* Begin PBXBuildFile section */
 		1E12D89B1EF1EA560050968E /* notSelected.png in Resources */ = {isa = PBXBuildFile; fileRef = 1E12D8991EF1EA560050968E /* notSelected.png */; };
 		1E12D89C1EF1EA560050968E /* selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 1E12D89A1EF1EA560050968E /* selected.png */; };
+		1E12D89F1EF2178E0050968E /* Setting.sks in Resources */ = {isa = PBXBuildFile; fileRef = 1E12D89E1EF2178E0050968E /* Setting.sks */; };
+		1E12D8A21EF217A20050968E /* SettingScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E12D8A11EF217A20050968E /* SettingScene.m */; };
+		1E12D8A71EF21AEE0050968E /* ic_setting_back.png in Resources */ = {isa = PBXBuildFile; fileRef = 1E12D8A31EF21AEE0050968E /* ic_setting_back.png */; };
+		1E12D8A81EF21AEE0050968E /* ic_setting_title_de.png in Resources */ = {isa = PBXBuildFile; fileRef = 1E12D8A41EF21AEE0050968E /* ic_setting_title_de.png */; };
+		1E12D8A91EF21AEE0050968E /* ic_setting_title_en.png in Resources */ = {isa = PBXBuildFile; fileRef = 1E12D8A51EF21AEE0050968E /* ic_setting_title_en.png */; };
+		1E12D8AA1EF21AEE0050968E /* ic_setting_title.png in Resources */ = {isa = PBXBuildFile; fileRef = 1E12D8A61EF21AEE0050968E /* ic_setting_title.png */; };
 		1E59FCB41EF022DA00440A7C /* Summary.sks in Resources */ = {isa = PBXBuildFile; fileRef = 1E59FCB61EF022DA00440A7C /* Summary.sks */; };
 		1E59FCC51EF0C13600440A7C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1E59FCC71EF0C13600440A7C /* InfoPlist.strings */; };
-		1E59FCE51EF0C36100440A7C /* ic_setting_title_de.png in Resources */ = {isa = PBXBuildFile; fileRef = 1E59FCD01EF0C36000440A7C /* ic_setting_title_de.png */; };
 		1E59FCE61EF0C36100440A7C /* ic_welcome_progress_desc_de.png in Resources */ = {isa = PBXBuildFile; fileRef = 1E59FCD11EF0C36000440A7C /* ic_welcome_progress_desc_de.png */; };
 		1E59FCE71EF0C36100440A7C /* ic_result_jifen_na_de.png in Resources */ = {isa = PBXBuildFile; fileRef = 1E59FCD21EF0C36100440A7C /* ic_result_jifen_na_de.png */; };
 		1E59FCE81EF0C36100440A7C /* ic_result_paiming_na_de.png in Resources */ = {isa = PBXBuildFile; fileRef = 1E59FCD31EF0C36100440A7C /* ic_result_paiming_na_de.png */; };
@@ -259,6 +264,13 @@
 		1E12D8991EF1EA560050968E /* notSelected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = notSelected.png; sourceTree = "<group>"; };
 		1E12D89A1EF1EA560050968E /* selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = selected.png; sourceTree = "<group>"; };
 		1E12D89D1EF1F3370050968E /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = "zh-Hans"; path = "zh-Hans.lproj/Summary.sks"; sourceTree = "<group>"; };
+		1E12D89E1EF2178E0050968E /* Setting.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Setting.sks; sourceTree = "<group>"; };
+		1E12D8A01EF217A20050968E /* SettingScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingScene.h; sourceTree = "<group>"; };
+		1E12D8A11EF217A20050968E /* SettingScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingScene.m; sourceTree = "<group>"; };
+		1E12D8A31EF21AEE0050968E /* ic_setting_back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_setting_back.png; sourceTree = "<group>"; };
+		1E12D8A41EF21AEE0050968E /* ic_setting_title_de.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_setting_title_de.png; sourceTree = "<group>"; };
+		1E12D8A51EF21AEE0050968E /* ic_setting_title_en.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_setting_title_en.png; sourceTree = "<group>"; };
+		1E12D8A61EF21AEE0050968E /* ic_setting_title.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_setting_title.png; sourceTree = "<group>"; };
 		1E3E2E111EE22A9700B64967 /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
 		1E59FCB51EF022DA00440A7C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = Base; path = Base.lproj/Summary.sks; sourceTree = "<group>"; };
 		1E59FCB71EF022DD00440A7C /* en */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = en; path = en.lproj/Summary.sks; sourceTree = "<group>"; };
@@ -271,7 +283,6 @@
 		1E59FCCD1EF0C1CA00440A7C /* de */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = de; path = de.lproj/First.sks; sourceTree = "<group>"; };
 		1E59FCCE1EF0C1CA00440A7C /* de */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = de; path = de.lproj/Summary.sks; sourceTree = "<group>"; };
 		1E59FCCF1EF0C1CA00440A7C /* de */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = de; path = de.lproj/PopupScore.sks; sourceTree = "<group>"; };
-		1E59FCD01EF0C36000440A7C /* ic_setting_title_de.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_setting_title_de.png; sourceTree = "<group>"; };
 		1E59FCD11EF0C36000440A7C /* ic_welcome_progress_desc_de.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_welcome_progress_desc_de.png; sourceTree = "<group>"; };
 		1E59FCD21EF0C36100440A7C /* ic_result_jifen_na_de.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_result_jifen_na_de.png; sourceTree = "<group>"; };
 		1E59FCD31EF0C36100440A7C /* ic_result_paiming_na_de.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_result_paiming_na_de.png; sourceTree = "<group>"; };
@@ -619,6 +630,9 @@
 				577242DC1EB6BBBB003CA2E8 /* FirstScene.h */,
 				577242DD1EB6BBBB003CA2E8 /* FirstScene.m */,
 				1EE085781EE103CF00B1545E /* First.sks */,
+				1E12D89E1EF2178E0050968E /* Setting.sks */,
+				1E12D8A01EF217A20050968E /* SettingScene.h */,
+				1E12D8A11EF217A20050968E /* SettingScene.m */,
 				5720BB851EC6F603005255CD /* CircularProgressNode.h */,
 				5720BB861EC6F603005255CD /* CircularProgressNode.m */,
 				577242DF1EB6CA44003CA2E8 /* Main.sks */,
@@ -645,7 +659,10 @@
 		5741DB8B1EB5BD3B006B351D /* pics */ = {
 			isa = PBXGroup;
 			children = (
-				1E59FCD01EF0C36000440A7C /* ic_setting_title_de.png */,
+				1E12D8A31EF21AEE0050968E /* ic_setting_back.png */,
+				1E12D8A41EF21AEE0050968E /* ic_setting_title_de.png */,
+				1E12D8A51EF21AEE0050968E /* ic_setting_title_en.png */,
+				1E12D8A61EF21AEE0050968E /* ic_setting_title.png */,
 				1E12D8991EF1EA560050968E /* notSelected.png */,
 				1E12D89A1EF1EA560050968E /* selected.png */,
 				1E59FCD11EF0C36000440A7C /* ic_welcome_progress_desc_de.png */,
@@ -950,6 +967,7 @@
 				5741DC981EB5BD5D006B351D /* ic_game_timeline_icon_5.png in Resources */,
 				5741DC8C1EB5BD5D006B351D /* ic_game_msg_bg.png in Resources */,
 				5741DCED1EB5BD5D006B351D /* ic_welcome_progress_bar_60.png in Resources */,
+				1E12D8A91EF21AEE0050968E /* ic_setting_title_en.png in Resources */,
 				1EADE7941EE4C52B007BDF6A /* welcome_girl_en.png in Resources */,
 				5741DCA61EB5BD5D006B351D /* ic_game_timeline_top.png in Resources */,
 				1E59FCE71EF0C36100440A7C /* ic_result_jifen_na_de.png in Resources */,
@@ -985,6 +1003,7 @@
 				5741DCE51EB5BD5D006B351D /* ic_seldec_top_words.png in Resources */,
 				5741DCCD1EB5BD5D006B351D /* ic_result_jifen_9.png in Resources */,
 				1EADE7931EE4C52B007BDF6A /* welcome_boy.png in Resources */,
+				1E12D8AA1EF21AEE0050968E /* ic_setting_title.png in Resources */,
 				5741DCDF1EB5BD5D006B351D /* ic_seldec_cancel_en.png in Resources */,
 				5741DCE91EB5BD5D006B351D /* ic_seldev_rssi_2.png in Resources */,
 				5741DC5F1EB5BD5D006B351D /* dialog_bonus_value.png in Resources */,
@@ -1058,6 +1077,7 @@
 				5741DC891EB5BD5D006B351D /* ic_dfu_btn_deactive.png in Resources */,
 				5741DC5A1EB5BD5D006B351D /* cloud.png in Resources */,
 				5741DC7A1EB5BD5D006B351D /* fish10.png in Resources */,
+				1E12D8A71EF21AEE0050968E /* ic_setting_back.png in Resources */,
 				5741DCB91EB5BD5D006B351D /* ic_result_award_2_3.png in Resources */,
 				5741DC9F1EB5BD5D006B351D /* ic_game_timeline_icon_pass_6.png in Resources */,
 				1EADE78D1EE4C4B4007BDF6A /* guide_bg4.png in Resources */,
@@ -1089,7 +1109,6 @@
 				5741DC8A1EB5BD5D006B351D /* ic_game_back.png in Resources */,
 				5741DC581EB5BD5D006B351D /* bubble11.png in Resources */,
 				5741DC941EB5BD5D006B351D /* ic_game_timeline_icon_1.png in Resources */,
-				1E59FCE51EF0C36100440A7C /* ic_setting_title_de.png in Resources */,
 				5741DCC01EB5BD5D006B351D /* ic_result_box_bottom.png in Resources */,
 				5741DC671EB5BD5D006B351D /* dialog_bonus_value7.png in Resources */,
 				1E59FCEC1EF0C36100440A7C /* ic_result_paiming_last_de.png in Resources */,
@@ -1131,6 +1150,7 @@
 				5741DC501EB5BD5D006B351D /* bubble3.png in Resources */,
 				5741DC6B1EB5BD5D006B351D /* dialog_left.png in Resources */,
 				1E59FCEA1EF0C36100440A7C /* dialog_bonus_txt_de.png in Resources */,
+				1E12D8A81EF21AEE0050968E /* ic_setting_title_de.png in Resources */,
 				5741DCE61EB5BD5D006B351D /* ic_seldec_top.png in Resources */,
 				5741DCA41EB5BD5D006B351D /* ic_game_timeline_top_now.png in Resources */,
 				5741DB761EB5BA57006B351D /* Actions.sks in Resources */,
@@ -1152,6 +1172,7 @@
 				5741DC531EB5BD5D006B351D /* bubble6.png in Resources */,
 				5741DC5D1EB5BD5D006B351D /* dialog_bonus_txt_en.png in Resources */,
 				1EADE77A1EE4BF4F007BDF6A /* yirdoc_title.png in Resources */,
+				1E12D89F1EF2178E0050968E /* Setting.sks in Resources */,
 				5741DCBA1EB5BD5D006B351D /* ic_result_award_2_4.png in Resources */,
 				5741DC9C1EB5BD5D006B351D /* ic_game_timeline_icon_pass_3.png in Resources */,
 				5741DCD41EB5BD5D006B351D /* ic_result_paiming_3.png in Resources */,
@@ -1180,6 +1201,7 @@
 				1EADE7A01EE4CAAB007BDF6A /* DHGifImageOperation.m in Sources */,
 				1EADE77D1EE4C399007BDF6A /* UserGuideViewController.m in Sources */,
 				5741DB6F1EB5BA57006B351D /* main.m in Sources */,
+				1E12D8A21EF217A20050968E /* SettingScene.m in Sources */,
 				1EADE7781EE37B42007BDF6A /* SummaryScene.m in Sources */,
 				577242DE1EB6BBBB003CA2E8 /* FirstScene.m in Sources */,
 				57AEA88F1EC7DC70001A7970 /* MainScene.m in Sources */,

@@ -12,18 +12,23 @@
 #import "GameViewController.h"
 
 @implementation FirstScene{
-    SKNode *_boyNode;
+    SKNode *_startNode;
+    SKNode *_settingNode;
+
     SKNode *_guide;
     SKLabelNode *_label;
     SKAudioNode *_backgroundSoundNode;
     AppDelegate *_appDelegate;
+    
 }
 
 - (void)didMoveToView:(SKView *)view {
     // Setup your scene here
     
     // Get label node from scene and store it for use later
-    _boyNode = (SKNode *)[self childNodeWithName:@"//boy"];
+    _startNode = (SKNode *)[self childNodeWithName:@"//boy"];
+    _settingNode = (SKSpriteNode *)[self childNodeWithName:@"//setting"];
+
     _guide = (SKNode *)[self childNodeWithName:@"//guide"];
     _label = (SKLabelNode*) [self childNodeWithName:@"//statusLabel"];
     _appDelegate = (AppDelegate*)[UIApplication sharedApplication].delegate;
@@ -47,8 +52,7 @@
                                                                               @"score10": @0,
                                                                               @"score11": @0,
                                                                               @"score12": @0,}];
-
-
+    
     
 
     NSURL *musicURL = [NSURL URLWithString:[[NSBundle mainBundle] pathForResource:@"welcome" ofType:@"mp3"]];
@@ -62,7 +66,7 @@
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
     UITouch *touch = [touches anyObject];
     CGPoint touchLocation = [touch locationInNode:self];
-    if ([_boyNode containsPoint:touchLocation]) {
+    if ([_startNode containsPoint:touchLocation]) {
         if (_appDelegate.peripheral /*|| YES*/) {
             GameScene *scene = (GameScene *)[SKScene nodeWithFileNamed:@"Main"];
             scene.scaleMode = SKSceneScaleModeAspectFill;
@@ -77,6 +81,12 @@
         GameViewController *parentVC = (GameViewController*) self.parentVC;
         [parentVC createUserGuide];
         
+    } else if ([_settingNode containsPoint:touchLocation]) {
+        SKScene *scene = (SKScene *)[SKScene nodeWithFileNamed:@"Setting"];
+        scene.scaleMode = SKSceneScaleModeAspectFill;
+        
+        SKView *skView = (SKView *)self.view;
+        [skView presentScene:scene];
     }
 }
 
