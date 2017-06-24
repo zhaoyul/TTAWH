@@ -33,13 +33,15 @@
     _bgNode = (SKSpriteNode*)[self childNodeWithName:@"//bgNode"];
     _bgNode.texture = [SKTexture textureWithImage:_bgimg];
 
-    NSInteger score1 = ((NSNumber*)appDelegate.globalDic[@"score1"]).integerValue;
-    NSInteger score2 = ((NSNumber*)appDelegate.globalDic[@"score2"]).integerValue;
-    NSInteger score3 = ((NSNumber*)appDelegate.globalDic[@"score3"]).integerValue;
     
-    NSInteger score = score1*10 + score2*5 + score3;
+//    NSInteger __block score = 0;
+//    
+//    [appDelegate.globalDic enumerateKeysAndObjectsWithOptions:NSEnumerationConcurrent
+//                                             usingBlock:^(NSString* key, NSNumber* single_score, BOOL *stop) {
+//                                                 score += single_score.integerValue;
+//                                             }];
     
-    _score.text = [NSString stringWithFormat: @"%ld", (long)score];
+    _score.text = [NSString stringWithFormat: @"%ld", appDelegate.gameState->currentScore];
     
 }
 

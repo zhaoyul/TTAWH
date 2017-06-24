@@ -251,6 +251,7 @@ static UIImage *circularImageWithImage(CGSize size, CGFloat percent)
 
 -(void)didMoveToView:(SKView *)view{
     
+
     
     /////////////////TEXTURE///////////////////
     
@@ -268,6 +269,7 @@ static UIImage *circularImageWithImage(CGSize size, CGFloat percent)
     /////////////////INIT//////////////////////
     self.appDelegate =  (AppDelegate*)[[UIApplication sharedApplication] delegate];
     globalDict = self.appDelegate.globalDic;
+    self.appDelegate.gameState->currentScore = 0;
     
     //////////////////NOTIFICATION/////////////
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(breathOutAction) name:kOUTNotificationIdentifier object:nil];
@@ -525,6 +527,10 @@ static UIImage *circularImageWithImage(CGSize size, CGFloat percent)
 }
 
 - (void)didBeginContact:(SKPhysicsContact *)contact{
+    //当前分数加一，popup用
+    self.appDelegate.gameState->currentScore += 1;
+
+    
     SKPhysicsBody *a = contact.bodyA;
     SKPhysicsBody *b = contact.bodyB;
     
@@ -553,6 +559,7 @@ static UIImage *circularImageWithImage(CGSize size, CGFloat percent)
         [_fish1_icon runAction:group];
         
         _fish1_score.texture = _textureArray[score1 % 10];
+        
     } else if([a.node.name isEqualToString:@"fish2"]  || [b.node.name isEqualToString:@"fish2"]){
         NSInteger score2 = ((NSNumber*)globalDict[fish_key2]).integerValue + 1 ;
         globalDict[fish_key2] = @(score2);
@@ -582,6 +589,8 @@ static UIImage *circularImageWithImage(CGSize size, CGFloat percent)
     [_boomNode runAction:moveToBoomOrigin];
     _boomNode.physicsBody.dynamic = NO;
     
+    
+    
 }
 
 -(void) explodAtPosition:(CGPoint) position{
@@ -598,25 +607,25 @@ static UIImage *circularImageWithImage(CGSize size, CGFloat percent)
 }
                               
 
-///////////////////////////touch hander/////////////////////////
-- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
-//    SKAction *moveToBoomOrigin = [SKAction moveTo:boomOriginPosition duration:0.01];
-//    [_boomNode runAction:moveToBoomOrigin];
-//    _boomNode.physicsBody.dynamic = NO;
-    [[NSNotificationCenter defaultCenter] postNotificationName:kINNotificationIdentifier object:nil userInfo:nil];
-
-}
-- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event{
-    [[NSNotificationCenter defaultCenter] postNotificationName:kINNotificationIdentifier object:nil userInfo:nil];
-}
-- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
-//        _boomNode.physicsBody.dynamic = YES;
-        [[NSNotificationCenter defaultCenter] postNotificationName:kOUTNotificationIdentifier object:nil userInfo:nil];
-}
-- (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event {
-//    _boomNode.position = boomOriginPosition;
-
-}
+/////////////////////////////touch hander/////////////////////////
+//- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+////    SKAction *moveToBoomOrigin = [SKAction moveTo:boomOriginPosition duration:0.01];
+////    [_boomNode runAction:moveToBoomOrigin];
+////    _boomNode.physicsBody.dynamic = NO;
+//    [[NSNotificationCenter defaultCenter] postNotificationName:kINNotificationIdentifier object:nil userInfo:nil];
+//
+//}
+//- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event{
+//    [[NSNotificationCenter defaultCenter] postNotificationName:kINNotificationIdentifier object:nil userInfo:nil];
+//}
+//- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
+////        _boomNode.physicsBody.dynamic = YES;
+//        [[NSNotificationCenter defaultCenter] postNotificationName:kOUTNotificationIdentifier object:nil userInfo:nil];
+//}
+//- (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event {
+////    _boomNode.position = boomOriginPosition;
+//
+//}
 
 
 

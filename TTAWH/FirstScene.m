@@ -39,6 +39,7 @@
     _appDelegate.gameState->round = 0;
     _appDelegate.gameState->state = breathOutStop;
     _appDelegate.gameState->start_time = [NSDate timeIntervalSinceReferenceDate];
+    _appDelegate.gameState->currentScore = 0;
 
     _appDelegate.globalDic = [NSMutableDictionary dictionaryWithDictionary: @{@"score1": @0,
                                                                               @"score2": @0,

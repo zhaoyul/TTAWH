@@ -30,19 +30,26 @@ typedef struct GameState {
     NSTimeInterval start_time;
     NSInteger round;
     NSTimeInterval totalTime;
+    NSInteger currentScore;//当前关卡得分
 } GameState;
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
-@property (strong, nonatomic) UIWindow *window;
+@property (strong, nonatomic) UIWindow * _Nullable window;
 
-@property (strong, nonatomic) NSMutableDictionary *globalDic;
+@property (strong, nonatomic) NSMutableDictionary * _Nonnull globalDic;
 
-@property (nonatomic, assign) GameState *gameState;
+@property (nonatomic, assign) GameState * _Nullable gameState;
 
-@property (nonatomic, strong) CBPeripheral *peripheral;
+@property (nonatomic, strong) CBPeripheral * _Nullable peripheral;
 
-@property (nonatomic, strong) NSMutableArray *topFive;
+@property (nonatomic, strong) NSMutableArray * _Nullable topFive;
+
+@property (nonatomic, assign) NSTimeInterval totalTimeInterval;
+@property (nonatomic, assign) NSTimeInterval statTimeInterval;
+@property (nonatomic, assign) NSTimeInterval endTimeInterval;
+
+
 
 
 

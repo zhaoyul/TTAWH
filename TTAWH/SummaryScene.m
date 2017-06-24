@@ -138,7 +138,9 @@
     globalDict[@"score12"] = @(score12);
     _fish12_score.texture = textureArray[score12 % 10];
     
-    CGFloat score = appDelegate.gameState->totalTime * 0.3 / 60;
+    appDelegate.totalTimeInterval += ([NSDate timeIntervalSinceReferenceDate] - appDelegate.statTimeInterval);
+    
+    CGFloat score = appDelegate.totalTimeInterval * 0.3 / 60;
     
     ////////////RANK////////////////
     for (NSInteger i = 0; i < 5; i++) {
@@ -157,18 +159,14 @@
     _score.text = [NSString stringWithFormat: @"%.04f", score];
     
     
-    NSInteger sum = score1 + score2 + score3;
-//    if (sum%10 == 0) {
-//        _third.hidden = YES;
-//    } else {
-//        _third.hidden = NO;
-//    }
-//    if ((sum/10)%10 == 0) {
-//        _second.hidden = YES;
-//    } else {
-//        _second.hidden = NO;
-//    }
-//    
+//    NSInteger sum = score1 + score2 + score3;
+    
+        NSInteger __block total_score = 0;
+    
+        [appDelegate.globalDic enumerateKeysAndObjectsWithOptions:NSEnumerationConcurrent
+                                                 usingBlock:^(NSString* key, NSNumber* single_score, BOOL *stop) {
+                                                     total_score += single_score.integerValue;
+                                                 }];
     NSArray *jifenTextureArray = @[[SKTexture textureWithImageNamed:@"ic_result_jifen_0" ],
                               [SKTexture textureWithImageNamed:@"ic_result_jifen_1" ],
                               [SKTexture textureWithImageNamed:@"ic_result_jifen_2" ],
@@ -180,9 +178,9 @@
                               [SKTexture textureWithImageNamed:@"ic_result_jifen_8" ],
                               [SKTexture textureWithImageNamed:@"ic_result_jifen_9" ],];
     
-    _third.texture = jifenTextureArray[sum%10];
-    _second.texture = jifenTextureArray[(sum/10)%10];
-    _first.texture = jifenTextureArray[(sum/100)%10];
+    _third.texture = jifenTextureArray[total_score%10];
+    _second.texture = jifenTextureArray[(total_score/10)%10];
+    _first.texture = jifenTextureArray[(total_score/100)%10];
 
 
 }

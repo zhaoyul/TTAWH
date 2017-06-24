@@ -65,6 +65,7 @@
     self.gameState->round = 0;
     self.gameState->state = breathOutStop;
     self.gameState->start_time = [NSDate timeIntervalSinceReferenceDate];
+    self.gameState->currentScore = 0;
     
     ///////////////////////////////BLE//////////////////////////////
     self.thermometers = [NSMutableArray array];
@@ -223,6 +224,10 @@ didDisconnectPeripheral:(CBPeripheral *)peripheral
     [[NSNotificationCenter defaultCenter] postNotificationName:kDISCONNECTNotificationIdentifier object:nil userInfo:nil];
 
     NSLog(@"centralManager:%@ didDisconnectPeripheral:%@ error:%@", central, peripheral, error);
+    self.endTimeInterval = [NSDate timeIntervalSinceReferenceDate];
+    if (self.endTimeInterval > self.statTimeInterval) {
+        self.totalTimeInterval = self.totalTimeInterval + self.endTimeInterval - self.statTimeInterval;
+    }
     if (self.peripheral) {
         [self.peripheral setDelegate:nil];
         self.peripheral = nil;
@@ -301,6 +306,7 @@ didFailToConnectPeripheral:(CBPeripheral *)peripheral
                 self.wuhuaCharacteristic = characteristic;
                 [self.peripheral setNotifyValue:YES forCharacteristic:self.wuhuaCharacteristic];
                 NSLog(@"Found 呼吸监测 Characteristic");
+                self.statTimeInterval = [NSDate timeIntervalSinceReferenceDate];
             }
             
             if([characteristic.UUID isEqual:[CBUUID UUIDWithString:@"0004"]])
@@ -466,7 +472,8 @@ didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic
 }
 
 -(void)changeWuhuaRate:(uint8_t) val{
-    NSData * valData = [NSData dataWithBytes:(void*)&val length:sizeof(val)];
+    Byte a[] = {1, val};
+    NSData * valData = [NSData dataWithBytes:(void*)&a length:sizeof(a)];
     [self.peripheral writeValue:valData forCharacteristic:self.wuhuaCharacteristic type:CBCharacteristicWriteWithoutResponse];
     
 }
