@@ -69,6 +69,7 @@
     NSArray *_fishIcons;
     NSArray *_bubbleIcons;
     NSArray *_bgs;
+    CGSize _origin_size;
     
 
 
@@ -111,10 +112,15 @@
                            alpha:1.0f];
 }
 
+-(void)breathStopAction{
+    _boomNode.physicsBody.dynamic = YES;
+    //FIXIT: 2.0 magic number
+    SKAction *zoom = [SKAction resizeToWidth:_origin_size.width*2.0 height:_origin_size.height*2.0 duration:0.01];
+    [_boomNode runAction:zoom];
+
+}
+
 -(void)breathOutAction{
-
-
-    
     if(self.appDelegate.gameState->breathIn_interval > ENOUGH_TIME*0.75) {
         _boomNode.physicsBody.dynamic = YES;
     } else {
@@ -124,8 +130,6 @@
         SKAction *show = [SKAction fadeInWithDuration:0.01];
         SKAction *seq = [SKAction sequence:@[hide,wait, show]];
         [_boomNode runAction:seq];
-        
-
     }
 }
 
@@ -165,6 +169,11 @@
     SKAction *moveToBoomOrigin = [SKAction moveTo:boomOriginPosition duration:0.01];
     [_boomNode runAction:moveToBoomOrigin];
     _boomNode.physicsBody.dynamic = NO;
+    if(CGSizeEqualToSize(CGSizeZero, _origin_size)){
+        _origin_size = _boomNode.size;
+    }
+    SKAction *zoom = [SKAction resizeByWidth:40 height:40 duration:0.02];
+    [_boomNode runAction:zoom];
     
     
 
@@ -273,6 +282,8 @@ static UIImage *circularImageWithImage(CGSize size, CGFloat percent)
     
     //////////////////NOTIFICATION/////////////
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(breathOutAction) name:kOUTNotificationIdentifier object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(breathStopAction) name:kSTOPNotificationIdentifier object:nil];
+
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(breathInAction) name:kINNotificationIdentifier object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(connectDown) name:kDISCONNECTNotificationIdentifier object:nil];
 
@@ -501,7 +512,9 @@ static UIImage *circularImageWithImage(CGSize size, CGFloat percent)
         local_percent = (currentTime - local_time)/1.0;
 
     } else if (self.appDelegate.gameState->state == breathInStop){
-        ;
+        local_time = currentTime;
+        local_percent = 0.0;
+        
     } else {
         local_time = currentTime;
         local_percent = 0.0;

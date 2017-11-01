@@ -14,6 +14,7 @@
 "skip" = "überspringen";
 "turnOnDevice" = "Bitte schalten Sie das Gerät ein";
 "deviceIsOn" = "Das Gerät ist nun angeschlossen.";
+"start" = "drawable";
 
 
 

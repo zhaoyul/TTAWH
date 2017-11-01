@@ -13,5 +13,7 @@
 "skip" = "跳过";
 "turnOnDevice" = "请先打开雾化器";
 "deviceIsOn" = "成功连接设备，可以开始啦";
+"start" = "开始体验";
+
 
 

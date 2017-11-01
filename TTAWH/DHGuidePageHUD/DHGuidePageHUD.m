@@ -43,7 +43,7 @@
         [self addSubview:guidePageView];
         
         // 设置引导页上的跳过按钮
-        UIButton *skipButton = [[UIButton alloc]initWithFrame:CGRectMake(DDScreenW*0.9, DDScreenW*0.03, 50, 25)];
+        UIButton *skipButton = [[UIButton alloc]initWithFrame:CGRectMake(DDScreenW*0.8, DDScreenW*0.03, 100, 25)];
         NSString *skip =  NSLocalizedString(@"skip", nil);
         [skipButton setTitle:skip forState:UIControlStateNormal];
         [skipButton.titleLabel setFont:[UIFont systemFontOfSize:14.0]];
@@ -71,7 +71,9 @@
             if (i == imageNameArray.count-1 && isHidden == NO) {
                 [imageView setUserInteractionEnabled:YES];
                 UIButton *startButton = [[UIButton alloc]initWithFrame:CGRectMake(DDScreenW*0.3, DDScreenH*0.8, DDScreenW*0.4, DDScreenH*0.08)];
-                [startButton setTitle:@"开始体验" forState:UIControlStateNormal];
+                NSString *start =  NSLocalizedString(@"start", nil);
+
+                [startButton setTitle:start forState:UIControlStateNormal];
                 [startButton setTitleColor:[UIColor colorWithRed:164/255.0 green:201/255.0 blue:67/255.0 alpha:1.0] forState:UIControlStateNormal];
                 [startButton.titleLabel setFont:[UIFont systemFontOfSize:21]];
                 [startButton setBackgroundImage:[UIImage imageNamed:@"GuideImage.bundle/guideImage_button_backgound"] forState:UIControlStateNormal];
@@ -142,7 +144,9 @@
         [movieStartButton.layer setBorderWidth:1.0];
         [movieStartButton.layer setCornerRadius:20.0];
         [movieStartButton.layer setBorderColor:[UIColor whiteColor].CGColor];
-        [movieStartButton setTitle:@"开始体验" forState:UIControlStateNormal];
+        NSString *start =  NSLocalizedString(@"start", nil);
+
+        [movieStartButton setTitle:start forState:UIControlStateNormal];
         [movieStartButton setAlpha:0.0];
         [self.playerController.view addSubview:movieStartButton];
         [movieStartButton addTarget:self action:@selector(buttonClick:) forControlEvents:UIControlEventTouchUpInside];

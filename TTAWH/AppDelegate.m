@@ -428,6 +428,8 @@ didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic
                     
 
                     self.gameState->state = breathInStop;
+                    [[NSNotificationCenter defaultCenter] postNotificationName:kSTOPNotificationIdentifier object:nil userInfo:nil];
+
                 } else {
                     self.gameState->state = breathOutStop;
                 }

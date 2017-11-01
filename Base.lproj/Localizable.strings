@@ -14,6 +14,7 @@
 "skip" = "skip";
 "turnOnDevice" = "Please turn on the device first";
 "deviceIsOn" = "The device is now connected.";
+"start" = "start";
 
 
 
